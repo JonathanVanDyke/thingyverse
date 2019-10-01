@@ -52,7 +52,7 @@ const App = () => (
     </Nav>
     <Content>
       <header>
-        <Route exact path="/" component={Splash} />
+        <Route path="/" component={Splash} />
       </header>
       <Switch>
         <AuthRoute exact path="/login" component={LogInFormContainer} />
