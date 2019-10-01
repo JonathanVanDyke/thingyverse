@@ -27,13 +27,15 @@ const Select = styled.div({
 
 const SignInJoin = ({ currentUser, logout }) => {
   return (
-    <NavButton>
+    <div>
+      {/* <NavButton>
+      </NavButton>
       <Link
         to="/login"
         style={{ textDecoration: 'none', cursor: 'pointer' }}>
         <Select>sign in / join</Select>
-      </Link>
-    </NavButton>
+      </Link> */}
+    </div>
   )
 }
 
