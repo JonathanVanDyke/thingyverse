@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/JonathanVanDyke/thingyverse#readme",
   "engines": {
-    "node": "12.5.0",
+    "node": "10.16.3",
     "npm": "6.9.0"
   }
 }
