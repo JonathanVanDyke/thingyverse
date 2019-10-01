@@ -10,7 +10,7 @@ import {
 
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
-import SplashContainer from './splash/splash_container'
+import Splash from './Splash'
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -21,7 +21,7 @@ const App = () => (
       </Link>
     </header>
     <Switch>
-      <Route exact path="/" component={SplashContainer} />
+      <Route exact path="/" component={Splash} />
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
     </Switch>
