@@ -10,7 +10,7 @@ import {
 
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
-import Splash from './Splash'
+import Splash from './Splash/SplashContainer'
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import styled from 'styled-components';
 
