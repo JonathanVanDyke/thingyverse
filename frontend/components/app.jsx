@@ -7,13 +7,15 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import styled from 'styled-components';
 
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import Splash from './splash/SplashContainer';
 import Home from './home/Home';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import styled from 'styled-components';
+import ProfileContainer from './profile/ProfileContainer'
+
 
 const Content = styled.div({
   position: 'absolute',
@@ -64,6 +66,7 @@ const App = () => (
         <AuthRoute exact path="/login" component={LogInFormContainer} />
         <AuthRoute exact path="/signup" component={SignUpFormContainer} />
         <AuthRoute exact path="/logged-in" component={SignUpFormContainer} />
+        <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       </Switch>
     </Content>
   </Page>
