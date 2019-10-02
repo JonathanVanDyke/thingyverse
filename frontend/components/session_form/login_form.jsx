@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Login = styled.div`
@@ -104,7 +105,7 @@ class LoginForm extends React.Component {
                 value={this.state.username} />
             </Input>
             <Input>
-              <label htmlFor='password'>Password</label>
+              <Label htmlFor='password'>Password</Label>
               <Inpt
                 type="password"
                 onChange={this.update('password')}
@@ -114,7 +115,15 @@ class LoginForm extends React.Component {
           </Form>
         </form>
         <Login>
-          <h1>Sign Up</h1>
+          <p>NEW TO THINGYVERSE? <span> </span>
+            <span> 
+              <Link 
+                to='/signup'
+                style={{ textDecoration: 'none', cursor: 'pointer', color: '#238bfb' }}> 
+                  CREATE AN ACCOUNT>
+              </Link> 
+            </span>
+          </p>
         </Login>
       </div>
     )
