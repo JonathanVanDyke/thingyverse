@@ -8,8 +8,7 @@ const NavButton = styled.button`
   font-family: "Antenna", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   margin: 0;
-  height: 61px;
-  width: 130px;
+
   background-image: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
   :hover {
     background-image: linear-gradient(to bottom, white, white);
@@ -22,6 +21,7 @@ const Select = styled.div({
   justifyContent: 'center',
   alignContent: 'center',
   color: '#666',
+  padding: '20px',
 })
 
 
