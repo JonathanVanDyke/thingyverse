@@ -77,7 +77,7 @@ const DropDownWrap = styled.div`
   align-items: flex-end;
   height: 800px;
   width: 400px;
-  border: 1px solid skyblue;
+  // border: 1px solid skyblue;
 `
 
 const SignInJoin = ({ currentUser }) => {
@@ -103,7 +103,7 @@ const SignInJoin = ({ currentUser }) => {
       <DropDownWrap>
         <NavButtonDrop onClick={() => setShouldShowDropdownMenu(!shouldShowDropdownMenu)}>
           <Link
-            to="/logged-in"
+            to="/"
             style={{ textDecoration: 'none', cursor: 'pointer' }}>
             <Selectp>
                 <Avatar src={!!currentUser.avatar ?

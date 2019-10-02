@@ -13,6 +13,7 @@ const DropDownTag = styled.div`
   height: 365px;
   width: 210px;
   border: 1px solid #bebebe;
+  background-color: #fff;
 `
 const Username = styled.div`
   display: flex;

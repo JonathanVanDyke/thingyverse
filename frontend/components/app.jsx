@@ -45,6 +45,10 @@ const Nav = styled.nav({
   borderBottom: '1px solid #bebebe',
 })
 
+const Header = styled.header`
+  z-index: 10;
+`
+
 //236px margin on left and right...
 const App = () => (
   <Page>
@@ -52,13 +56,14 @@ const App = () => (
 
     </Nav>
     <Content>
-      <header>
+      <Header>
         <Route path="/" component={Splash} />
-      </header>
+      </Header>
       <Switch>
         <Route exact path="/" component={Home} />
         <AuthRoute exact path="/login" component={LogInFormContainer} />
         <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+        <AuthRoute exact path="/logged-in" component={SignUpFormContainer} />
       </Switch>
     </Content>
   </Page>
