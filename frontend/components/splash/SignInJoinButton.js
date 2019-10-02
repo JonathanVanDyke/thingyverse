@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import DropDown from './DropDown'
 
 const NavButton = styled.button`
   font-size: 15px;
@@ -20,6 +21,24 @@ const NavButton = styled.button`
     // border-right: 1px solid #fff;
 `
 
+const NavButtonDrop = styled.button`
+  font-size: 15px;
+  font-family: "Antenna", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  margin: 0;
+
+  background-image: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
+  :hover {
+    background-image: linear-gradient(to bottom, white, white);
+  }
+  cursor: pointer;
+  padding-right: 0;
+  padding-left: 0;
+    //   border-left: 1px solid #fff;
+    // border-right: 1px solid #fff;
+  position: absolute;
+`
+
 const Select = styled.div({
   display: 'flex',
   justifyContent: 'center',
@@ -30,7 +49,7 @@ const Select = styled.div({
 
 const Selectp = styled.div`
   display: flex;
-  justifyContent: space-between;
+  justifyContent: center;
   alignContent: center;
   color: #666;
   padding: 4px 25px 3px 25px;
@@ -51,6 +70,15 @@ const Avatar = styled.img`
   // padding: 4px 45px 3px 45px;
 `
 
+const DropDownWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  height: 800px;
+  width: 400px;
+  border: 1px solid skyblue;
+`
 
 const SignInJoin = ({ currentUser }) => {
   // debugger
@@ -63,18 +91,37 @@ const SignInJoin = ({ currentUser }) => {
       </Link>
     </NavButton>
   )
-  const personalizedButton = () => (
-    <NavButton>
-      <Link
-        to="/logged-in"
-        style={{ textDecoration: 'none', cursor: 'pointer' }}>
-        <Selectp>
-          <Avatar src={currentUser.avatar}></Avatar>
-          <You>You</You>
-        </Selectp>
-      </Link>
-    </NavButton>
-  )
+
+
+  //1. MAKE ternary if no currentUser.avatar to use below source instea
+  const personalizedButton = () => {
+    // destructure array... first value is default state, second value is setState uninvoked function
+    const [shouldShowDropdownMenu, setShouldShowDropdownMenu] = useState(false)
+
+    let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
+    return(
+      <DropDownWrap>
+        <NavButtonDrop onClick={() => setShouldShowDropdownMenu(!shouldShowDropdownMenu)}>
+          <Link
+            to="/logged-in"
+            style={{ textDecoration: 'none', cursor: 'pointer' }}>
+            <Selectp>
+                <Avatar src={!!currentUser.avatar ?
+                  currentUser.avatar : 
+                  defaultImg }></Avatar>
+              <You>You</You>
+            </Selectp>
+          </Link>
+        </NavButtonDrop >
+        <div>
+          {
+            shouldShowDropdownMenu ? <DropDown currentUser={currentUser}/> : null
+          }
+        </div>
+      </DropDownWrap>
+    )
+    
+  }
     
   return !!currentUser ? personalizedButton() : Button()
 }
