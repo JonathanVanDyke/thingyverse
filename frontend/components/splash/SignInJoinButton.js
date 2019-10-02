@@ -102,16 +102,12 @@ const SignInJoin = ({ currentUser }) => {
     return(
       <DropDownWrap>
         <NavButtonDrop onClick={() => setShouldShowDropdownMenu(!shouldShowDropdownMenu)}>
-          <Link
-            to="/"
-            style={{ textDecoration: 'none', cursor: 'pointer' }}>
             <Selectp>
                 <Avatar src={!!currentUser.avatar ?
                   currentUser.avatar : 
                   defaultImg }></Avatar>
               <You>You</You>
             </Selectp>
-          </Link>
         </NavButtonDrop >
         <div>
           {
