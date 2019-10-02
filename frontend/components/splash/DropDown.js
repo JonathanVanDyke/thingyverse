@@ -6,12 +6,14 @@ import SignOutButton from './SignOutButton'
 
 const DropDownTag = styled.div`
   display: flex;
-  margin-top: 427px;
+  // margin-top: 427px;
+  margin-top: 167px;
 
   // flex-direction: column;
 
 
-  height: 365px;
+  // height: 365px;
+  height: 105px;
   width: 210px;
   border: 1px solid #bebebe;
   background-color: #fff;
@@ -27,6 +29,8 @@ const Username = styled.li`
   padding-left: 14px;
   :hover {
   background-image: linear-gradient(to bottom, #f5f5f5, #e8e8e8);  }
+
+  text-transform: capitalize;
 `
 const Dummy1 = styled.li`
   display: flex;
@@ -84,7 +88,7 @@ const SplitItems = styled.span`
     border-right: 1px solid #bebebe;
 `
 
-const DropDown = ({ currentUser }) => {
+const DropDown = ({ currentUser, logout }) => {
   // debugger
   return (
     <DropDownTag>
@@ -94,15 +98,10 @@ const DropDown = ({ currentUser }) => {
           style={{ textDecoration: 'none', cursor: 'pointer' }}>
           <Username>{currentUser.username}</Username>
         </Link>
-        <Dummy1></Dummy1>
-        <Dummy2></Dummy2>
-        <Dummy2></Dummy2>
-        <Dummy2></Dummy2>
-        <Dummy2></Dummy2>
-        <Dummy3></Dummy3>
+
         <Split>
-          <EditProfileButton/>
-          <SignOutButton/>
+          <EditProfileButton />
+          <SignOutButton logout={logout}/>
         </Split>
       </ul>
     </DropDownTag>

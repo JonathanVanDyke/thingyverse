@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import DropDown from './DropDown'
+import DropDownContainer from './DropDownContainer';
 
 const NavButton = styled.button`
   font-size: 15px;
@@ -111,7 +112,7 @@ const SignInJoin = ({ currentUser }) => {
         </NavButtonDrop >
         <div>
           {
-            shouldShowDropdownMenu ? <DropDown currentUser={currentUser}/> : null
+            shouldShowDropdownMenu ? <DropDownContainer currentUser={currentUser}/> : null
           }
         </div>
       </DropDownWrap>

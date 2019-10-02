@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import SignInJoin from './SignInJoinButton';
+import SignInJoinButton from './SignInJoinButton';
 
 const NavBar = styled.nav({
   display: 'flex',
@@ -33,8 +33,8 @@ const Splash = ({ currentUser, logout }) => {
           <Logo>Thingyverse</Logo>
         </Link>
         <h4>Welcome back, {currentUser.username}</h4>
-        <button onClick={logout}>Log Out</button>
-        <SignInJoin currentUser={currentUser} logout={logout}/>
+        {/* <button onClick={logout}>Log Out</button> */}
+        <SignInJoinButton currentUser={currentUser}/>
       </NavBar>
     );
   } else {
@@ -46,7 +46,7 @@ const Splash = ({ currentUser, logout }) => {
           style={{ textDecoration: 'none' }}>
           <Logo>Thingyverse</Logo>
         </Link>
-        <SignInJoin currentUser={currentUser} logout={logout} />
+        <SignInJoinButton currentUser={currentUser}/>
       </NavBar>
     );
   };
