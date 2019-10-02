@@ -23,6 +23,8 @@ const LeftPane = styled.div`
 `
 
 const RightPane = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 634px;
   height: 100vh;
   // background-color: green;
@@ -109,10 +111,30 @@ const EditButton = styled.button`
     background-color: #b3b3b3}
 `
 
+const ProfileNav = styled.ul`
+    height: 40px;
+`
+
+const BioBox = styled.div`
+  height: 144px;
+`
+
+const Bio = styled.p`
+  height: 100px;
+  width: 634px;
+  border: none;
+  background: white;
+`
+
+const BioHeader = styled.div`
+  text-transform: uppercase;
+`
+
 const Profile = ({ currentUser }) => {
   return (
     <ProfilePage>
       {/* top */}
+
       <LeftPane>
         <AvatarCage>
           <AvatarBox>
@@ -131,10 +153,18 @@ const Profile = ({ currentUser }) => {
           </EditButtonBox>
         </AvatarCage>
       </LeftPane>
+
       <RightPane>
-        right
+        <ProfileNav>
+          <li>ABOUT</li>
+        </ProfileNav>
+        <BioBox>
+          <BioHeader>about you</BioHeader>
+          <Bio>
+            {currentUser.bio}
+          </Bio>
+        </BioBox>
       </RightPane>
-      {/* <h1>Edit{ currentUser.username }</h1> */}
 
     </ProfilePage>
   )
