@@ -46,9 +46,7 @@ const Splash = ({ currentUser, logout }) => {
           style={{ textDecoration: 'none' }}>
           <Logo>Thingyverse</Logo>
         </Link>
-        <Link to="/login">
-          <SignInJoin currentUser={currentUser} logout={logout} />
-        </Link>
+        <SignInJoin currentUser={currentUser} logout={logout} />
       </NavBar>
     );
   };

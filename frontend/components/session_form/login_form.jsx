@@ -30,13 +30,6 @@ const Input = styled.div`
   height: 60px;
 `
 
-// const InputButton = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   width: 112px;
-//   height: 38px;
-//   padding-top: 12px;
-// `
 const InputButton = styled.button`
   display: flex;
   flex-direction: column;
@@ -95,7 +88,7 @@ class LoginForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <Form>
             <Input>
-              <Label for='username'>Username</Label>
+              <Label htmlFor='username'>Username</Label>
               <Inpt
                 id='username'
                 type="text"
@@ -103,7 +96,7 @@ class LoginForm extends React.Component {
                 value={this.state.username} />
             </Input>
             <Input>
-              <label for='password'>Password</label>
+              <label htmlFor='password'>Password</label>
               <Inpt
                 type="password"
                 onChange={this.update('password')}
