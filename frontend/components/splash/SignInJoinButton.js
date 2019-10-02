@@ -14,6 +14,10 @@ const NavButton = styled.button`
     background-image: linear-gradient(to bottom, white, white);
   }
   cursor: pointer;
+  padding-right: 0;
+  padding-left: 0;
+    //   border-left: 1px solid #fff;
+    // border-right: 1px solid #fff;
 `
 
 const Select = styled.div({
@@ -21,7 +25,7 @@ const Select = styled.div({
   justifyContent: 'center',
   alignContent: 'center',
   color: '#666',
-  padding: '20px',
+  padding: '20px 12px 20px',
 })
 
 
