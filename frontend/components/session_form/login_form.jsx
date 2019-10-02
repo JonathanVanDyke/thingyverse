@@ -56,6 +56,12 @@ const Label = styled.label`
   font-family: Helvetica, Arial, sans-serif;
 `
 
+const Sitename = styled.span`
+  font-weight: 700;
+  color: black;
+  font-family: Helvetica, Arial, sans-serif;
+`
+
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -81,7 +87,9 @@ class LoginForm extends React.Component {
     return (
       <div>
         <Login>
-          <h1>Sign In</h1>
+          <p>Sign in with your 
+          <Sitename> Thingyverse </Sitename>
+          account</p>
         </Login>
         <h1>{this.state.errors ? this.state.errors : []}</h1>
         
@@ -105,6 +113,9 @@ class LoginForm extends React.Component {
               <InputButton type="submit">sign in</InputButton>
           </Form>
         </form>
+        <Login>
+          <h1>Sign Up</h1>
+        </Login>
       </div>
     )
   }
