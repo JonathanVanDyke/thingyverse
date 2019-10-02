@@ -44,12 +44,22 @@ const InputButton = styled.button`
   align-items: center;
   padding-top: 10px;
   margin-top: 15px;
+  box-shadow: 5px 10px 18px #888888;
+  transition: box-shadow 1s;
+  :hover {
+    box-shadow: 10px 5px 18px #888888;
+  }
 `
 
 const Inpt = styled.input`
   padding: 10px;
   border: 1px solid white;
   margin-top: 10px;
+  box-shadow: 5px 10px 18px #888888;
+  transition: box-shadow 1s;
+  :hover {
+    box-shadow: 10px 5px 18px #888888;
+  }
 `
 
 const Label = styled.label`
@@ -61,6 +71,43 @@ const Sitename = styled.span`
   font-weight: 700;
   color: black;
   font-family: Helvetica, Arial, sans-serif;
+`
+
+const Footer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const CardBox = styled.div`
+  height: 120px;
+  width: 300px;
+  // background-color: green;
+`
+
+const Title = styled.p`
+  font-family: "Antenna",Helvetica,Arial,sans-serif;
+  font-weight: normal;
+  color: #222222;
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 6px;
+`
+
+const Subtitle = styled.p`
+  border-bottom: 2px solid #bebebe;
+  padding-bottom: .5em;
+  margin: 0 0 .5em;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: normal;
+  color: #666666;
+`
+
+const Body = styled.p`
+  font-size: 14px;
+  color: #666666;
+  font-family: "Antenna",Helvetica,Arial,sans-serif;
+  line-height: 130%;
 `
 
 class LoginForm extends React.Component {
@@ -84,6 +131,22 @@ class LoginForm extends React.Component {
     this.props.processForm(this.state).then(() => this.props.history.push('/'));
   }
 
+  renderErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  // componentDidMount() {
+  //   this.props.errors = []
+  // }
+
   render() {
     return (
       <div>
@@ -92,10 +155,10 @@ class LoginForm extends React.Component {
           <Sitename> Thingyverse </Sitename>
           account</p>
         </Login>
-        <h1>{this.state.errors ? this.state.errors : []}</h1>
-        
+        <h1>{this.props.errors ? this.renderErrors() : []}</h1>
         <form onSubmit={this.handleSubmit}>
           <Form>
+            
             <Input>
               <Label htmlFor='username'>Username</Label>
               <Inpt
@@ -125,6 +188,24 @@ class LoginForm extends React.Component {
             </span>
           </p>
         </Login>
+
+        <Footer>
+          <CardBox>
+            <Title>Community</Title>
+            <Subtitle>create and share your creations </Subtitle>
+            <Body>With a Thingyverse account, you can draw inspiration from others within the community and share your own unique creations.</Body>
+          </CardBox>
+          <CardBox>
+            <Title>Organize</Title>
+            <Subtitle>your print files in one place</Subtitle>
+            <Body>Thingyverse gives you the ability to make collections of your prints as well as other's prints! Organize to your heart's content.</Body>
+          </CardBox>
+          <CardBox>
+            <Title>6+ Designs</Title>
+            <Subtitle>Small/close community</Subtitle>
+            <Body>This site is brand new, feel free to poke around and add to our growing collections.</Body>
+          </CardBox>
+        </Footer>
       </div>
     )
   }
