@@ -16,7 +16,6 @@ import Splash from './splash/SplashContainer';
 import Home from './home/Home';
 import ProfileContainer from './profile/ProfileContainer'
 
-
 const Content = styled.div({
   position: 'absolute',
   display: 'flex',
