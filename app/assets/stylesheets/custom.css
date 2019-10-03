@@ -15,6 +15,7 @@
 }
 /*====== HEIGHT ======*/
 .screenH {
+    margin-top: 25px;
     height: 342px;
 }
 .fullH {
@@ -57,6 +58,7 @@
     position: absolute;
 }
 .rel {
+    display: flex;
     position: relative;
 }
 .left0 {

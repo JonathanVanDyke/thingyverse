@@ -37,7 +37,7 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        <FirstContent></FirstContent>
+        {/* <FirstContent></FirstContent> */}
         <div className={s.container}>
           {/* <div className={s.header}>Slideshow Carousel</div> */}
           <div className={s.main}>

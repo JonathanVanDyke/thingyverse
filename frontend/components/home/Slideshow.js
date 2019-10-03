@@ -1,6 +1,7 @@
 import React from 'react';
 import Slide from './Slide';
 import Dots from './Dots';
+import styled from 'styled-components';
 
 //this container directly references the stylesheet ?
 
@@ -12,12 +13,19 @@ const s = {
   transition: "transition1l"
 };
 
-// const Container = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   position: relative;
-//   overflow: hidden;
-// `
+const PlayPause = styled.div`
+  position: relative;
+  align-self: flex-end;
+  margin-bottom: 19px;
+  margin-left: 8px;
+  padding: 10px;
+  background-color: white;
+  opacity: .5;
+  border-radius: 5px;
+  :hover {
+    opacity: 1;
+  }
+`
 
 class Slideshow extends React.Component {
   constructor(props) {
@@ -38,11 +46,14 @@ class Slideshow extends React.Component {
       },
       currentId: 0
     };
+    let tog = true;
+    this.tog = tog;
     this.setSlideState = this.setSlideState.bind(this);
     this.startCarousel = this.startCarousel.bind(this);
     this.transitionSlides = this.transitionSlides.bind(this);
     this.resetSlideOffScreen = this.resetSlideOffScreen.bind(this);
     this.resetSlideTransitions = this.resetSlideTransitions.bind(this);
+    this.togglePlay = this.togglePlay.bind(this);
   }
 
   componentDidMount() {
@@ -130,12 +141,29 @@ class Slideshow extends React.Component {
     }, 500)
   }
 
+  togglePlay() {
+    // this.tog = true;
+    if (this.tog) {
+      clearInterval(this.carouselInterval);
+      console.log('true')
+      this.tog = false;
+    } else {
+      this.startCarousel();
+      console.log('false')
+      this.tog = true;
+    }
+  }
+
   render() {
     const { slide1, slide2, currentId } = this.state;
     const { slides } = this.props;
   
     return(
-      <div className={s.container}>
+      <div 
+        className={s.container} 
+        // onMouseOver={() => clearInterval(this.carouselInterval)}
+        onClick={() => this.togglePlay()}
+      >
         <Slide
           image={slides[slide1.id]}
           position={slide1.position}
@@ -146,7 +174,9 @@ class Slideshow extends React.Component {
           position={slide2.position}
           transition={slide2.transition ? s.transition : ""}
         />
+        
         <Dots slideId={currentId} slides={slides} />
+        <PlayPause>Click to Play/Pause</PlayPause>
       </div>
     )
   }
