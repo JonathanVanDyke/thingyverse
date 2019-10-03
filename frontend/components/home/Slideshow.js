@@ -77,7 +77,6 @@ class Slideshow extends React.Component {
       //probably b/c we don't care what the state of currentId is
     let currentId;
     //condition determines onscreen slide then swaps
-    //currentID is always = to slide2's id
     if (slide1["position"] === s.onScreen) {
       slide1["position"] = s.offScreenLeft;
       slide2["position"] = s.onScreen;
@@ -85,6 +84,7 @@ class Slideshow extends React.Component {
     } else {
       slide1["position"] = s.onScreen;
       slide2["position"] = s.offScreenLeft;
+      currentId = slide1.id;
     }
     //actual rerender
     this.setSlideState(slide1, slide2, currentId);

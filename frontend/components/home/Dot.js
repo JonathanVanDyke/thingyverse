@@ -1,13 +1,12 @@
 import React, { memo } from 'react';
 import Spacer from './Spacer';
 
-const Dot = ({ sliceId, dotId }) => (
+const Dot = ({ slideId, dotId }) => (
   <div className="row">
     <Spacer w={5} />
-    <div className={'dot' + (sliceId === dotId ? "white" : "white50")} />
+    <div className={"dot " + (slideId === dotId ? "white" : "white50")} />
     <Spacer w={5} />
   </div>
 )
 
 export default memo(Dot);
-//970, 342
