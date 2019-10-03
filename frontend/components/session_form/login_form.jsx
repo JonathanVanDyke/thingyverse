@@ -110,6 +110,35 @@ const Body = styled.p`
   line-height: 130%;
 `
 
+const Demo = styled.button`
+  display: flex;
+  flex-direction: column;
+  width: 112px;
+  height: 38px;
+  background-color: #248bfb;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  align-items: center;
+  padding-top: 10px;
+  margin-top: 15px;
+  box-shadow: 5px 10px 18px #888888;
+  transition: box-shadow 1s;
+  :hover {
+    box-shadow: 10px 5px 18px #888888;
+  }
+  background-color: #e9e9e9;
+  color: #666666;
+  border: 1px solid #bababa;
+  border-radius: 20px;
+`
+
+const ButtonWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -119,10 +148,18 @@ class LoginForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.demoSignIn = this.demoSignIn.bind(this);
   }
 
   update(field) {
     return e => this.setState({ [field]: e.target.value })
+  }
+
+  demoSignIn() {
+    this.setState({
+      username: "batman",
+      password: "123456"
+    })
   }
 
   handleSubmit(e) {
@@ -174,7 +211,10 @@ class LoginForm extends React.Component {
                 onChange={this.update('password')}
                 value={this.state.password} />
             </Input>
+            <ButtonWrap>
               <InputButton type="submit">sign in</InputButton>
+              <Demo type="submit" onClick={this.demoSignIn}>Demo</Demo>
+            </ButtonWrap>
           </Form>
         </form>
         <Login>
