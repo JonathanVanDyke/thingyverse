@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Slideshow from './Slideshow';
 import FeedCardContainer from '../prints/FeedCardContainer.js'
+import SlideshowV2 from './Slideshow_rev2';
 
 const FirstContent = styled.div`
   height: 341px;
@@ -66,15 +67,20 @@ class Home extends React.Component {
             <Slideshow slides={this.slides} />
           </div>
         </div>
-        <Section2>
+        <div className={s.container}>
+          <div className={s.main}>
+            <SlideshowV2 slides={this.slides} />
+          </div>
+        </div>
+        {/* <Section2>
           <Feed>
-            {/* <FeedCardContainer /> */}
+            <FeedCardContainer />
           </Feed>
           <Featured>
             <FeedCardContainer/>
           </Featured>
 
-        </Section2>
+        </Section2> */}
       </>
     )
   }
