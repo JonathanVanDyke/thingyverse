@@ -20,6 +20,7 @@ const NavButton = styled.button`
   padding-left: 0;
     //   border-left: 1px solid #fff;
     // border-right: 1px solid #fff;
+  outline: none;
 `
 
 const NavButtonDrop = styled.button`
@@ -41,6 +42,7 @@ const NavButtonDrop = styled.button`
   :focus {
     background-image: linear-gradient(to bottom, white, white);
   }
+  outline: none;
 `
 
 const Select = styled.div({
