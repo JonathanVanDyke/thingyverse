@@ -7,9 +7,9 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_many :links
+  has_many :prints
 
-  has_many :comments
+  # has_many :collections
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
