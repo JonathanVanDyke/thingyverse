@@ -17,6 +17,7 @@ const DropDownTag = styled.div`
   width: 210px;
   border: 1px solid #bebebe;
   background-color: #fff;
+  height: ${props => props.height}
 `
 const Username = styled.li`
   display: flex;
@@ -84,12 +85,14 @@ const Split = styled.li`
   // background-image: linear-gradient(to bottom, #f5f5f5, #e8e8e8);  }
 `
 
+
 const SplitItems = styled.span`
     border-right: 1px solid #bebebe;
 `
 
 const DropDown = ({ currentUser, logout }) => {
   // debugger
+  let toggle = true;
   return (
     <DropDownTag>
       <ul>

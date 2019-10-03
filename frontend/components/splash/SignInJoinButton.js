@@ -38,6 +38,9 @@ const NavButtonDrop = styled.button`
     //   border-left: 1px solid #fff;
     // border-right: 1px solid #fff;
   position: absolute;
+  :focus {
+    background-image: linear-gradient(to bottom, white, white);
+  }
 `
 
 const Select = styled.div({
@@ -100,9 +103,20 @@ const SignInJoin = ({ currentUser }) => {
     const [shouldShowDropdownMenu, setShouldShowDropdownMenu] = useState(false)
 
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
+
+    let toggle = !shouldShowDropdownMenu;
+    const dropdown = () => {
+      setShouldShowDropdownMenu(toggle)
+    }
+
     return(
-      <DropDownWrap>
-        <NavButtonDrop onClick={() => setShouldShowDropdownMenu(!shouldShowDropdownMenu)}>
+      <DropDownWrap onBlur={() => setTimeout(() => setShouldShowDropdownMenu(false), 350)}>
+        <NavButtonDrop 
+          tabIndex={0} 
+          onClick={() => dropdown()}
+          
+          // onBlur={() => setTimeout(() => setShouldShowDropdownMenu(false), 350)}
+        >
             <Selectp>
                 <Avatar src={!!currentUser.avatar ?
                   currentUser.avatar : 
