@@ -1,17 +1,20 @@
 import { connect } from 'react-redux';
+import { fetchPrints } from '../../actions/print_actions';
 
 // import { fetch } from '../../actions/print_actions'
 import FeedCard from './FeedCard'
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({ entities: { prints } }) => {
+  // debugger
   return ({
-    errors: state.errors.session,
-    formType: 'Sign In',
+    prints: Object.values(prints),
   });
 };
 
 const mapDispatchToProps = (dispatch) => {
+  // debugger
   return ({
+    fetchPrints: (() => dispatch(fetchPrints())),
     processForm: ((user) => dispatch(login(user)))
   });
 };

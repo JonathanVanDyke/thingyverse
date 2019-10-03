@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Slideshow from './Slideshow';
-import FeedCardContainer from '../prints/FeedCardContainer.js'
+import FeedCardContainer from '../prints/FeedCardContainer'
 import SlideshowV2 from './Slideshow_rev2';
 
 const FirstContent = styled.div`
@@ -60,18 +60,19 @@ class Home extends React.Component {
  
 
   render() {
+    // debugger
     return (
       <>
-        {/* <div className={s.container}>
+        <div className={s.container}>
           <div className={s.main}>
             <Slideshow slides={this.slides} />
           </div>
-        </div> */}
-        <div >
+        </div>
+        {/* <div >
           <div >
             <SlideshowV2 slides={this.slides} />
           </div>
-        </div>
+        </div> */}
         <Section2>
           <Feed>
             <FeedCardContainer />

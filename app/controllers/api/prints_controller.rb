@@ -1,4 +1,9 @@
 class Api::PrintsController < ApplicationController
+  def index
+    # debugger
+    @prints = Print.all
+  end
+
   def show
     @print = Print.find(params[:id])
   end

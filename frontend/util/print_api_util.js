@@ -1,8 +1,8 @@
-export const fetchPrint = () => {
+export const fetchPrints = () => {
   return (
     $.ajax({
       method: 'GET',
-      url: 'api/prints'
+      url: '/api/prints'
     })
   );
 };
@@ -27,7 +27,7 @@ export const createPrint = (print) => {
 };
 
 
-export const updatePost = (print) => {
+export const updatePrint = (print) => {
   return (
     $.ajax({
       method: 'PATCH',
@@ -38,7 +38,7 @@ export const updatePost = (print) => {
 };
 
 
-export const deletePost = (id) => {
+export const deletePrint = (id) => {
   return (
     $.ajax({
       method: 'DELETE',
