@@ -53,12 +53,22 @@ const InputButton = styled.button`
   align-items: center;
   padding-top: 10px;
   margin-top: 15px;
+  box-shadow: 5px 10px 18px #888888;
+  transition: box-shadow 1s;
+  :hover {
+    box-shadow: 10px 5px 18px #888888;
+  }
 `
 
 const Inpt = styled.input`
   padding: 10px;
   border: 1px solid white;
   margin-top: 10px;
+  box-shadow: 5px 10px 18px #888888;
+  transition: box-shadow 1s;
+  :hover {
+    box-shadow: 10px 5px 18px #888888;
+  }
 `
 
 const Label = styled.label`
