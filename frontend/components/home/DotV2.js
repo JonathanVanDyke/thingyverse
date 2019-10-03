@@ -1,12 +1,17 @@
 import React, { memo } from 'react';
-import Spacer from './Spacer';
+import styled from 'styled-components';
+
+const Space = styled.div`
+  margin-right: 5px;
+  margin-left: 5px;
+`
 
 const Dot = ({ slideId, dotId }) => (
-  <div className="row">
-    <Spacer w={5} />
+  <Space>
+    {/* <Spacer w={5} /> */}
     <div className={"dot " + (slideId === dotId ? "white" : "white50")} />
-    <Spacer w={5} />
-  </div>
+    {/* <Spacer w={5} /> */}
+  </Space>
 )
 
 export default memo(Dot);

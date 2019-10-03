@@ -27,7 +27,7 @@ const Section2 = styled.section`
   width: 970px;
   height: 460px;
   // background-color: red;
-  margin-top: 20px;
+  margin-top: 0px;
   justify-content: space-between;
 `
 
@@ -62,17 +62,17 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        <div className={s.container}>
+        {/* <div className={s.container}>
           <div className={s.main}>
             <Slideshow slides={this.slides} />
           </div>
-        </div>
-        <div className={s.container}>
-          <div className={s.main}>
+        </div> */}
+        <div >
+          <div >
             <SlideshowV2 slides={this.slides} />
           </div>
         </div>
-        {/* <Section2>
+        <Section2>
           <Feed>
             <FeedCardContainer />
           </Feed>
@@ -80,7 +80,7 @@ class Home extends React.Component {
             <FeedCardContainer/>
           </Featured>
 
-        </Section2> */}
+        </Section2>
       </>
     )
   }

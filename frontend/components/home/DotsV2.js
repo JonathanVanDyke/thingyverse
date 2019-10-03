@@ -7,10 +7,12 @@ const RoundWrap = styled.div`
 `
 
 const Roundie = styled.div`
-  height: 15px;
-  width: 15px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
-  background-color: blue;
+  background-color: #bebebebebebe;
+  border: 1px solid #999999;
+  margin: 5px;
 `
 
 const IMGWrap = styled.div`
@@ -21,6 +23,7 @@ const IMGWrap = styled.div`
   height: 342px;
   width: 970px;
   margin-top: 25px;
+  transition: left 3s ease-in-out;
 `
 
 const IMG = styled.img`
@@ -35,7 +38,7 @@ class Dot extends React.Component {
     const currentSlide = this.props.currentId;
     const chosenfn = this.props.onSlideChosen;
     const slides = this.props.slides;
-    const headers = slides.map((slide, index) => {
+    const dots = slides.map((slide, index) => {
       const klass = index === currentSlide ? 'active' : '';
       return (
         <div
@@ -47,9 +50,9 @@ class Dot extends React.Component {
       );
     });
     return (
-      <ul className='tab-header'>
-        {headers}
-      </ul>
+      <RoundWrap>
+        {dots}
+      </RoundWrap>
     )
   }
 };
