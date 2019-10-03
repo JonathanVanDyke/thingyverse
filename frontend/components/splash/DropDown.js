@@ -98,13 +98,19 @@ const DropDown = ({ currentUser, logout }) => {
       <ul>
         <Link
           to="/profile"
-          style={{ textDecoration: 'none', cursor: 'pointer' }}>
+          style={{ textDecoration: 'none', cursor: 'pointer' }}
+        >
           <Username>{currentUser.username}</Username>
         </Link>
 
         <Split>
           <EditProfileButton />
-          <SignOutButton logout={logout}/>
+          <Link
+            to="/"
+            style={{ textDecoration: 'none', cursor: 'pointer' }}
+          >
+            <SignOutButton logout={logout}/>
+          </Link>
         </Split>
       </ul>
     </DropDownTag>

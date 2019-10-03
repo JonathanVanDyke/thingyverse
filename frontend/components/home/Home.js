@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Slideshow from './Slideshow';
+import FeedCard from '../prints/feedcard'
 
 const FirstContent = styled.div`
   height: 341px;
@@ -20,6 +21,29 @@ const s = {
   footer: "flex1 fCenter"
 };
 
+const Section2 = styled.section`
+  display: flex;
+  width: 970px;
+  height: 500px;
+  // background-color: red;
+  margin-top: 20px;
+  justify-content: space-between;
+`
+
+const Feed = styled.section`
+  height: 500px;
+  width: 320px;
+  // background-color: green;
+  border: 1px solid #bebebe;
+`
+
+const Featured = styled.section`
+  height: 500px;
+  width: 630px;
+  // background-color: green;
+  border: 1px solid #bebebe;
+`
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -37,14 +61,20 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        {/* <FirstContent></FirstContent> */}
         <div className={s.container}>
-          {/* <div className={s.header}>Slideshow Carousel</div> */}
           <div className={s.main}>
             <Slideshow slides={this.slides} />
           </div>
-          {/* <div className={s.footer}>Footer</div> */}
         </div>
+        <Section2>
+          <Feed>
+            <FeedCard />
+          </Feed>
+          <Featured>
+            {/* <FeaturedCard></FeaturedCard> */}
+          </Featured>
+
+        </Section2>
       </>
     )
   }

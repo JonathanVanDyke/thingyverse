@@ -69,6 +69,7 @@ const Inpt = styled.input`
   :hover {
     box-shadow: 10px 5px 18px #888888;
   }
+  outline: none;
 `
 
 const Label = styled.label`

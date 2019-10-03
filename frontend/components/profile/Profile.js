@@ -131,6 +131,7 @@ const BioHeader = styled.div`
 `
 
 const Profile = ({ currentUser }) => {
+  let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
   return (
     <ProfilePage>
       {/* top */}
@@ -161,7 +162,7 @@ const Profile = ({ currentUser }) => {
         <BioBox>
           <BioHeader>about you</BioHeader>
           <Bio>
-            {currentUser.bio}
+            {!!currentUser.bio ? currentUser.bio : ''}
           </Bio>
         </BioBox>
       </RightPane>
