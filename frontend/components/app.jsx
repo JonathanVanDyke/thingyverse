@@ -16,19 +16,21 @@ import Splash from './splash/SplashContainer';
 import Home from './home/Home';
 import ProfileContainer from './profile/ProfileContainer'
 
+
 const Content = styled.div({
   position: 'absolute',
   display: 'flex',
   flexDirection: 'column',
   alignContent: 'center',
   width: 971,
-  // height: '100%',
+  height: '100vh',
   background: '#f5f5f5',
   // border: '1px solid red'
+  marginBottom: '20px',
 });
 
 const Page = styled.div({
-  height: '100%',
+  height: '102%',
   width: '100%',
   position: 'absolute',
   display: 'flex',
@@ -51,14 +53,50 @@ const Header = styled.header`
 `
 
 const Footer = styled.footer`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
   width: 100%;
-  Height: 100%;
+  Height: 70px;
   z-index: 10;
+  // background-color: black;
+  background-image: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
+  border-top: 1px solid #bebebe;
+  align-self: flex-end;
+  position: absolute;
 `
 
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: #f5f5f5;
+  z-index: -10;
+  // position:absolute;
+`
+
+const Label = styled.div`
+  font-size: 20px;
+  color: #666666;
+  padding: 10px;
+  font-family: "Antenna",Helvetica,Arial,sans-serif;
+  font-weight: bolder;
+`
+
+const FootNav = styled.div`
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
+  width: 184px;
+  // background-color: grey;
+
+`
+
+const FootWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 970px;
 `
 
 //236px margin on left and right...
@@ -79,7 +117,23 @@ const App = () => (
           <AuthRoute exact path="/logged-in" component={SignUpFormContainer} />
           <Route exact path="/profile" component={ProfileContainer} />
         </Switch>
+
       </Content>
+      <Footer>
+        <FootWrap>
+          <Label>Thingyverse</Label>
+          <FootNav>
+            <a 
+              style={{ textDecoration: 'none', cursor: 'pointer', color: '#666666' }}
+              href="https://github.com/JonathanVanDyke"
+            >My Github</a>
+            <a 
+              style={{ textDecoration: 'none', cursor: 'pointer', color: '#666666' }}
+              href="https://github.com/JonathanVanDyke"
+            >My LinkedIn</a>
+          </FootNav>
+        </FootWrap>
+      </Footer>
     </Page>
   </Wrap>
 );

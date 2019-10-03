@@ -9,7 +9,7 @@ const ProfilePage = styled.div`
   display: flex;
   justify-content: space-between;
   width: 970px;
-  height: 100vh;
+  height: 100%;
   // background-color: red;
   // padding: 10px;
   margin-top: 51px;
@@ -17,7 +17,7 @@ const ProfilePage = styled.div`
 
 const LeftPane = styled.div`
   width: 296px;
-  height: 100vh;
+  height: 100%;
   // background-color: blue;
   // padding: 10px;
 `
@@ -26,7 +26,7 @@ const RightPane = styled.div`
   display: flex;
   flex-direction: column;
   width: 634px;
-  height: 100vh;
+  height: 100%;
   // background-color: green;
   // padding: 10px;
 `

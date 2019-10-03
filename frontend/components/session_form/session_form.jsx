@@ -86,7 +86,7 @@ const LeftPane = styled.div`
   display: flex;
   flex-direction: column;
   width: 438px;
-  height: 100vh;
+  height: 100%;
   // background-color: blue;
   // padding: 10px;
 `
@@ -95,7 +95,7 @@ const RightPane = styled.div`
   display: flex;
   flex-direction: column;
   width: 438px;
-  height: 100vh;
+  height: 100%;
   // background-color: green;
   // padding: 10px;
 `
