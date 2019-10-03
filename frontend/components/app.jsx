@@ -30,7 +30,7 @@ const Content = styled.div({
 });
 
 const Page = styled.div({
-  height: '102%',
+  height: '100%',
   width: '100%',
   position: 'absolute',
   display: 'flex',
@@ -56,7 +56,7 @@ const Footer = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
+  // margin-top: 30px;
   width: 100%;
   Height: 70px;
   z-index: 10;
@@ -129,7 +129,7 @@ const App = () => (
             >My Github</a>
             <a 
               style={{ textDecoration: 'none', cursor: 'pointer', color: '#666666' }}
-              href="https://github.com/JonathanVanDyke"
+              href="https://www.linkedin.com/in/jonathanvandykeengineering/"
             >My LinkedIn</a>
           </FootNav>
         </FootWrap>

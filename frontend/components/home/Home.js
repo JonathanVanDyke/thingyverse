@@ -24,21 +24,21 @@ const s = {
 const Section2 = styled.section`
   display: flex;
   width: 970px;
-  height: 500px;
+  height: 460px;
   // background-color: red;
   margin-top: 20px;
   justify-content: space-between;
 `
 
 const Feed = styled.section`
-  height: 500px;
+  height: 460px;
   width: 320px;
   // background-color: green;
   border: 1px solid #bebebe;
 `
 
 const Featured = styled.section`
-  height: 500px;
+  height: 460px;
   width: 630px;
   // background-color: green;
   border: 1px solid #bebebe;
