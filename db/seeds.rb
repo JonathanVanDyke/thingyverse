@@ -19,3 +19,13 @@ User.create(
   NaNaNaNaNaanaanaaNanA batman... 
   NaNaNaNaNaanaanaaNanA batman... 
   NaNaNaNaNaanaanaaNanA batman  ')
+
+Print.create(
+  text: 'This is a print This is a print
+  This is a print This is a print
+  This is a print This is a print
+  This is a print This is a print
+  This is a print This is a print',
+  tite: 'Brass Ring',
+  author_id: 1
+)
