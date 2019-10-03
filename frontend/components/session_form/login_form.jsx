@@ -91,12 +91,12 @@ const Title = styled.p`
   color: #222222;
   font-size: 20px;
   margin: 0;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 `
 
 const Subtitle = styled.p`
   border-bottom: 2px solid #bebebe;
-  padding-bottom: .5em;
+  padding-bottom: .8em;
   margin: 0 0 .5em;
   font-size: 14px;
   text-transform: uppercase;
@@ -107,7 +107,7 @@ const Subtitle = styled.p`
 const Body = styled.p`
   font-size: 14px;
   color: #666666;
-  font-family: "Antenna",Helvetica,Arial,sans-serif;
+  font-family: Quicksand
   line-height: 130%;
 `
 
@@ -181,9 +181,9 @@ class LoginForm extends React.Component {
     )
   }
 
-  // componentDidMount() {
-  //   this.props.errors = []
-  // }
+  componentDidMount() {
+    this.props.deleteErrors()
+  }
 
   render() {
     return (

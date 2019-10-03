@@ -52,7 +52,7 @@ const InputButton = styled.button`
   text-transform: uppercase;
   align-items: center;
   padding-top: 10px;
-  margin-top: 15px;
+  margin-top: 40px;
   box-shadow: 5px 10px 18px #888888;
   transition: box-shadow 1s;
   :hover {
@@ -102,6 +102,8 @@ const RightPane = styled.div`
 
 const CardBox = styled.div`
   height: 120px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   // width: 300px;
   // background-color: green;
 `
@@ -112,12 +114,12 @@ const Title = styled.p`
   color: #222222;
   font-size: 20px;
   margin: 0;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 `
 
 const Subtitle = styled.p`
   border-bottom: 2px solid #bebebe;
-  padding-bottom: .5em;
+  padding-bottom: .7em;
   margin: 0 0 .5em;
   font-size: 14px;
   text-transform: uppercase;
@@ -128,7 +130,7 @@ const Subtitle = styled.p`
 const Body = styled.p`
   font-size: 14px;
   color: #666666;
-  font-family: "Antenna",Helvetica,Arial,sans-serif;
+  font-family: Quicksand;
   line-height: 130%;
 `
 
@@ -165,6 +167,10 @@ class SessionForm extends React.Component {
     )
   }
 
+  componentDidMount() {
+    this.props.deleteErrors()
+  }
+
   render() {
     return (
       <div>
@@ -173,7 +179,6 @@ class SessionForm extends React.Component {
           <Sitename> Thingyverse </Sitename>
             account</p>
         </Login>
-        <h1>{this.props.errors ? this.renderErrors() : []}</h1>
         <Page>
           <LeftPane>
             <CardBox>
@@ -193,6 +198,7 @@ class SessionForm extends React.Component {
             </CardBox>
           </LeftPane>
           <RightPane>
+          <h1>{this.props.errors ? this.renderErrors() : []}</h1>
           <form onSubmit={this.handleSubmit}>
             <Form>
               <Input>
