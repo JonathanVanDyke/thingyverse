@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Slideshow from './Slideshow';
-import FeedCardContainer from '../prints/FeedCardContainer'
+// import FeedCardContainer from '../prints/FeedCardContainer'
 import SlideshowV2 from './Slideshow_rev2';
 
 const FirstContent = styled.div`
@@ -73,7 +73,7 @@ class Home extends React.Component {
             <SlideshowV2 slides={this.slides} />
           </div>
         </div>
-        <Section2>
+        {/* <Section2>
           <Feed>
             <FeedCardContainer />
           </Feed>
@@ -81,7 +81,7 @@ class Home extends React.Component {
             <FeedCardContainer/>
           </Featured>
 
-        </Section2>
+        </Section2> */}
       </>
     )
   }
