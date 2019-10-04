@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Slideshow from './Slideshow';
-// import FeedCardContainer from '../prints/FeedCardContainer'
+import PrintIndexContainer from '../prints/PrintIndexContainer'
 import SlideshowV2 from './Slideshow_rev2';
 
 const FirstContent = styled.div`
@@ -32,17 +33,45 @@ const Section2 = styled.section`
 `
 
 const Feed = styled.section`
+  margin-top: 30px;
   height: 460px;
   width: 320px;
   // background-color: green;
   border: 1px solid #bebebe;
+  overflow: hidden;
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
 `
 
 const Featured = styled.section`
-  height: 460px;
+  margin-top: 30px;
+  height: 424px;
   width: 630px;
-  // background-color: green;
-  border: 1px solid #bebebe;
+  // border: 1px solid #bebebe;
+  overflow: hidden;
+`
+
+const FeatureTitle = styled.h1`
+  font-size: 24px;
+  color: #666666;
+  font-family: Helvetica, Arial, sans-serif;
+`
+
+const FeatureSub = styled.h1`
+  font-size: 16px;
+  color: #666666;
+  font-family: Helvetica, Arial, sans-serif;
+  margin-bottom: 10px;
+`
+
+const FeatureLink = styled.p`
+  font-size: 14px;
+  color: #666666;
+  font-family: Helvetica, Arial, sans-serif;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
 `
 
 
@@ -63,25 +92,33 @@ class Home extends React.Component {
     // debugger
     return (
       <>
-        {/* <div className={s.container}>
+        <div className={s.container}>
           <div className={s.main}>
             <Slideshow slides={this.slides} />
           </div>
-        </div> */}
-        <div >
+        </div>
+        {/* <div >
           <div >
             <SlideshowV2 slides={this.slides} />
           </div>
-        </div>
-        {/* <Section2>
+        </div> */}
+        <Section2>
           <Feed>
-            <FeedCardContainer />
+            
           </Feed>
           <Featured>
-            <FeedCardContainer/>
+            <FeatureTitle>Featured Collections</FeatureTitle>
+            <FeatureSub>Download and print today</FeatureSub>
+            <Link 
+              to="/"
+              style={{ textDecoration: 'none', cursor: 'pointer' }}
+            >
+              <FeatureLink>see more</FeatureLink>
+            </Link>
+            <PrintIndexContainer/>
           </Featured>
 
-        </Section2> */}
+        </Section2>
       </>
     )
   }
