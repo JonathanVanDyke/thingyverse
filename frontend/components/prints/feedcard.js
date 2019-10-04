@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Img = styled.img`
   max-width: 100%;
@@ -12,7 +12,7 @@ const ImgWrap = styled.div`
 `
 
 
-class FeedCard extends React.Component {
+export default class FeedCard extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -40,5 +40,3 @@ class FeedCard extends React.Component {
   }
 
 }
-
-export default FeedCard;
