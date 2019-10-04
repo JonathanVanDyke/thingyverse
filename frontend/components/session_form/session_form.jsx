@@ -48,7 +48,7 @@ const InputButton = styled.button`
   background-color: #248bfb;
   color: white;
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   align-items: center;
   padding-top: 10px;
@@ -73,7 +73,8 @@ const Inpt = styled.input`
 `
 
 const Label = styled.label`
-  font-size: 14px;
+  font-size: 19px;
+  font-weight: 500px;
   font-family: Helvetica, Arial, sans-serif;
 `
 
@@ -103,7 +104,7 @@ const RightPane = styled.div`
 const CardBox = styled.div`
   height: 120px;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 52px;
   // width: 300px;
   // background-color: green;
 `
@@ -112,23 +113,23 @@ const Title = styled.p`
   font-family: "Antenna",Helvetica,Arial,sans-serif;
   font-weight: normal;
   color: #222222;
-  font-size: 20px;
+  font-size: 22px;
   margin: 0;
-  margin-bottom: 12px;
+  margin-bottom: 9px;
 `
 
 const Subtitle = styled.p`
   border-bottom: 2px solid #bebebe;
   padding-bottom: .7em;
   margin: 0 0 .5em;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   font-weight: normal;
   color: #666666;
 `
 
 const Body = styled.p`
-  font-size: 14px;
+  font-size: 17px;
   color: #666666;
   font-family: Quicksand;
   line-height: 130%;
