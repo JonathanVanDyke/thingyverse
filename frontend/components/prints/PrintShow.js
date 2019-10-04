@@ -9,19 +9,36 @@ const PrintShowPage = styled.div`
   position: relative;
 `
 
+const ImageWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 627px;
+  height: 471px;
+  overflow: hidden;
+`
+
+const IMG = styled.img`
+  width: 100%;
+  // height: 100%;
+`
+
 class PrintShow extends React.Component {
   componentDidMount() {
     let printId = this.props.match.params.printId
     this.props.fetchPrint(Number(printId));
-    // debugger
+    debugger
   }
 
   render() {
-    // debugger
+    this.props.print.authors
+    debugger
     return (
       <PrintShowPage>
         {this.props.print.title}
-        <img src={this.props.print.photoUrl}/>
+        <ImageWrap>
+          <IMG src={this.props.print.photoUrl}/>
+        </ImageWrap>
       </PrintShowPage>
     )
   }
