@@ -11,10 +11,13 @@ const PrintsReducer = (oldState = {}, action) => {
   let newState = merge({}, oldState);
   switch (action.type) {
     case RECEIVE_ALL_PRINTS:
+      // debugger
       return action.prints;
     case RECEIVE_PRINT:
-      newState[action.print.id] = action.print;
-      return newState;
+      // debugger
+      // newState[action.print.id] = action.print;
+      // debugger
+      return merge({}, oldState, {[action.print.id]: action.print});
     case REMOVE_PRINT:
       delete newState[action.printId];
       return newState;
