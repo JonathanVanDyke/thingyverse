@@ -145,11 +145,11 @@ class Slideshow extends React.Component {
     // this.tog = true;
     if (this.tog) {
       clearInterval(this.carouselInterval);
-      console.log('true')
+      // console.log('true')
       this.tog = false;
     } else {
       this.startCarousel();
-      console.log('false')
+      // console.log('false')
       this.tog = true;
     }
   }

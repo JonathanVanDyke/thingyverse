@@ -14,7 +14,7 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  edit: () => dispatch(() => console.log('well...'))
+  edit: () => dispatch(() => 'hi')
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
