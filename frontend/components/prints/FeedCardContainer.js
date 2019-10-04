@@ -14,8 +14,7 @@ const mapStateToProps = ({ entities: { prints } }) => {
 const mapDispatchToProps = (dispatch) => {
   // debugger
   return ({
-    fetchPrints: (() => dispatch(fetchPrints())),
-    processForm: ((user) => dispatch(login(user)))
+    fetchPrints: (() => dispatch(fetchPrints()))
   });
 };
 
