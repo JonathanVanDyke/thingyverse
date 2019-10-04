@@ -13,7 +13,9 @@ const receivePrints = (prints) => {
 
 export const fetchPrints = () => dispatch => {
   // debugger
-  return PrintApiUtil.fetchPrints().then((prints) => dispatch(receivePrints(prints)));
+  return PrintApiUtil.fetchPrints().then((prints) => {
+    debugger
+    dispatch(receivePrints(prints))});
 }
 
 const receivePrint = (print) => {

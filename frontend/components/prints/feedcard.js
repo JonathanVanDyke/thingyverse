@@ -14,7 +14,7 @@ class FeedCard extends React.Component {
     let prints = this.props.prints.map((print) => {
       return(
         <div>
-          {print.title}
+          <img src={print.photoUrl}/>
         </div>
       )
     })

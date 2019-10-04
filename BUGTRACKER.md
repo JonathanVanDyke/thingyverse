@@ -9,3 +9,8 @@
 ## Day 2
 * >Carousels: pseudo-sprite sheet, stacking two images next to each other
 * >
+
+
+# Notes
+
+p.photo.attach(io: File.open("<filepath>"), filename: "<filename>")
