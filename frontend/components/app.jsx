@@ -14,7 +14,8 @@ import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import Splash from './splash/SplashContainer';
 import Home from './home/Home';
-import ProfileContainer from './profile/ProfileContainer'
+import ProfileContainer from './profile/ProfileContainer';
+import PrintShowContainer from './prints/PrintShowContainer';
 
 
 const Content = styled.div({
@@ -99,6 +100,15 @@ const FootWrap = styled.div`
   width: 970px;
 `
 
+const FootLink = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+  color: #666666;
+  :hover {
+    color: black;
+  }
+`
+
 //236px margin on left and right...
 const App = () => (
   <Wrap>
@@ -115,6 +125,7 @@ const App = () => (
           <AuthRoute exact path="/login" component={LogInFormContainer} />
           <AuthRoute exact path="/signup" component={SignUpFormContainer} />
           <AuthRoute exact path="/logged-in" component={SignUpFormContainer} />
+          <Route exact path="/print/:printId" component={PrintShowContainer} />
           <Route exact path="/profile" component={ProfileContainer} />
         </Switch>
 
@@ -123,14 +134,12 @@ const App = () => (
         <FootWrap>
           <Label>Thingyverse</Label>
           <FootNav>
-            <a 
-              style={{ textDecoration: 'none', cursor: 'pointer', color: '#666666' }}
+            <FootLink 
               href="https://github.com/JonathanVanDyke"
-            >My Github</a>
-            <a 
-              style={{ textDecoration: 'none', cursor: 'pointer', color: '#666666' }}
+            >My Github</FootLink>
+            <FootLink 
               href="https://www.linkedin.com/in/jonathanvandykeengineering/"
-            >My LinkedIn</a>
+            >My LinkedIn</FootLink>
           </FootNav>
         </FootWrap>
       </Footer>

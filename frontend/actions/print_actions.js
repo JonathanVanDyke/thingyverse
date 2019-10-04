@@ -1,10 +1,11 @@
 import * as PrintApiUtil from '../util/print_api_util';
 
 export const RECEIVE_ALL_PRINTS = 'RECEIVE_ALL_PRINTS';
-export const RECEIVE_PRINT = 'RECEIVE_POST';
-export const REMOVE_PRINT = 'REMOVE_POST';
+export const RECEIVE_PRINT = 'RECEIVE_PRINT';
+export const REMOVE_PRINT = 'REMOVE_PRINT';
 
 const receivePrints = (prints) => {
+  // debugger
   return ({
     type: RECEIVE_ALL_PRINTS,
     prints
