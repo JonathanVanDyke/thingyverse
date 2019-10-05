@@ -3,7 +3,7 @@ import * as PrintApiUtil from '../util/print_api_util';
 export const RECEIVE_ALL_PRINTS = 'RECEIVE_ALL_PRINTS';
 export const RECEIVE_PRINT = 'RECEIVE_PRINT';
 export const REMOVE_PRINT = 'REMOVE_PRINT';
-//**NEW */
+
 export const RECEIVE_PRINT_ERRORS = 'RECEIVE_PRINT_ERRORS';
 export const REMOVE_PRINT_ERRORS = 'REMOVE_PRINT_ERRORS';
 
@@ -15,10 +15,8 @@ export const receiveErrors = errors => ({
 export const deleteErrors = () => ({
   type: REMOVE_PRINT_ERRORS
 })
-//**NEW */
 
 const receivePrints = (prints) => {
-  // debugger
   return ({
     type: RECEIVE_ALL_PRINTS,
     prints
@@ -40,7 +38,8 @@ const receivePrint = (print) => {
 }
 
 export const fetchPrint = (id) => dispatch => {
-  return PrintApiUtil.fetchPrint(id).then((print) => dispatch(receivePrint(print)));
+  return PrintApiUtil.fetchPrint(id).then((print) => {
+    dispatch(receivePrint(print))});
 }
 
 const removePrint = (print) => {
