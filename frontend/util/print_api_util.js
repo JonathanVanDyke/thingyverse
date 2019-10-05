@@ -67,7 +67,7 @@ export const updatePrint = (formData) => {
 
 
 export const deletePrint = (id) => {
-  debugger
+  // debugger
   return (
     $.ajax({
       method: 'DELETE',

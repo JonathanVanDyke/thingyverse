@@ -33,7 +33,7 @@ const Txt = styled.div`
 `
 
 const DeleteButton = ({ print, deletePrint }) => {
-  debugger
+  // debugger
   return (
     <InputButton>
       <Link
