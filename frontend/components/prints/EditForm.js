@@ -100,7 +100,7 @@ class PrintForm extends React.Component {
     const formData = new FormData();
     formData.append('print[title]', this.state.title);
     formData.append('print[text]', this.state.title);
-    debugger
+    // debugger
     this.state.photoFile ? formData.append('print[photo]', this.state.photoFile) : null;
     formData.append('print[id]', this.state.id);
     this.props.processForm(formData).then((response) => {
