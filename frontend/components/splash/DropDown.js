@@ -94,7 +94,7 @@ const DropDown = ({ currentUser, logout }) => {
     <DropDownTag>
       <ul>
         <Link
-          to="/profile"
+          to={`/profile/${ currentUser.id }`}
           style={{ textDecoration: 'none', cursor: 'pointer' }}
         >
           <Username>{currentUser.username}</Username>

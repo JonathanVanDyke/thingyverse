@@ -25,6 +25,7 @@ export const deleteErrors = () => ({
 })
 
 const receiveUser = (user) => {
+  // debugger
   return ({
     type: RECEIVE_USER,
     user
@@ -49,5 +50,6 @@ export const logout = () => dispatch => (
 );
 
 export const fetchUser = (id) => dispatch => {
+  // debugger
   return APIUtil.fetchUser(id).then((user) => dispatch(receiveUser(user)))
 }

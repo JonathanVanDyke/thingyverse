@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 
+import { fetchUser } from '../../actions/session_actions'
+
 // 1. Create edit user route
 // 2. Create edit/update controller
 //    a. remember .update_attributes method...
@@ -7,14 +9,17 @@ import { connect } from 'react-redux';
 // import { edit } from '../../actions/session_actions';
 import Profile from './Profile';
 
-const mapStateToProps = ({ session, entities: { users } }) => {
+const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
+  // debugger
+  let userId = Number(ownProps.match.params.userId);
   return {
-    currentUser: users[session.id]
+    currentUser: users[session.id],
+    viewUser: users[userId]
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  edit: () => dispatch(() => 'hi')
+  receiveUser: (id) => dispatch(fetchUser(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

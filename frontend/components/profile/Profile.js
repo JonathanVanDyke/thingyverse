@@ -130,45 +130,59 @@ const BioHeader = styled.div`
   text-transform: uppercase;
 `
 
-const Profile = ({ currentUser }) => {
-  let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
-  return (
-    <ProfilePage>
-      {/* top */}
+class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.viewUser = { username: '', avatar: '', id: null, bio: '' }
+  }
 
-      <LeftPane>
-        <AvatarCage>
-          <AvatarBox>
-            <Banner/>
-            <Avatar src={!!currentUser.avatar ?
-              currentUser.avatar :
-              defaultImg}></Avatar>
-          </AvatarBox>
-          <Username>
-            <UserIcon src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD1JwaLp6rwryZ-mLb8nLkjq-O_KsQRCkeOQK8DcE0AYy0Wmvt'>
-            </UserIcon>
-            {currentUser.username}
-          </Username>
-          <EditButtonBox>
-              <EditButton>edit profile</EditButton>
-          </EditButtonBox>
-        </AvatarCage>
-      </LeftPane>
+  componentDidMount() {
+    let userId = this.props.match.params.userId
+    this.props.receiveUser(Number(userId))
+  }
 
-      <RightPane>
-        <ProfileNav>
-          <li>ABOUT</li>
-        </ProfileNav>
-        <BioBox>
-          <BioHeader>about you</BioHeader>
-          <Bio>
-            {!!currentUser.bio ? currentUser.bio : ''}
-          </Bio>
-        </BioBox>
-      </RightPane>
+  render() {
+    let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
+    this.viewUser = this.props.viewUser || this.viewUser
+    debugger
+    return (
+      <ProfilePage>
+        {/* top */}
 
-    </ProfilePage>
-  )
+        <LeftPane>
+          <AvatarCage>
+            <AvatarBox>
+              <Banner/>
+              <Avatar src={!!this.viewUser.avatar ?
+                this.viewUser.avatar :
+                defaultImg}></Avatar>
+            </AvatarBox>
+            <Username>
+              <UserIcon src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD1JwaLp6rwryZ-mLb8nLkjq-O_KsQRCkeOQK8DcE0AYy0Wmvt'>
+              </UserIcon>
+              {this.viewUser.username}
+            </Username>
+            <EditButtonBox>
+                <EditButton>edit profile</EditButton>
+            </EditButtonBox>
+          </AvatarCage>
+        </LeftPane>
+
+        <RightPane>
+          <ProfileNav>
+            <li>ABOUT</li>
+          </ProfileNav>
+          <BioBox>
+            <BioHeader>about you</BioHeader>
+            <Bio>
+              {!!this.viewUser.bio ? this.viewUser.bio : ''}
+            </Bio>
+          </BioBox>
+        </RightPane>
+
+      </ProfilePage>
+    )
+  }
 }
 
 export default Profile
