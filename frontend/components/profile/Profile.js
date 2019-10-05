@@ -144,7 +144,7 @@ class Profile extends React.Component {
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     this.viewUser = this.props.viewUser || this.viewUser
-    debugger
+    // debugger
     return (
       <ProfilePage>
         {/* top */}
@@ -163,7 +163,7 @@ class Profile extends React.Component {
               {this.viewUser.username}
             </Username>
             <EditButtonBox>
-                <EditButton>edit profile</EditButton>
+              { this.viewUser.id === this.props.currentUser.id ? <EditButton>edit profile</EditButton> : null }
             </EditButtonBox>
           </AvatarCage>
         </LeftPane>

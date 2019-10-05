@@ -42,22 +42,36 @@ export const createPrint = (formData) => {
 };
 
 
-export const updatePrint = (print) => {
+// export const updatePrint = (print) => {
+//   debugger
+//   return (
+//     $.ajax({
+//       method: 'PATCH',
+//       url: `api/prints/${print.id}`,
+//       data: { print }
+//     })
+//   );
+// };
+export const updatePrint = (formData) => {
+  // debugger
   return (
     $.ajax({
+      url: `/api/prints/${Number(formData.get('print[id]'))}`,
       method: 'PATCH',
-      url: `api/prints/${print.id}`,
-      data: { print }
+      data: formData,
+      contentType: false,
+      processData: false
     })
   );
 };
 
 
 export const deletePrint = (id) => {
+  debugger
   return (
     $.ajax({
       method: 'DELETE',
-      url: `api/prints/${id}`
+      url: `/api/prints/${id}`
     })
   );
 };

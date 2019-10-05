@@ -46,7 +46,7 @@ const Feed = styled.section`
 
 const Featured = styled.section`
   margin-top: 30px;
-  height: 424px;
+  height: 400px;
   width: 630px;
   // border: 1px solid #bebebe;
   overflow: hidden;

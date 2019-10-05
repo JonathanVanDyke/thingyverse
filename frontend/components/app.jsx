@@ -17,7 +17,7 @@ import Home from './home/Home';
 import ProfileContainer from './profile/ProfileContainer';
 import PrintShowContainer from './prints/PrintShowContainer';
 import PrintFormContainer from './prints/PrintFormContainer';
-
+import EditPrintContainer from './prints/EditPrintContainer';
 
 const Content = styled.div({
   position: 'absolute',
@@ -129,6 +129,7 @@ const App = () => (
           <Route exact path="/profile/:userId" component={ProfileContainer} />
           <Route exact path="/print/:printId" component={PrintShowContainer} />
           <Route exact path="/create" component={PrintFormContainer} />
+          <Route exact path="/edit/:printId" component={EditPrintContainer} />
         </Switch>
 
       </Content>
