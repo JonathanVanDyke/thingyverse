@@ -1,4 +1,5 @@
 export const fetchPrints = () => {
+  // debugger
   return (
     $.ajax({
       method: 'GET',
@@ -8,6 +9,7 @@ export const fetchPrints = () => {
 };
 
 export const fetchPrint = (id) => {
+  // debugger
   return (
     $.ajax({
       method: 'GET',
@@ -16,12 +18,25 @@ export const fetchPrint = (id) => {
   );
 };
 
-export const createPrint = (print) => {
+// export const createPrint = (print) => {
+//   return (
+//     $.ajax({
+//       method: 'POST',
+//       url: `api/prints`,
+//       data: { print }
+//     })
+//   );
+// };
+
+//updated to work with form
+export const createPrint = (formData) => {
   return (
     $.ajax({
+      url: '/api/prints',
       method: 'POST',
-      url: `api/prints`,
-      data: { print }
+      data: formData,
+      contentType: false,
+      processData: false
     })
   );
 };

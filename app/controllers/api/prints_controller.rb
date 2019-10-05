@@ -10,17 +10,19 @@ class Api::PrintsController < ApplicationController
 
   def create
     @print = Print.new(print_params)
+    @print.author_id = current_user.id
+    debugger
     if @print.save
-      login(@print)
-      render "api/prints/show"
+      # render "api/prints/show"
+      render json: {message: 'Post Saved'}
     else
-      render json: @print.errors.full_messages, status: 422
+      render json: @print.errors.full_messages#, status: 422
     end
   end
 
   private
 
   def print_params
-    params.require(:print).permit(:title, :text)
+    params.require(:print).permit(:title, :text, :photo)
   end
 end

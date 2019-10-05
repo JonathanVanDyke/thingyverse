@@ -3,6 +3,19 @@ import * as PrintApiUtil from '../util/print_api_util';
 export const RECEIVE_ALL_PRINTS = 'RECEIVE_ALL_PRINTS';
 export const RECEIVE_PRINT = 'RECEIVE_PRINT';
 export const REMOVE_PRINT = 'REMOVE_PRINT';
+//**NEW */
+export const RECEIVE_PRINT_ERRORS = 'RECEIVE_PRINT_ERRORS';
+export const REMOVE_PRINT_ERRORS = 'REMOVE_PRINT_ERRORS';
+
+export const receiveErrors = errors => ({
+  type: RECEIVE_PRINT_ERRORS,
+  errors
+});
+
+export const deleteErrors = () => ({
+  type: REMOVE_PRINT_ERRORS
+})
+//**NEW */
 
 const receivePrints = (prints) => {
   // debugger

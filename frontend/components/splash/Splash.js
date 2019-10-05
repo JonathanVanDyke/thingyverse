@@ -32,7 +32,11 @@ const Splash = ({ currentUser, logout }) => {
           style={{ textDecoration: 'none' }}>
           <Logo>Thingyverse</Logo>
         </Link>
-        <h4>Welcome back, {currentUser.username}</h4>
+        <Link
+          to='/create'
+        >
+          create
+        </Link>
         {/* <button onClick={logout}>Log Out</button> */}
         <SignInJoinButton currentUser={currentUser}/>
       </NavBar>
@@ -43,8 +47,14 @@ const Splash = ({ currentUser, logout }) => {
         <Link 
           to="/" 
           className="header-link"
-          style={{ textDecoration: 'none' }}>
+          style={{ textDecoration: 'none' }}
+        >
           <Logo>Thingyverse</Logo>
+        </Link>
+        <Link
+          to='/'
+        >
+          create
         </Link>
         <SignInJoinButton currentUser={currentUser}/>
       </NavBar>
