@@ -80,11 +80,6 @@ const Sitename = styled.span`
 class PrintForm extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   title: "",
-    //   text: "",
-    //   photoFile: null
-    // };
     this.state = this.props.print;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -95,7 +90,8 @@ class PrintForm extends React.Component {
   }
 
   handleFile(e) {
-    this.setState({photoFile: e.currentTarget.files[0]});
+    // debugger
+    this.setState({ photoFile: e.currentTarget.files[0] });
   }
 
 
@@ -104,7 +100,9 @@ class PrintForm extends React.Component {
     const formData = new FormData();
     formData.append('print[title]', this.state.title);
     formData.append('print[text]', this.state.title);
-    formData.append('print[photo]', this.state.photoFile);
+    debugger
+    this.state.photoFile ? formData.append('print[photo]', this.state.photoFile) : null;
+    formData.append('print[id]', this.state.id);
     this.props.processForm(formData).then((response) => {
       // debugger
       this.props.history.push(`/print/${response.print.id}`)
@@ -124,7 +122,8 @@ class PrintForm extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.deleteErrors()
+    // debugger
+    // this.setState({ photoFile: null})
   }
 
   render() {
@@ -159,13 +158,13 @@ class PrintForm extends React.Component {
                 value={this.state.text} />
             </InputWrap>
             {/* <InputWrap> */}
-              {/* <Label htmlFor='password'>Password</Label> */}
+            {/* <Label htmlFor='password'>Password</Label> */}
             {/* <Inpt
               type="file"
               onChange={this.handleFile.bind(this)}/> */}
             {/* </InputWrap> */}
             {/* <ButtonWrap> */}
-              <InputButton type='submit' value='Create Print!'/>
+            <InputButton type='submit' value='Create Print!' />
             {/* </ButtonWrap> */}
           </Form>
         </form>

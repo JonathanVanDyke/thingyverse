@@ -20,9 +20,30 @@ class Api::PrintsController < ApplicationController
     end
   end
 
+  def update
+    # debugger
+    @print = Print.find(params[:id])
+    if @print.update(print_params)
+      render :show
+    else
+      render json: @print.errors.full_messages, status: 422
+    end
+  end
+
+  def destroy 
+    @print = Print.find(params[:id])
+    if @print.destroy
+      render :show
+    else 
+      render json: @post.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def print_params
+    # debugger
+    #changed :photo to :photoUrl
     params.require(:print).permit(:title, :text, :photo)
   end
 end
