@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import PrintShow from './PrintShow';
-import { fetchPrint } from './../../actions/print_actions';
+import { fetchPrint, deletePrint } from './../../actions/print_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let printId = ownProps.match.params.printId;
@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return({
-    fetchPrint: id => dispatch(fetchPrint(id))
+    fetchPrint: id => dispatch(fetchPrint(id)),
+    deletePrint: id => dispatch(deletePrint(id))
   });
 }
 
