@@ -77,73 +77,6 @@ const Sitename = styled.span`
   font-family: Helvetica, Arial, sans-serif;
 `
 
-const Footer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-
-const CardBox = styled.div`
-  height: 120px;
-  width: 300px;
-  // background-color: green;
-`
-
-const Title = styled.p`
-  font-family: "Antenna",Helvetica,Arial,sans-serif;
-  font-weight: normal;
-  color: #222222;
-  font-size: 22px;
-  margin: 0;
-  margin-bottom: 9px;
-`
-
-const Subtitle = styled.p`
-  border-bottom: 2px solid #bebebe;
-  padding-bottom: .5em;
-  margin: 0 0 .5em;
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: normal;
-  color: #666666;
-`
-
-const Body = styled.p`
-  font-size: 17px;
-  color: #666666;
-  font-family: Quicksand
-  line-height: 130%;
-`
-
-const Demo = styled.button`
-  display: flex;
-  flex-direction: column;
-  width: 112px;
-  height: 38px;
-  background-color: #248bfb;
-  color: white;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  text-transform: uppercase;
-  align-items: center;
-  padding-top: 10px;
-  margin-top: 15px;
-  box-shadow: 5px 10px 18px #888888;
-  transition: box-shadow 1s;
-  :hover {
-    box-shadow: 10px 5px 18px #888888;
-  }
-  background-color: #e9e9e9;
-  color: #666666;
-  border: 1px solid #bababa;
-  border-radius: 20px;
-`
-
-const ButtonWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  z-index: 100;
-`
-
 class PrintForm extends React.Component {
   constructor(props) {
     super(props);
@@ -154,7 +87,6 @@ class PrintForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.demoSignIn = this.demoSignIn.bind(this);
   }
 
   update(field) {
@@ -165,35 +97,16 @@ class PrintForm extends React.Component {
     this.setState({photoFile: e.currentTarget.files[0]});
   }
 
-  demoSignIn() {
-    this.setState({
-      username: "batman",
-      password: "123456"
-    })
-  }
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
     const formData = new FormData();
     formData.append('print[title]', this.state.title);
     formData.append('print[text]', this.state.title);
-    // formData.append('print[author_id]', this.props.currentUser.id);
     formData.append('print[photo]', this.state.photoFile);
-    this.props.processForm(formData).then(
-      (response) => console.log(response.message),
-      (response) => console.log(response.responseJSON)
-      );
-    
-    //.then(() => this.props.history.push('/'));
-    //* moved to api_util folder
-    // $.ajax({
-    //   url: '/api/prints',
-    //   method: 'POST',
-    //   data: formData,
-    //   contentType: false,
-    //   processData: false
-    // })
+    this.props.processForm(formData).then((response) => {
+      // debugger
+      this.props.history.push(`/print/${response.print.id}`)});
   }
 
   renderErrors() {

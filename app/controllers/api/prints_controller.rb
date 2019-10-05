@@ -6,15 +6,15 @@ class Api::PrintsController < ApplicationController
 
   def show
     @print = Print.find(params[:id])
+    # debugger
   end
 
   def create
     @print = Print.new(print_params)
     @print.author_id = current_user.id
-    debugger
     if @print.save
       # render "api/prints/show"
-      render json: {message: 'Post Saved'}
+      render :show
     else
       render json: @print.errors.full_messages#, status: 422
     end

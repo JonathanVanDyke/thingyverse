@@ -4,7 +4,8 @@ import { createPrint, deleteErrors } from '../../actions/print_actions'
 import PrintForm from './PrintForm'
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+  // debugger
+  // debugger
   return ({
     currentUser: state.entities.users[state.session.id],
     errors: state.errors.session,
