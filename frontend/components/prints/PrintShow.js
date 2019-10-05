@@ -80,17 +80,15 @@ class PrintShow extends React.Component {
   componentDidMount() {
     let printId = this.props.match.params.printId
     this.props.fetchPrint(Number(printId));
-    // debugger
   }
 
   render() {
     this.props.print.authors
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
-    // debugger
     return (
       <PrintShowPage>
 
-        {/* <Header>
+        <Header>
           <Avatar 
             src={
               !!this.props.print.author.avatar ? 
@@ -142,7 +140,7 @@ class PrintShow extends React.Component {
           </RightPane2>
         </Section2>
 
-         */}
+        
 
 
       </PrintShowPage>

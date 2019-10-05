@@ -12,10 +12,9 @@ class Api::PrintsController < ApplicationController
     @print = Print.new(print_params)
     @print.author_id = current_user.id
     if @print.save
-      # render "api/prints/show"
       render :show
     else
-      render json: @print.errors.full_messages#, status: 422
+      render json: @print.errors.full_messages
     end
   end
 

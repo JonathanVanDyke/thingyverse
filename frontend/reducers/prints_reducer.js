@@ -14,9 +14,6 @@ const PrintsReducer = (oldState = {}, action) => {
       // debugger
       return action.prints;
     case RECEIVE_PRINT:
-      // debugger
-      // newState[action.print.id] = action.print;
-      // debugger
       return merge({}, oldState, {[action.print.id]: action.print});
     case REMOVE_PRINT:
       delete newState[action.printId];
