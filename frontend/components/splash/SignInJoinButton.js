@@ -83,6 +83,7 @@ const DropDownWrap = styled.div`
   align-items: flex-end;
   height: 800px;
   width: 400px;
+  z-index: 100;
   // border: 1px solid skyblue;
 `
 

@@ -22,6 +22,35 @@ const Logo = styled.h1({
   fontFamily: '"Antenna", Helvetica, Arial, sans-serif',
 });
 
+const Create = styled.h1`
+  text-transform: uppercase;
+  color: #666666;
+  text-decoration: none;
+  font-family: "Antenna",Helvetica,Arial,sans-serif;
+  font-weight: normal;
+  :hover {
+    color: #2b8bfb;
+  }
+  margin: 10px;
+`
+
+const SearchDummy = styled.div`
+  height: 38px;
+  width: 200px;
+  background-color: white;
+  margin-right: 12px;
+  border: 1px solid #d1d1d1;
+  // margin-right: -740px;
+`
+
+const NavButtnWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+  margin-left: 397px;
+`
+
 const Splash = ({ currentUser, logout }) => {
   // debugger
   if (currentUser) {
@@ -32,13 +61,16 @@ const Splash = ({ currentUser, logout }) => {
           style={{ textDecoration: 'none' }}>
           <Logo>Thingyverse</Logo>
         </Link>
-        <Link
-          to='/create'
-        >
-          create
-        </Link>
-        {/* <button onClick={logout}>Log Out</button> */}
-        <SignInJoinButton currentUser={currentUser}/>
+        <NavButtnWrap>
+          <Link
+            to='/create'
+            style={{ textDecoration: 'none' }}
+          >
+            <Create>create</Create>
+          </Link>
+          {/* <SearchDummy></SearchDummy> */}
+        </NavButtnWrap>
+          <SignInJoinButton currentUser={currentUser}/>
       </NavBar>
     );
   } else {
@@ -47,15 +79,16 @@ const Splash = ({ currentUser, logout }) => {
         <Link 
           to="/" 
           className="header-link"
-          style={{ textDecoration: 'none' }}
         >
           <Logo>Thingyverse</Logo>
         </Link>
         <Link
           to='/'
+          style={{ textDecoration: 'none' }}
         >
-          create
+          <Create>create</Create>
         </Link>
+        {/* <SearchDummy></SearchDummy> */}
         <SignInJoinButton currentUser={currentUser}/>
       </NavBar>
     );

@@ -8,10 +8,7 @@ const DropDownTag = styled.div`
   display: flex;
   // margin-top: 427px;
   margin-top: 167px;
-
   // flex-direction: column;
-
-
   // height: 365px;
   height: 105px;
   width: 210px;
