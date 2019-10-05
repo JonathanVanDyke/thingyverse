@@ -1,6 +1,5 @@
 class Api::PrintsController < ApplicationController
   def index
-    # debugger
     @prints = Print.all
   end
 

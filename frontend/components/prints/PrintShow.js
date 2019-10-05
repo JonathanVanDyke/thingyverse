@@ -90,7 +90,7 @@ class PrintShow extends React.Component {
     return (
       <PrintShowPage>
 
-        <Header>
+        {/* <Header>
           <Avatar 
             src={
               !!this.props.print.author.avatar ? 
@@ -142,7 +142,7 @@ class PrintShow extends React.Component {
           </RightPane2>
         </Section2>
 
-        
+         */}
 
 
       </PrintShowPage>

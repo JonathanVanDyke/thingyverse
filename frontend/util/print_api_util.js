@@ -1,5 +1,4 @@
 export const fetchPrints = () => {
-  // debugger
   return (
     $.ajax({
       method: 'GET',
