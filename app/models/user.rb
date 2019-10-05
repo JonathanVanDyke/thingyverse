@@ -7,7 +7,9 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_many :prints
+  has_many :prints,
+    foreign_key: :author_id,
+    class_name: :Print
 
   # has_many :collections
 

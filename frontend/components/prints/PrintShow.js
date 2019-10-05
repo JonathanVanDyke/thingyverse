@@ -27,12 +27,12 @@ class PrintShow extends React.Component {
   componentDidMount() {
     let printId = this.props.match.params.printId
     this.props.fetchPrint(Number(printId));
-    debugger
+    // debugger
   }
 
   render() {
     this.props.print.authors
-    debugger
+    // debugger
     return (
       <PrintShowPage>
         {this.props.print.title}

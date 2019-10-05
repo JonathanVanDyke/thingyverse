@@ -25,62 +25,78 @@ User.create(
   password: 123456, 
 )
 
-Print.create(
-  title: 'Hollow Knight',
-  text: 'A figure of Hollow Knight, printed and painted. ' +
-  'Printed with 20% infill at fine resolution and painted with acrylic piants. Happy Printing!',
-  author_id: 10
-).photo.attach(io: File.open(
-  "/Users/jonathanvandyke/Documents/FullStack/thingyverse/app/assets/images/metabee.jpg"), 
-  filename: "metabee.jpg"
+print1 = Print.create(
+  id: 1,
+  title: 'Gear Fidget Toy',
+  text: 'Printed in one piece, the gears mesh. Recommended: No supports/using fine detail settings.',
+  author_id: 1
 )
 
-Print.create(
-  title: 'Gear Fidget Toy',
-  text: 'Printed in one piece, the gears mesh. ' +
-  'Recommended: No supports/using fine detail settings.',
-  author_id: 111
-).photo.attach(io: File.open(
+print1.photo.attach(io: File.open(
   "/Users/jonathanvandyke/Documents/FullStack/thingyverse/app/assets/images/gears.jpg"), 
   filename: "gears.jpg"
 )
 
-Print.create(
+print2 = Print.create(
+  id: 2,
   title: 'Benchy',
   text: 'A new take on the calibration standard, test to see if your printer can handle the overhangs. ' +
   'Recommended: No supports/infill at least 20%.',
-  author_id: 12
-).photo.attach(io: File.open(
+  author_id: 1
+)
+
+print2.photo.attach(io: File.open(
   "/Users/jonathanvandyke/Documents/FullStack/thingyverse/app/assets/images/benchy.jpg"), 
   filename: "benchy.jpg"
 )
 
-Print.create(
+print3 = Print.create(
+  id: 3,
   title: 'Hollow Knight',
   text: 'A figure of Hollow Knight, printed and painted. ' +
   'Printed with 20% infill at fine resolution and painted with acrylic piants. Happy Printing!',
-  author_id: 13
-).photo.attach(io: File.open(
+  author_id: 1
+)
+
+print3.photo.attach(io: File.open(
   "/Users/jonathanvandyke/Documents/FullStack/thingyverse/app/assets/images/metabee.jpg"), 
   filename: "metabee.jpg"
 )
-
-Print.create(
+print4 = Print.create(
+  id: 4,
   title: 'Gear Fidget Toy',
   text: 'Printed in one piece, the gears mesh. ' +
   'Recommended: No supports/using fine detail settings.',
-  author_id: 14
-).photo.attach(io: File.open(
+  author_id: 1
+)
+
+print4.photo.attach(io: File.open(
   "/Users/jonathanvandyke/Documents/FullStack/thingyverse/app/assets/images/gears.jpg"), 
   filename: "gears.jpg"
 )
 
-Print.create(
+print5 = Print.create(
+  id: 5,
   title: 'Benchy',
   text: 'A new take on the calibration standard, test to see if your printer can handle the overhangs. ' +
   'Recommended: No supports/infill at least 20%.',
-  author_id: 15
-).photo.attach(io: File.open(
+  author_id: 1
+)
+
+print5.photo.attach(io: File.open(
   "/Users/jonathanvandyke/Documents/FullStack/thingyverse/app/assets/images/benchy.jpg"), 
   filename: "benchy.jpg"
+)
+
+print6 = Print.create(
+  id: 6,
+  title: 'Hollow Knight',
+  text: 'A figure of Hollow Knight, printed and painted. ' +
+  'Printed with 20% infill at fine resolution and painted with acrylic piants. Happy Printing!',
+  author_id: 1
+)
+
+print6.photo.attach(io: File.open(
+  "/Users/jonathanvandyke/Documents/FullStack/thingyverse/app/assets/images/metabee.jpg"), 
+  filename: "metabee.jpg"
 )
