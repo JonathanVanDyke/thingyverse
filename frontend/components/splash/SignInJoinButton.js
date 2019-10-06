@@ -105,13 +105,13 @@ const SignInJoin = ({ currentUser }) => {
     // destructure array... first value is default state, second value is setState uninvoked function
     const [shouldShowDropdownMenu, setShouldShowDropdownMenu] = useState(false)
 
-    let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
-
+    
     let toggle = !shouldShowDropdownMenu;
     const dropdown = () => {
       setShouldShowDropdownMenu(toggle)
     }
-
+    
+    let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     return(
       <DropDownWrap onBlur={() => setTimeout(() => setShouldShowDropdownMenu(false), 350)}>
         <NavButtonDrop 

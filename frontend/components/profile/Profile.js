@@ -111,10 +111,6 @@ const EditButton = styled.button`
     background-color: #b3b3b3}
 `
 
-const ProfileNav = styled.ul`
-    height: 40px;
-`
-
 const BioBox = styled.div`
   height: 144px;
 `
@@ -130,10 +126,32 @@ const BioHeader = styled.div`
   text-transform: uppercase;
 `
 
+const ProfileNav = styled.nav`
+  display: flex;
+  justify-content: flex-start;
+  height: 40px;
+`
+
+const About = styled.h1`
+  text-transform: uppercase;
+  color: #666666;
+  text-decoration: none;
+  font-family: "Antenna",Helvetica,Arial,sans-serif;
+  font-weight: normal;
+  :hover {
+    color: #2b8bfb;
+  }
+  margin: 10px;
+  margin-left: 0px;
+  margin-right: 20px;
+  font-weight: bold;
+`
+
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.viewUser = { username: '', avatar: '', id: null, bio: '' }
+    this.state = {select: 1}
   }
 
   componentDidMount() {
@@ -170,14 +188,38 @@ class Profile extends React.Component {
 
         <RightPane>
           <ProfileNav>
-            <li>ABOUT</li>
+            <Link 
+              to={`/profile/${this.viewUser.id}`}
+              style={{ textDecoration: 'none' }}
+              >
+              <About
+                onClick={() => this.setState({select: 1})}
+              >
+            ABOUT
+              </About>
+            </Link>
+            <Link 
+              to={`/profile/${this.viewUser.id}/prints`}
+              style={{ textDecoration: 'none' }}
+            >
+              <About
+                onClick={() => this.setState({ select: 2 })}
+              >
+                DESIGNS
+              </About>
+            </Link>
           </ProfileNav>
-          <BioBox>
-            <BioHeader>about you</BioHeader>
-            <Bio>
-              {!!this.viewUser.bio ? this.viewUser.bio : ''}
-            </Bio>
-          </BioBox>
+          { 
+            this.state.select === 1 ? 
+            <BioBox>
+              <BioHeader>about you</BioHeader>
+              <Bio>
+                {!!this.viewUser.bio ? this.viewUser.bio : ''}
+              </Bio>
+            </BioBox> :
+            null
+          }
+
         </RightPane>
 
       </ProfilePage>
