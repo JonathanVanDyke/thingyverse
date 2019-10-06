@@ -3,15 +3,23 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Login = styled.div`
+//Header
+const Header = styled.header`
   display: flex;
-  justify-content: center;
-  padding-top: 75px;
-  padding-bottom: 98px;
-  font-family: "AntennaLight",Helvetica,Arial,sans-serif;
+  justify-content: flex-start;
+  padding-top: 25px;
+  padding-bottom: 50px;
+  font-family: "Antenna Bold",Helvetica,Arial,sans-serif;
   font-weight: normal;
-  font-size: 28px;
+  font-size: 24px;
   color: #666;
+  border-bottom: 1px solid #bebebe;
+`
+
+//Upload
+const UploadSection = styled.section`
+  height: 265px;
+
 `
 
 const Form = styled.div`
@@ -129,11 +137,14 @@ class PrintForm extends React.Component {
   render() {
     return (
       <div>
-        <Login>
-          <p>--
-          <Sitename> {this.props.formType} </Sitename>
-            --</p>
-        </Login>
+        <Header>
+          <h1>
+            CREATING A NEW PRINT 
+          </h1>
+        </Header>
+        <UploadSection>
+
+        </UploadSection>
         <h1>{this.props.errors ? this.renderErrors() : []}</h1>
 
         <form onSubmit={this.handleSubmit}>
