@@ -28,7 +28,6 @@ const Content = styled.div({
   height: '100vh',
   background: '#f5f5f5',
   // border: '1px solid red'
-  marginBottom: '20px',
 });
 
 const Page = styled.div({

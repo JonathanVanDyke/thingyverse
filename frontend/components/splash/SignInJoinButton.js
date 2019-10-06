@@ -81,7 +81,7 @@ const DropDownWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  height: 277px;
+  height: 80px;
   width: 400px;
   z-index: 100;
   // border: 1px solid skyblue;

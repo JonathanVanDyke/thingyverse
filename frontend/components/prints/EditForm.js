@@ -3,53 +3,106 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Login = styled.div`
+//Header1
+const Header = styled.header`
   display: flex;
-  justify-content: center;
-  padding-top: 75px;
-  padding-bottom: 98px;
-  font-family: "AntennaLight",Helvetica,Arial,sans-serif;
-  font-weight: normal;
-  font-size: 28px;
-  color: #666;
-`
-
-const Form = styled.div`
-  display: flex;
-  flex-direction: row;
-  font-family: "AntennaLight",Helvetica,Arial,sans-serif;
-  font-weight: normal;
-  font-size: 12px;
-  color: #666;
   justify-content: space-between;
-  align-items: center;
-`
-const InputWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 410px;
-  height: 60px;
+  padding-top: 25px;
+  padding-bottom: 50px;
+  font-family: "Antenna Bold",Helvetica,Arial,sans-serif;
+  font-weight: bolder;
+  font-size: 24px;
+  color: #666;
+  border-bottom: 1px solid #bebebe;
+  text-transform: uppercase;
 `
 
 const InputButton = styled.button`
   display: flex;
   flex-direction: column;
-  width: 112px;
-  height: 38px;
-  background-color: #248bfb;
+  width: 150px;
+  height: 40px;
+  background-color: #666666;
   color: white;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
+  font-weight: 300;
   text-transform: uppercase;
   align-items: center;
   padding-top: 10px;
-  margin-top: 15px;
   box-shadow: 5px 10px 18px #888888;
   transition: box-shadow 1s;
+  text-transform: uppercase;
   :hover {
     box-shadow: 10px 5px 18px #888888;
   }
-  z-index: 100;
+  cursor: pointer;
+`
+
+//Header1
+const Header2 = styled.header`
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  font-family: "Antenna Bold",Helvetica,Arial,sans-serif;
+  font-weight: bolder;
+  font-size: 24px;
+  color: #666;
+  text-transform: uppercase;
+`
+
+
+
+//Content
+const Content = styled.section`
+  display: flex;
+  flex-direction: column;
+`
+
+//Upload
+const UploadSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 265px;
+  width: 971px;
+  background: white;
+  margin-top: 40px
+  font-family: "AntennaMedium",Helvetica,Arial,sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #666;
+`
+
+const UploadLabel = styled.p`
+  margin-bottom: 20px;
+`
+
+
+//INFO
+const InfoSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+`
+
+
+
+//InputsWrap
+
+const InputsWrap = styled.section`
+  display: flex;
+  justify-content: space-between;
+`
+
+const InputWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 439px;
+  height: 300px;
 `
 
 const Inpt = styled.input`
@@ -63,17 +116,32 @@ const Inpt = styled.input`
   }
   outline: none;
   z-index: 100;
+  font-size: 18px;
+`
+
+const TxtArea = styled.textarea`
+  border: none;
+  overflow: auto;
+  outline: none;
+  font-size: 18px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 10px;
+  resize: none;
+  width: 439;
+  height: 300px;
+  margin-top: 10px;
+  box-shadow: 5px 10px 18px #888888;
+  transition: box-shadow 1s;
+  :hover {
+    box-shadow: 10px 5px 18px #888888;
+  }
 `
 
 const Label = styled.label`
   font-size: 19px;
   font-weight: 500px;
-  font-family: Helvetica, Arial, sans-serif;
-`
-
-const Sitename = styled.span`
-  font-weight: 700;
-  color: black;
   font-family: Helvetica, Arial, sans-serif;
 `
 
@@ -129,46 +197,49 @@ class PrintForm extends React.Component {
   render() {
     return (
       <div>
-        <Login>
-          <p>--
-          <Sitename> {this.props.formType} </Sitename>
-            --</p>
-        </Login>
-        <h1>{this.props.errors ? this.renderErrors() : []}</h1>
+        <Content>
 
-        <form onSubmit={this.handleSubmit}>
-          <Form>
-            <input
-              type="file"
-              onChange={this.handleFile.bind(this)} />
-            <InputWrap>
-              <Label htmlFor='title'>Print Name (required)</Label>
-              <Inpt
-                id='title'
-                type="text"
-                onChange={this.update('title')}
-                value={this.state.title} />
-            </InputWrap>
-            <InputWrap>
-              <Label htmlFor='text'>Description (required)</Label>
-              {/* should change to text-area! */}
-              <Inpt
-                id='text'
-                type="text"
-                onChange={this.update('text')}
-                value={this.state.text} />
-            </InputWrap>
-            {/* <InputWrap> */}
-            {/* <Label htmlFor='password'>Password</Label> */}
-            {/* <Inpt
-              type="file"
-              onChange={this.handleFile.bind(this)}/> */}
-            {/* </InputWrap> */}
-            {/* <ButtonWrap> */}
-            <InputButton type='submit' value='Create Print!' />
-            {/* </ButtonWrap> */}
-          </Form>
-        </form>
+          <h1>{this.props.errors ? this.renderErrors() : []}</h1>
+
+          <form onSubmit={this.handleSubmit}>
+            <Header>
+              <h1>EDITING {this.props.print.title} </h1>
+              <InputButton type='submit'>save & view</InputButton>
+            </Header>
+
+            <UploadSection>
+              <UploadLabel>UPLOAD YOUR PHOTOS</UploadLabel>
+              <div className="upload-btn-wrapper">
+                <button className="btn">MY COMPUTER</button>
+                <input type="file" name="myfile" />
+              </div>
+            </UploadSection>
+
+            <InfoSection>
+              <Header2>basic information</Header2>
+              <InputsWrap>
+                <InputWrap>
+                  <Label htmlFor='title'>Print Name (required)</Label>
+                  <Inpt
+                    id='title'
+                    type="text"
+                    onChange={this.update('title')}
+                    value={this.state.title} />
+                </InputWrap>
+                <InputWrap>
+                  <Label htmlFor='text'>Summary (required)</Label>
+                  <TxtArea
+                    id='text'
+                    type="text"
+                    onChange={this.update('text')}
+                    value={this.state.text}
+                  />
+                </InputWrap>
+              </InputsWrap>
+            </InfoSection>
+
+          </form>
+        </Content>
       </div>
     )
   }

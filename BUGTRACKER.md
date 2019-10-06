@@ -10,6 +10,11 @@
 * >Carousels: pseudo-sprite sheet, stacking two images next to each other
 * >
 
+## Day..
+* >custom fileuploads
+* >AWS buckets
+* >Heroku fun
+
 
 # Notes
 
