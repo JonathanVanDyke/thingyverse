@@ -11,6 +11,7 @@ class Api::PrintsController < ApplicationController
   end
 
   def create
+    # debugger
     @print = Print.new(print_params)
     @print.author_id = current_user.id
     if @print.save

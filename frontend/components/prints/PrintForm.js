@@ -203,7 +203,11 @@ class PrintForm extends React.Component {
               <UploadLabel>UPLOAD YOUR PHOTOS</UploadLabel>
               <div className="upload-btn-wrapper">
                 <button className="btn">MY COMPUTER</button>
-                <input type="file" name="myfile" />
+                <input 
+                  type="file" 
+                  onChange={this.handleFile.bind(this)}
+                  name="myfile" 
+                />
               </div>
             </UploadSection>
 
