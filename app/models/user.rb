@@ -10,6 +10,11 @@ class User < ApplicationRecord
   has_many :prints,
     foreign_key: :author_id,
     class_name: :Print
+  
+  has_many :likes, dependent: :destroy
+  has_many :liked_prints,
+    through: :likes,
+    source: :print
 
   # has_many :collections
 
