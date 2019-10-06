@@ -99,7 +99,7 @@ class PrintForm extends React.Component {
     e.preventDefault();
     const formData = new FormData();
     formData.append('print[title]', this.state.title);
-    formData.append('print[text]', this.state.title);
+    formData.append('print[text]', this.state.text);
     // debugger
     this.state.photoFile ? formData.append('print[photo]', this.state.photoFile) : null;
     formData.append('print[id]', this.state.id);
@@ -151,6 +151,7 @@ class PrintForm extends React.Component {
             </InputWrap>
             <InputWrap>
               <Label htmlFor='text'>Description (required)</Label>
+              {/* should change to text-area! */}
               <Inpt
                 id='text'
                 type="text"
