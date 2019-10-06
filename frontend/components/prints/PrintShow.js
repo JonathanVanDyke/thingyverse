@@ -149,6 +149,17 @@ class PrintShow extends React.Component {
               /> : 
               null
             } */}
+            <button
+              onClick={() => this.props.createLike(this.props.print)}
+            >
+              Like
+            </button>
+            <button
+              onClick={() => this.props.deleteLike(this.props.print)}
+            >
+              UnLike
+            </button>
+            <p>Count:{this.props.print.user_likes.length ? this.props.print.user_likes.length : 0}</p>
           </RightPane1>
         </Section1>
 
