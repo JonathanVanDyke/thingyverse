@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchPrint, updatePrint, deleteErrors } from '../../actions/print_actions';
+import { fetchPrint, updatePrint, deletePrint } from '../../actions/print_actions';
 import EditForm from './EditForm';
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return ({
     fetchPrint: ((id) => dispatch(fetchPrint(id))),
-    processForm: ((print) => dispatch(updatePrint(print)))
+    processForm: ((print) => dispatch(updatePrint(print))),
+    deletePrint: id => dispatch(deletePrint(id))
   });
 };
 
@@ -32,10 +33,11 @@ class EditPrintForm extends React.Component {
   }
 
   render() {
-    const { processForm, formType, print } = this.props;
+    const { processForm, formType, print, deletePrint } = this.props;
     return (
       <EditForm
         processForm={processForm}
+        deletePrint={deletePrint}
         formType={formType}
         print={print}
       />

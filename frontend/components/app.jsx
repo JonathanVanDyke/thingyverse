@@ -126,6 +126,7 @@ const App = () => (
           <AuthRoute exact path="/signup" component={SignUpFormContainer} />
           <AuthRoute exact path="/logged-in" component={SignUpFormContainer} />
           <Route exact path="/profile/:userId" component={ProfileContainer} />
+          <Route exact path="/profile/:userId/prints" component={ProfileContainer} />
           <Route exact path="/print/:printId" component={PrintShowContainer} />
           <Route exact path="/create" component={PrintFormContainer} />
           <Route exact path="/edit/:printId" component={EditPrintContainer} />

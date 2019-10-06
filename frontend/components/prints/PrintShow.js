@@ -142,13 +142,13 @@ class PrintShow extends React.Component {
               <EditButton print={this.props.print} /> : 
               null
             }
-            { this.props.print.author.id === this.props.current_user.id ?
+            {/* { this.props.print.author.id === this.props.current_user.id ?
               <DeleteButton 
                 print={this.props.print} 
                 deletePrint={this.props.deletePrint}
               /> : 
               null
-            }
+            } */}
           </RightPane1>
         </Section1>
 

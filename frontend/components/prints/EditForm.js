@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import DeleteButton from './DeleteButton';
+
 //Header1
 const Header = styled.header`
   display: flex;
@@ -98,6 +100,13 @@ const InputsWrap = styled.section`
   justify-content: space-between;
 `
 
+const InputWrap1 = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 439px;
+  height: 97px;
+`
+
 const InputWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -143,6 +152,11 @@ const Label = styled.label`
   font-size: 19px;
   font-weight: 500px;
   font-family: Helvetica, Arial, sans-serif;
+`
+
+const LeftPane = styled.section`
+  display: flex;
+  flex-direction: column;
 `
 
 class PrintForm extends React.Component {
@@ -218,14 +232,20 @@ class PrintForm extends React.Component {
             <InfoSection>
               <Header2>basic information</Header2>
               <InputsWrap>
-                <InputWrap>
-                  <Label htmlFor='title'>Print Name (required)</Label>
-                  <Inpt
-                    id='title'
-                    type="text"
-                    onChange={this.update('title')}
-                    value={this.state.title} />
-                </InputWrap>
+                <LeftPane>
+                  <InputWrap1>
+                    <Label htmlFor='title'>Print Name (required)</Label>
+                    <Inpt
+                      id='title'
+                      type="text"
+                      onChange={this.update('title')}
+                      value={this.state.title} />
+                  </InputWrap1>
+                  <DeleteButton
+                    print={this.props.print}
+                    deletePrint={this.props.deletePrint}
+                  />
+                </LeftPane>
                 <InputWrap>
                   <Label htmlFor='text'>Summary (required)</Label>
                   <TxtArea

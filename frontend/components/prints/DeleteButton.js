@@ -7,7 +7,7 @@ const InputButton = styled.button`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 296px;
+  width: 160px;
   height: 38px;
   padding: 0;
   background-color: red;
@@ -28,8 +28,8 @@ const Txt = styled.div`
   text-decoration: none;
   padding-top: 9px;
   padding-bottom: 9px;
-  padding-right: 102px;
-  padding-left: 102px;
+  padding-right: 47px;
+  padding-left: 47px;
 `
 
 const DeleteButton = ({ print, deletePrint }) => {
