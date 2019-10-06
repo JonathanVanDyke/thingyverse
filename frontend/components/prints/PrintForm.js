@@ -18,8 +18,13 @@ const Header = styled.header`
 
 //Upload
 const UploadSection = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 265px;
-
+  width: 971px;
+  background: white;
+  margin-top: 40px
 `
 
 const Form = styled.div`
@@ -142,16 +147,18 @@ class PrintForm extends React.Component {
             CREATING A NEW PRINT 
           </h1>
         </Header>
-        <UploadSection>
 
-        </UploadSection>
         <h1>{this.props.errors ? this.renderErrors() : []}</h1>
 
         <form onSubmit={this.handleSubmit}>
           <Form>
-            <input
-              type="file"
-              onChange={this.handleFile.bind(this)} />
+            <UploadSection>
+              <input
+                type="file"
+                onChange={this.handleFile.bind(this)} 
+              />
+            </UploadSection>
+
             <InputWrap>
               <Label htmlFor='title'>Print Name (required)</Label>
               <Inpt
