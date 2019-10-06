@@ -69,7 +69,20 @@ const Avatar = styled.img`
   width: 40px;
   border: 2px solid white;
 `
+//FOOTER
 
+const Likes = styled.h3`
+  z-index: 10;
+  position: absolute;
+  color: #666666;
+  font-size: 18px;
+  padding: 13px 51px;
+  border: 2px solid #ececec;
+`
+
+
+
+//BACKGROUND
 const Fade = styled.div`
   position: absolute;
   height: 55px;
@@ -81,46 +94,66 @@ const Fade = styled.div`
   -webkit-mask-position: left top, left bottom;
 `
 
+const Ribbon = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  height: 44px;
+  width: 291px;
+  margin-top: 218px;
+  background-color: #fff;
+  border: 2px solid #ececec;
+  border-radius: 3px;
+`
+
 const Back = styled.img`
   height: 262px;
   width: 295px;
 `
 
-const DesignItem = ({ print, viewUser }) => {
+const DesignItem = ({ print, viewUser, currentUser }) => {
   // debugger
+  const checkId = (pojo) => {
+    // debugger
+    return pojo.user_id === currentUser.id;
+  }
   return(
     <Top>
+      <Link to={`/print/${print.id}`}>
 
-      <Head>
-        <Avatar src={!!viewUser.avatar ?
-          viewUser.avatar :
-          defaultImg}></Avatar>
-        <TitleWrap>
-          <Title>{print.title}</Title>
-          <Byline>By: {viewUser.username}</Byline>
-        </TitleWrap>
-      </Head>
+        <Head>
+          <Avatar src={!!viewUser.avatar ?
+            viewUser.avatar :
+            defaultImg}></Avatar>
+          <TitleWrap>
+            <Title>{print.title}</Title>
+            <Byline>By: {viewUser.username}</Byline>
+          </TitleWrap>
+        </Head>
 
-      <Fade/>
-      <Back
-        src={print.photoUrl}
-      >
-      </Back>
+  
+
+        <Fade/>
+
+        
+
+        <Back src={print.photoUrl}/>
+      </Link>
+      <Ribbon>
+        {/* { !!print.likes.find(checkId) ?
+          <i className="far fa-heart"></i> :
+          <i className="fas fa-heart"></i>
+        } */}
+        { !!print.likes.find(checkId) ?
+        <p>
+            <i className="fas fa-heart"></i> 
+        </p> :
+          <i className="fas fa-heart"></i>
+        }
+        <Likes>{print.likes.length}</Likes>
+      </Ribbon>
     </Top>
-    // <CardContainer>
-    //   <Card>
-    //     <Fade />
-    //     <Title>{print.title}</Title>
-    //     < BckgrndWrap >
-    //       <Background
-    //         src={print.photoUrl}
-    //       />
-    //     </BckgrndWrap>
-
-    //   </Card>
-
-    // </CardContainer>
-    
   )
 };
 

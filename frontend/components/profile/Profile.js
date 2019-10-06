@@ -203,6 +203,7 @@ class Profile extends React.Component {
           key={print.id}
           print={print}
           viewUser={this.viewUser}
+          currentUser={this.props.currentUser}
         >
         </DesignItem>
       )

@@ -16,7 +16,7 @@ json.extract! user, :id, :username, :avatar, :bio
 # debugger
 json.designs do
   json.array! user.prints.each do |print|
-    json.extract! print, :id, :title, :text
+    json.extract! print, :id, :title, :text, :likes
     json.photoUrl url_for(print.photo)
   end
 end

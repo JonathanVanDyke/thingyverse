@@ -123,7 +123,9 @@ class PrintShow extends React.Component {
 
   unLike() {
     let val = this.state.counter;
+    debugger
     this.props.deleteLike(this.props.print).then(() => {
+      debugger
       let printId = this.props.match.params.printId
       this.props.fetchPrints();
       this.props.fetchPrint(Number(printId));

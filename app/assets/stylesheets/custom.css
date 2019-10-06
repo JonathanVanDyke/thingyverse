@@ -132,3 +132,64 @@
   cursor: pointer;
 
 }
+
+/** HEART **/
+
+.heart{
+    position: relative;
+    width: 68px;
+    height: 16px;
+    float: left;
+    z-index: 100;
+}
+.heart:before,
+.heart:after{
+    position: absolute;
+    content: "";
+    left: 8px;
+    top: 0;
+    width: 8px;
+    height: 13px;
+    background: #666;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+/* .heart:after:hover {
+  background: red;
+} */
+.heart:after{
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+.fa-heart {
+  margin-left: 25px;
+  z-index: 2000;
+}
+
+.fa-heart:hover {
+  color: red;
+}
+
+p > .fa-heart {
+  color: red;
+}
