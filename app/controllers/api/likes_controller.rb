@@ -14,10 +14,10 @@ class Api::LikesController < ApplicationController
 
   def destroy
     # debugger
-    if !(@like)
-      flash[:notice] = "Cannot unlike"
-    else
+    if (@like && @like.user_id == current_user.id)
       @like.destroy
+    else
+      render json: @user.errors.full_messages, status: 422
     end
     render :show
   end
@@ -32,7 +32,7 @@ class Api::LikesController < ApplicationController
   def find_like
     # debugger
     # @like = @print.likes.find(params[:id])
-    @like = @print.likes.find_by(print_id: params[:print_id].to_i)
+    @like = @print.likes.find_by(user_id: current_user.id)
   end
 
 end

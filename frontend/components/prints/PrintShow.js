@@ -123,9 +123,9 @@ class PrintShow extends React.Component {
 
   unLike() {
     let val = this.state.counter;
-    debugger
+    // debugger
     this.props.deleteLike(this.props.print).then(() => {
-      debugger
+      // debugger
       let printId = this.props.match.params.printId
       this.props.fetchPrints();
       this.props.fetchPrint(Number(printId));
@@ -135,7 +135,12 @@ class PrintShow extends React.Component {
 
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
-
+    let current_user_id = this.props.current_user.id;
+    const checkId = (pojo) => {
+      // debugger
+      return pojo.id === current_user_id;
+    }
+    // debugger
     let user_likes = this.props.print.user_likes.map((user) => {
       return(
         <li
@@ -194,18 +199,21 @@ class PrintShow extends React.Component {
               <EditButton print={this.props.print} /> : 
               null
             }
-
-            <button
-              onClick={() => this.like()}
-            >
-              Like
+            {!!this.props.print.user_likes.find(checkId) ?
+              <button
+                onClick={() => this.unLike()}
+              >
+                UnLike
+            </button> :
+              <button
+                onClick={() => this.like()}
+              >
+                Like
             </button>
+            }
 
-            <button
-              onClick={() => this.unLike()}
-            >
-              UnLike
-            </button>
+
+        
 
             <p>Count:{this.state.counter}</p>
           </RightPane1>
