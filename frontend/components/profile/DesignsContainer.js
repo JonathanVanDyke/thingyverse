@@ -1,21 +1,19 @@
 import { connect } from 'react-redux';
-import { fetchPrint } from '../../actions/print_actions';
+import { fetchUser } from '../../actions/session_actions'
 
-// import { fetch } from '../../actions/print_actions'
-import PrintIndex from './PrintIndex'
+import Profile from './Profile';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
   // debugger
-  return ({
-    prints: Object.keys(state.entities.prints).map(id => state.entities.prints[Number(id)]),
-  });
+  let userId = Number(ownProps.match.params.userId);
+  return {
+    currentUser: users[session.id] || { username: '', bio: '', avatar: '', prints: [] },
+    viewUser: users[userId]
+  };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  // debugger
-  return ({
-    fetchPrint: (() => dispatch(fetchPrint()))
-  });
-};
+const mapDispatchToProps = dispatch => ({
+  receiveUser: (id) => dispatch(fetchUser(id))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(PrintIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

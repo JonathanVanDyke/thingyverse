@@ -37,7 +37,7 @@ const Feed = styled.section`
   height: 460px;
   width: 320px;
   // background-color: green;
-  border: 1px solid #bebebe;
+  // border: 1px solid #bebebe;
   overflow: hidden;
   align-items: flex-start;
   display: flex;

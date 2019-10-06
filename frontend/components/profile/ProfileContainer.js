@@ -13,8 +13,8 @@ const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
   // debugger
   let userId = Number(ownProps.match.params.userId);
   return {
-    currentUser: users[session.id],
-    viewUser: users[userId]
+    currentUser: users[session.id] || {username: '', bio: '', avatar: '', prints: []},
+    viewUser: users[Number(userId)] || { username: '', bio: '', avatar: '', prints: [], designs: [] }
   };
 };
 

@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import DesignItem from './DesignItem';
+
 const ProfilePage = styled.div`
   // margin-top: 100px;
   position: relative;
@@ -15,6 +17,7 @@ const ProfilePage = styled.div`
   margin-top: 51px;
 `
 
+//LEFT
 const LeftPane = styled.div`
   width: 296px;
   height: 100%;
@@ -22,6 +25,22 @@ const LeftPane = styled.div`
   // padding: 10px;
 `
 
+//ButtonNav
+const BlockNav = styled.section`
+  display: grid;
+  grid-gap: 43px;
+  grid-template-columns: repeat(2,1fr);
+  grid-auto-rows: minmax(100px,auto);
+  background-color: green;
+`
+
+const Blocks = styled.div`
+  height: 120px;
+  width: 120px;
+  background-color: black;
+`
+
+// RIGHT
 const RightPane = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,6 +49,15 @@ const RightPane = styled.div`
   // background-color: green;
   // padding: 10px;
 `
+
+const DesignGrid = styled.div`
+  display: grid;
+  grid-gap: 43px;
+  grid-template-columns: repeat(2,1fr);
+  grid-auto-rows: minmax(100px,auto);
+`
+
+//AVATAR
 
 const AvatarCage = styled.div`
   display: flex;
@@ -65,7 +93,7 @@ const Avatar = styled.img`
   border-radius: 50%;
   height: 90px;
   width: 90px;
-  border: 1px solid white;
+  border: 6px solid white;
   margin-top: 95px;
 `
 
@@ -111,6 +139,8 @@ const EditButton = styled.button`
     background-color: #b3b3b3}
 `
 
+//BIO
+
 const BioBox = styled.div`
   height: 144px;
 `
@@ -120,6 +150,7 @@ const Bio = styled.p`
   width: 634px;
   border: none;
   background: white;
+  padding: 12px;
 `
 
 const BioHeader = styled.div`
@@ -155,6 +186,7 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
+    // debugger
     let userId = this.props.match.params.userId
     this.props.receiveUser(Number(userId))
   }
@@ -163,11 +195,26 @@ class Profile extends React.Component {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     this.viewUser = this.props.viewUser || this.viewUser
     // debugger
+    
+    let designs = this.viewUser.designs.map((print) => {
+      // debugger
+      return (
+        <DesignItem
+          key={print.id}
+          print={print}
+          viewUser={this.viewUser}
+        >
+        </DesignItem>
+      )
+    })
+
+    // debugger
     return (
       <ProfilePage>
         {/* top */}
 
         <LeftPane>
+
           <AvatarCage>
             <AvatarBox>
               <Banner/>
@@ -184,6 +231,11 @@ class Profile extends React.Component {
               { this.viewUser.id === this.props.currentUser.id ? <EditButton>edit profile</EditButton> : null }
             </EditButtonBox>
           </AvatarCage>
+
+          <BlockNav>
+            
+          </BlockNav>
+
         </LeftPane>
 
         <RightPane>
@@ -217,6 +269,14 @@ class Profile extends React.Component {
                 {!!this.viewUser.bio ? this.viewUser.bio : ''}
               </Bio>
             </BioBox> :
+            null
+          }
+          { 
+            this.state.select === 2 ? 
+              <DesignGrid>
+                {designs}
+              </DesignGrid>
+             :
             null
           }
 
