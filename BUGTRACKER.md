@@ -15,6 +15,8 @@
 * >AWS buckets
 * >Heroku fun
 
+## Day...(sunday)
+* > why do likes reset to zero once refresh, but correct on nav?
 
 # Notes
 

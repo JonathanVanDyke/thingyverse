@@ -3,7 +3,9 @@ class Api::LikesController < ApplicationController
   before_action :find_like, only: [:destroy]
 
   def create
-    if @print.likes.create(user_id: current_user.id)
+    # debugger
+    @like = @print.likes.create(user_id: current_user.id)
+    if @like
       render :show
     else
       render json: @print.errors.full_messages
@@ -23,6 +25,7 @@ class Api::LikesController < ApplicationController
   private
 
   def find_print
+    # debugger
     @print = Print.find(params[:print_id])
   end
 

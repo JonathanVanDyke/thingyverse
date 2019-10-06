@@ -97,19 +97,64 @@ const Avatar = styled.img`
 
 
 class PrintShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { counter: this.props.likes};
+    this.like = this.like.bind(this);
+    this.unLike = this.unLike.bind(this);
+  }
+
   componentDidMount() {
     let printId = this.props.match.params.printId
+    this.props.fetchPrints();
     this.props.fetchPrint(Number(printId));
   }
 
+
+  like() {
+    let val = this.state.counter;
+    this.props.createLike(this.props.print).then((arg) => {
+      let printId = this.props.match.params.printId
+      this.props.fetchPrints();
+      this.props.fetchPrint(Number(printId));
+      this.setState({ counter: val + 1 })
+    })
+  }
+
+  unLike() {
+    let val = this.state.counter;
+    this.props.deleteLike(this.props.print).then(() => {
+      let printId = this.props.match.params.printId
+      this.props.fetchPrints();
+      this.props.fetchPrint(Number(printId));
+      this.setState({ counter: val - 1 })
+    })
+  }
+
   render() {
-    this.props.print.authors
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
-    // debugger
+
+    let user_likes = this.props.print.user_likes.map((user) => {
+      return(
+        <li
+          key={user.username}
+        >
+          <Avatar
+            src={
+              !!user.avatar ?
+                user.avatar :
+                defaultImg
+            }
+          />
+          {user.username}
+        </li>
+        )
+    })
     return (
       <PrintShowPage>
 
         <Header>
+
           <Avatar 
             src={
               !!this.props.print.author.avatar ? 
@@ -117,6 +162,7 @@ class PrintShow extends React.Component {
               defaultImg
             } 
           />
+
           <PrintInfo>
             <ul>
               <li>{this.props.print.title}</li> 
@@ -129,48 +175,57 @@ class PrintShow extends React.Component {
               </li> 
             </ul>
           </PrintInfo>
+
         </Header>
 
         <Section1>
+
           <LeftPane1>
             <ImageWrap>
               <IMG src={this.props.print.photoUrl} />
             </ImageWrap>
           </LeftPane1>
+
           <RightPane1>
+
             { this.props.print.author.id === this.props.current_user.id ?
               <EditButton print={this.props.print} /> : 
               null
             }
-            {/* { this.props.print.author.id === this.props.current_user.id ?
-              <DeleteButton 
-                print={this.props.print} 
-                deletePrint={this.props.deletePrint}
-              /> : 
-              null
-            } */}
+
             <button
-              onClick={() => this.props.createLike(this.props.print)}
+              onClick={() => this.like()}
             >
               Like
             </button>
+
             <button
-              onClick={() => this.props.deleteLike(this.props.print)}
+              onClick={() => this.unLike()}
             >
               UnLike
             </button>
-            <p>Count:{this.props.print.user_likes.length ? this.props.print.user_likes.length : 0}</p>
+
+            <p>Count:{this.state.counter}</p>
           </RightPane1>
         </Section1>
 
         <Section2>
+
           <LeftPane2>
+
             <Label>Liked By</Label>
+            <ul>
+              {user_likes}
+            </ul>
+
           </LeftPane2>
+
           <RightPane2>
+
             <Label>Summary</Label>
             {this.props.print.text}
           </RightPane2>
+
         </Section2>
 
         

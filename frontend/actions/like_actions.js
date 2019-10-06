@@ -14,10 +14,13 @@ export const removeLike = (print) => ({
 });
 
 
-export const createLike = print => dispatch => (
-  LikeAPIUtil.createLike(print).then(
-    print => (dispatch(receiveLike(print))))
-);
+export const createLike = print => dispatch => {
+  // debugger
+  return(
+    LikeAPIUtil.createLike(print).then(
+      print => (dispatch(receiveLike(print))))
+  )
+};
 
 export const deleteLike = (print) => dispatch => {
   // debugger
