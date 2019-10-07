@@ -45,21 +45,24 @@ const Feed = styled.section`
 `
 
 const Featured = styled.section`
-  margin-top: 30px;
+  margin-top: 18px;
   height: 400px;
   width: 630px;
   // border: 1px solid #bebebe;
   overflow: hidden;
+  background: white;
+  padding: 20px;
+  border: 1px solid #ececec;
 `
 
 const FeatureTitle = styled.h1`
-  font-size: 24px;
+  font-size: 20px;
   color: #666666;
   font-family: Helvetica, Arial, sans-serif;
 `
 
 const FeatureSub = styled.h1`
-  font-size: 16px;
+  font-size: 14px;
   color: #666666;
   font-family: Helvetica, Arial, sans-serif;
   margin-bottom: 10px;
