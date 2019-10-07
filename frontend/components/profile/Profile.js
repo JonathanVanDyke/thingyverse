@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import DesignItem from './DesignItem';
+import DesignsContainer from './DesignsContainer';
 
 const ProfilePage = styled.div`
   // margin-top: 100px;
@@ -199,17 +199,18 @@ class Profile extends React.Component {
     let designs = this.viewUser.designs.map((print) => {
       // debugger
       return (
-        <DesignItem
+        <DesignsContainer
           key={print.id}
           print={print}
-          viewUser={this.viewUser}
-          currentUser={this.props.currentUser}
-          createLike={this.props.createLike}
-          deleteLike={this.props.deleteLike}
+          // viewUser={this.viewUser}
+          match={this.props.match}
+          // currentUser={this.props.currentUser}
+          // createLike={this.props.createLike}
+          // deleteLike={this.props.deleteLike}
           // fetchPrints={this.props.fetchPrints}
           // fetchPrint={this.props.fetchPrint}
         >
-        </DesignItem>
+        </DesignsContainer>
       )
     })
 

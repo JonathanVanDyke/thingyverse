@@ -99,12 +99,12 @@ class DesignItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      counter: this.props.print.likes.length,
+      counter: this.props.likes,
       bool: true
     }
     this.like = this.like.bind(this);
     this.unLike = this.unLike.bind(this);
-    // debugger
+    debugger
   }
 
 
@@ -148,12 +148,12 @@ class DesignItem extends React.Component {
         <Link to={`/print/${this.props.print.id}`}>
 
           <Head>
-            <Avatar src={!!this.props.viewUser.avatar ?
-              this.props.viewUser.avatar :
+            <Avatar src={!!this.props.print.user.avatar ?
+              this.props.print.user.avatar :
               defaultImg}></Avatar>
             <TitleWrap>
               <Title>{print.title}</Title>
-              <Byline>By: {this.props.viewUser.username}</Byline>
+              <Byline>By: {this.props.print.user.username}</Byline>
             </TitleWrap>
           </Head>
 
