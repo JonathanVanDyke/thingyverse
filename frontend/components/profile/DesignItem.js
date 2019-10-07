@@ -2,29 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const CardContainer = styled.div`
-  position: absolute;
-  height: 262px;
-  width: 295px;
-`
-
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-
-
-
-const Background = styled.img`
-  height: 100%;
-  width: 100%;
-  background-size: contain;
-`
-
-const BckgrndWrap = styled.div`
-  position: relative;
-`
 
 //Card
 const Top = styled.div`
@@ -72,14 +49,20 @@ const Avatar = styled.img`
 //FOOTER
 
 const Likes = styled.h3`
-  z-index: 10;
+  z-index: 101;
   position: absolute;
   color: #666666;
   font-size: 18px;
-  padding: 13px 51px;
-  border: 2px solid #ececec;
+  /* padding: 13px 51px; */
+  margin-left: 54px;
 `
 
+const LikeButton = styled.div`
+  z-index: 100;
+  cursor: pointer;
+  // padding: 17px 78px 17px 0px;
+  background: none;
+`
 
 
 //BACKGROUND
@@ -99,11 +82,11 @@ const Ribbon = styled.section`
   align-items: center;
   justify-content: flex-start;
   position: absolute;
-  height: 44px;
-  width: 291px;
+  height: 45px;
+  width: 293px;
   margin-top: 218px;
   background-color: #fff;
-  border: 2px solid #ececec;
+  border: 1px solid #ececec;
   border-radius: 3px;
 `
 
@@ -112,51 +95,86 @@ const Back = styled.img`
   width: 295px;
 `
 
-const DesignItem = ({ print, viewUser, currentUser }) => {
-  // debugger
-  let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
-
-  const checkId = (pojo) => {
-    // debugger
-    return pojo.user_id === currentUser.id;
+class DesignItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { counter: this.props. likes }
+    this.like = this.like.bind(this);
+    this.unLike = this.unLike.bind(this);
   }
-  return(
-    <Top>
-      <Link to={`/print/${print.id}`}>
 
-        <Head>
-          <Avatar src={!!viewUser.avatar ?
-            viewUser.avatar :
-            defaultImg}></Avatar>
-          <TitleWrap>
-            <Title>{print.title}</Title>
-            <Byline>By: {viewUser.username}</Byline>
-          </TitleWrap>
-        </Head>
 
-  
+  like() {
+      // debugger
+      let val = this.state.counter;
+      this.props.createLike(this.props.print).then((arg) => {
+      // let printId = this.props.print.id
+      // this.props.fetchPrints();
+      // this.props.fetchPrint(Number(printId));
+      this.setState({ counter: val + 1 })
+    })
+  }
 
-        <Fade/>
+  unLike() {
+      let val = this.state.counter;
+      // debugger
+      this.props.deleteLike(this.props.print).then(() => {
+      // debugger
+      // let printId = this.props.print.id
+      // this.props.fetchPrints();
+      // this.props.fetchPrint(Number(printId));
+      this.setState({ counter: val - 1 })
+    })
+  }
 
-        
 
-        <Back src={print.photoUrl}/>
-      </Link>
-      <Ribbon>
-        {/* { !!print.likes.find(checkId) ?
-          <i className="far fa-heart"></i> :
-          <i className="fas fa-heart"></i>
-        } */}
-        { !!print.likes.find(checkId) ?
-        <p>
-            <i className="fas fa-heart"></i> 
-        </p> :
-          <i className="fas fa-heart"></i>
-        }
-        <Likes>{print.likes.length}</Likes>
-      </Ribbon>
-    </Top>
-  )
+  render() {
+    // debugger
+    let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
+    let currentUser = this.props.currentUser;
+    const checkId = (pojo) => {
+      // debugger
+      return pojo.user_id === currentUser.id;
+    }
+    return(
+      <Top>
+        <Link to={`/print/${this.props.print.id}`}>
+
+          <Head>
+            <Avatar src={!!this.props.viewUser.avatar ?
+              this.props.viewUser.avatar :
+              defaultImg}></Avatar>
+            <TitleWrap>
+              <Title>{print.title}</Title>
+              <Byline>By: {this.props.viewUser.username}</Byline>
+            </TitleWrap>
+          </Head>
+
+    
+
+          <Fade/>
+
+          
+
+          <Back src={this.props.print.photoUrl}/>
+        </Link>
+        <Ribbon>
+          { !!this.props.print.likes.find(checkId) ?
+            <LikeButton >
+              <p>
+                <i onClick={() => this.unLike()} className="fas fa-heart"></i> 
+              </p> 
+            </LikeButton>
+          :
+            <LikeButton >
+              <i onClick={() => this.like()} className="fas fa-heart"></i>
+            </LikeButton>
+          }
+          <Likes>{this.props.print.likes.length}</Likes>
+        </Ribbon>
+      </Top>
+    )
+  }
 };
 
 export default DesignItem

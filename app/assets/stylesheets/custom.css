@@ -182,8 +182,10 @@
 }
 
 .fa-heart {
-  margin-left: 25px;
+  /* margin-left: 25px; */
   z-index: 2000;
+  padding: 13px 107px 15px 24px;
+  border: 2px solid #ececec;
 }
 
 .fa-heart:hover {
@@ -192,16 +194,21 @@
 
 p > .fa-heart {
   color: red;
+  z-index: 2000;
+  padding: 13px 107px 15px 24px;
+  border: 2px solid #ececec;
 }
 
 p > div > p > .fa-heart {
   /* position: absolute; */
   margin-left: -15px;
   padding: 17px 259px 20px 35px;
+  border: none;
 }
 
 p > div > .fa-heart { 
   /* position: absolute; */
   margin-left: -15px;
   padding: 17px 259px 20px 35px;
+  border: none;
 }

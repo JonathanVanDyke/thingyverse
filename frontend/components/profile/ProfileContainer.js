@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchUser } from '../../actions/session_actions'
+import { fetchPrint, fetchPrints, createLike, deleteLike } from './../../actions/like_actions';
 
 // 1. Create edit user route
 // 2. Create edit/update controller
@@ -19,7 +20,11 @@ const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  receiveUser: (id) => dispatch(fetchUser(id))
+  receiveUser: (id) => dispatch(fetchUser(id)),
+  createLike: (print) => dispatch(createLike(print)),
+  deleteLike: (print) => dispatch(deleteLike(print)),
+  // fetchPrint: id => dispatch(fetchPrint(id)),
+  // fetchPrints: () => dispatch(fetchPrints()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -204,6 +204,10 @@ class Profile extends React.Component {
           print={print}
           viewUser={this.viewUser}
           currentUser={this.props.currentUser}
+          createLike={this.props.createLike}
+          deleteLike={this.props.deleteLike}
+          // fetchPrints={this.props.fetchPrints}
+          // fetchPrint={this.props.fetchPrint}
         >
         </DesignItem>
       )
