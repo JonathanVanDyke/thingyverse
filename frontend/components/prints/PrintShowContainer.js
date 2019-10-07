@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   return({
     current_user_id: state.session.id || null,
     print: state.entities.prints[printId] || {title: '', photoUrl: '',user_likes: [] , author: {username: '', id: null, avatar: ''}},
-    likes: state.entities.likes.filter((like) => {return like.print_id === printId}),
+    likes: state.entities.likes ? state.entities.likes.filter((like) => {return like.print_id === printId}) : [],
     users: state.entities.users || {},
     // likers: state.entities.users
   })

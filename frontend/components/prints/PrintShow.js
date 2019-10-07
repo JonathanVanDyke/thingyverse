@@ -184,27 +184,27 @@ class PrintShow extends React.Component {
 
   // unLike() {
   //   let val = this.state.counter;
-  //   // debugger
+  //   debugger
   //   this.props.deleteLike(this.props.print).then(() => {
   //     // debugger
-  //     let printId = this.props.match.params.printId
-  //     this.props.fetchPrints();
-  //     this.props.fetchPrint(Number(printId));
-  //     this.setState({ counter: val - 1 })
+  //     // let printId = this.props.match.params.printId
+  //     // this.props.fetchPrints();
+  //     // this.props.fetchPrint(Number(printId));
+  //     // this.setState({ counter: val - 1 })
   //   })
   // }
 
-  getUserLikes () {
-    // debugger
-    this.props.fetchLike()
-  }
+  // getUserLikes () {
+  //   // debugger
+  //   this.props.fetchLikes()
+  // }
 
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     let current_user_id = this.props.current_user_id;
-    const checkId = (pojo) => {
+    let checkId = (pojo) => {
       // debugger
-      return pojo.id === current_user_id;
+      return pojo === current_user_id;
     }
 
     let author = this.props.users[this.props.print.author] || {username: '', avatar: null};
@@ -249,14 +249,14 @@ class PrintShow extends React.Component {
 
           <RightPane1>
             <ButtonWrap>
-              { this.props.print.author.id === this.props.current_user_id ?
+              { this.props.print.author === this.props.current_user_id ?
                 <EditButton print={this.props.print} /> : 
                 null
               }
             </ButtonWrap>
             
             <ButtonWrap>
-              {!!this.props.likes.find(checkId) ?
+              {!!this.props.print.user_likes.find(checkId) ?
 
                 <Heart onClick={() => this.unLike()}>
                   <Heartalign>
@@ -267,7 +267,7 @@ class PrintShow extends React.Component {
                     </p>
                     </div>
                     </p>
-                  <LikeCount>Like <Count>{this.propslikes.length}</Count></LikeCount>
+                    <LikeCount>Like <Count>{this.props.likes ? this.props.likes.length : 0}</Count></LikeCount>
                   </Heartalign>
                 </Heart> 
                 
@@ -280,7 +280,7 @@ class PrintShow extends React.Component {
                     <i className="fas fa-heart"></i>
                     </div>
                     </p>
-                    <LikeCount>Like <Count>{this.props.likes.length}</Count></LikeCount>
+                    <LikeCount>Like <Count>{this.props.likes ? this.props.likes.length : 0}</Count></LikeCount>
                   </Heartalign>
                 </Heart>
               }
