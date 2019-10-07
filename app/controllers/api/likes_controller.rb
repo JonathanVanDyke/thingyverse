@@ -1,6 +1,11 @@
 class Api::LikesController < ApplicationController
-  before_action :find_print
+  # before_action :find_print
   before_action :find_like, only: [:destroy]
+
+  def index
+    # debugger
+    @likes = Like.all
+  end
 
   def create
     # debugger

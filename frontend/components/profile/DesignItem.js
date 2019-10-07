@@ -109,11 +109,11 @@ class DesignItem extends React.Component {
 
 
   like() {
-      debugger
+      // debugger
       let val = this.state.counter;
       let bool = this.state.bool;
       this.props.createLike(this.props.print).then((arg) => {
-        debugger
+        // debugger
         let printId = this.props.print.id
         // this.props.fetchPrints();
         this.props.fetchPrint(Number(printId));
@@ -127,7 +127,7 @@ class DesignItem extends React.Component {
       let val = this.state.counter;
       let bool = this.state.bool;
 
-      debugger
+      // debugger
       this.props.deleteLike(this.props.print).then(() => {
         // debugger
         let printId = this.props.print.id
@@ -145,7 +145,7 @@ class DesignItem extends React.Component {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     let currentUser = this.props.currentUser;
     const checkId = (pojo) => {
-      debugger
+      // debugger
       return pojo.user_id === currentUser.id;
     }
     return(

@@ -39,9 +39,11 @@ export default class PrintIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchPrints();
+    // debugger
   }
 
   render() {
+    // debugger
     let prints = this.props.prints.map((print, idx) => {
       // debugger
       return(

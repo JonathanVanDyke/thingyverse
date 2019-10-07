@@ -16,11 +16,13 @@ json.extract! user, :id, :username, :avatar, :bio
 # debugger
 
 #How to limit user info shared via association?
-json.designs do
-  json.array! user.prints.each do |print|
-    json.extract! print, :id, :title, :text, :likes, :user
-    json.photoUrl url_for(print.photo)
-  end
-end
+# json.designs do
+#   json.array! user.prints.each do |print|
+#     json.extract! print, :id, :title, :text, :likes, :user
+#     json.photoUrl url_for(print.photo)
+#   end
+# end
 
-json.liked_prints user.liked_prints
+json.designs user.print_ids
+
+json.liked_prints user.liked_print_ids

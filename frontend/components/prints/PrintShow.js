@@ -146,14 +146,15 @@ class PrintShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = { counter: this.props.likes};
-    this.like = this.like.bind(this);
-    this.unLike = this.unLike.bind(this);
+    // this.like = this.like.bind(this);
+    // this.unLike = this.unLike.bind(this);
   }
 
   componentDidMount() {
     let printId = this.props.match.params.printId
     this.props.fetchPrints();
     this.props.fetchPrint(Number(printId));
+    this.props.fetchLikes();
   }
 
 
@@ -164,20 +165,21 @@ class PrintShow extends React.Component {
       this.props.fetchPrints();
       this.props.fetchPrint(Number(printId));
       this.setState({ counter: val + 1 })
+      debugger
     })
   }
 
-  unLike() {
-    let val = this.state.counter;
-    // debugger
-    this.props.deleteLike(this.props.print).then(() => {
-      // debugger
-      let printId = this.props.match.params.printId
-      this.props.fetchPrints();
-      this.props.fetchPrint(Number(printId));
-      this.setState({ counter: val - 1 })
-    })
-  }
+  // unLike() {
+  //   let val = this.state.counter;
+  //   // debugger
+  //   this.props.deleteLike(this.props.print).then(() => {
+  //     // debugger
+  //     let printId = this.props.match.params.printId
+  //     this.props.fetchPrints();
+  //     this.props.fetchPrint(Number(printId));
+  //     this.setState({ counter: val - 1 })
+  //   })
+  // }
 
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
@@ -187,22 +189,23 @@ class PrintShow extends React.Component {
       return pojo.id === current_user_id;
     }
     // debugger
-    let user_likes = this.props.print.user_likes.map((user) => {
-      return(
-        <li
-          key={user.username}
-        >
-          <Avatar
-            src={
-              !!user.avatar ?
-                user.avatar :
-                defaultImg
-            }
-          />
-          {user.username}
-        </li>
-        )
-    })
+    //! DO I NEED TO FETCH USERS INSIDE MAP?
+    // let likes = this.props.likes.map((like) => {
+    //   return(
+    //     <li
+    //       key={user.username}
+    //     >
+    //       <Avatar
+    //         src={
+    //           !!user.avatar ?
+    //             user.avatar :
+    //             defaultImg
+    //         }
+    //       />
+    //       {user.username}
+    //     </li>
+    //     )
+    // })
     return (
       <PrintShowPage>
 
@@ -248,7 +251,7 @@ class PrintShow extends React.Component {
             </ButtonWrap>
             
             <ButtonWrap>
-              {!!this.props.print.user_likes.find(checkId) ?
+              {!!this.props.likes.find(checkId) ?
 
                 <Heart onClick={() => this.unLike()}>
                   <Heartalign>
@@ -259,7 +262,7 @@ class PrintShow extends React.Component {
                     </p>
                     </div>
                     </p>
-                  <LikeCount>Like <Count>{this.state.counter}</Count></LikeCount>
+                  <LikeCount>Like <Count>{this.propslikes.length}</Count></LikeCount>
                   </Heartalign>
                 </Heart> 
                 
@@ -272,7 +275,7 @@ class PrintShow extends React.Component {
                     <i className="fas fa-heart"></i>
                     </div>
                     </p>
-                  <LikeCount>Like <Count>{this.state.counter}</Count></LikeCount>
+                    <LikeCount>Like <Count>{this.props.likes.length}</Count></LikeCount>
                   </Heartalign>
                 </Heart>
               }
@@ -288,10 +291,10 @@ class PrintShow extends React.Component {
 
           <LeftPane2>
 
-            <Label>Liked By</Label>
+            {/* <Label>Liked By</Label>
             <ul>
               {user_likes}
-            </ul>
+            </ul> */}
 
           </LeftPane2>
 

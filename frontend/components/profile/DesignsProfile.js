@@ -221,7 +221,7 @@ class DesignsProfile extends React.Component {
     return (
       <ProfilePage>
         {/* top */}
-        {this.state.force}
+        {/* {this.state.force} */}
         <LeftPane>
 
           <AvatarCage>
