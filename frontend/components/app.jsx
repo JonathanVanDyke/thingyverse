@@ -37,7 +37,9 @@ const Page = styled.div({
   display: 'flex',
   justifyContent: 'center',
   background: '#f5f5f5',
-  // border: '1px solid red'
+  position: 'fixed',
+  Width: '100%',
+  bottom: 0,
 });
 
 const Nav = styled.nav({
@@ -66,6 +68,9 @@ const Footer = styled.footer`
   border-top: 1px solid #bebebe;
   align-self: flex-end;
   position: absolute;
+  position: fixed;
+  Width: 100%;
+  bottom: 0;
 `
 
 const Wrap = styled.div`
