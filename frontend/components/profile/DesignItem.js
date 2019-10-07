@@ -114,6 +114,8 @@ const Back = styled.img`
 
 const DesignItem = ({ print, viewUser, currentUser }) => {
   // debugger
+  let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
+
   const checkId = (pojo) => {
     // debugger
     return pojo.user_id === currentUser.id;
