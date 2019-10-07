@@ -153,23 +153,32 @@ class PrintShow extends React.Component {
 
   componentDidMount() {
     let printId = this.props.match.params.printId
-    this.props.fetchPrints();
+
+    // this.props.fetchPrints();
+
     this.props.fetchPrint(Number(printId)).then(()=> {
       this.props.fetchUser(this.props.print.author)
     })
-    this.props.fetchLikes();
+
+    this.props.fetchLikes().then(() => {
+      // debugger
+      this.props.likes.forEach((like) => {
+        // debugger
+        this.props.fetchUser(like.user_id)
+      })
+    })
   }
 
 
   like() {
     let val = this.state.counter;
     debugger
-    this.props.createLike(this.props.current_user_id, this.props.print.id).then((arg) => {
+    this.props.createLike(this.props.print.id).then((arg) => {
       let printId = this.props.match.params.printId
       this.props.fetchPrints();
       this.props.fetchPrint(Number(printId));
       this.setState({ counter: val + 1 })
-      debugger
+      // debugger
     })
   }
 
@@ -185,6 +194,11 @@ class PrintShow extends React.Component {
   //   })
   // }
 
+  getUserLikes () {
+    // debugger
+    this.props.fetchLike()
+  }
+
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     let current_user_id = this.props.current_user_id;
@@ -192,24 +206,11 @@ class PrintShow extends React.Component {
       // debugger
       return pojo.id === current_user_id;
     }
-    debugger
-    //! DO I NEED TO FETCH USERS INSIDE MAP?
-    // let likes = this.props.likes.map((like) => {
-    //   return(
-    //     <li
-    //       key={user.username}
-    //     >
-    //       <Avatar
-    //         src={
-    //           !!user.avatar ?
-    //             user.avatar :
-    //             defaultImg
-    //         }
-    //       />
-    //       {user.username}
-    //     </li>
-    //     )
-    // })
+
+    let author = this.props.users[this.props.print.author] || {username: '', avatar: null};
+ 
+    // debugger
+
     return (
       <PrintShowPage>
 
@@ -217,8 +218,8 @@ class PrintShow extends React.Component {
 
           <Avatar 
             src={
-              !!this.props.print.author.avatar ? 
-              this.props.print.author.avatar : 
+              !!author.avatar ? 
+              author.avatar : 
               defaultImg
             } 
           />
@@ -230,8 +231,7 @@ class PrintShow extends React.Component {
                 <Link
                   to={`/profile/${this.props.print.author.id}`}
                 >
-                  {/* {this.props.print.author.username || ""} */}
-                  {this.props.users[this.props.print.author] ? this.props.users[this.props.print.author].username : ""}
+                  {author.username}
                 </Link>
               </li> 
             </ul>
@@ -296,10 +296,10 @@ class PrintShow extends React.Component {
 
           <LeftPane2>
 
-            {/* <Label>Liked By</Label>
+            <Label>Liked By</Label>
             <ul>
-              {user_likes}
-            </ul> */}
+              {/* {} */}
+            </ul>
 
           </LeftPane2>
 

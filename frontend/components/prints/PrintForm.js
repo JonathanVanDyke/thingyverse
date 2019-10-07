@@ -161,12 +161,14 @@ class PrintForm extends React.Component {
 
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append('print[title]', this.state.title);
     formData.append('print[text]', this.state.text);
     formData.append('print[photo]', this.state.photoFile);
     this.props.processForm(formData).then((response) => {
+      debugger
       this.props.history.push(`/print/${response.print.id}`)
     });
   }

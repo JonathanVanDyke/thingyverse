@@ -28,7 +28,7 @@ export const fetchLikes = () => dispatch => {
   )
 };
 export const createLike = (printId, userId) => dispatch => {
-  debugger
+  // debugger
   return(
     LikeAPIUtil.createLike(printId, userId).then(
       print => (dispatch(receiveLike(print))))
