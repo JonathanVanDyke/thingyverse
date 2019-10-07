@@ -98,32 +98,39 @@ const Back = styled.img`
 class DesignItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { counter: this.props. likes }
+    this.state = { 
+      counter: this.props.print.likes.length,
+      bool: true
+    }
     this.like = this.like.bind(this);
     this.unLike = this.unLike.bind(this);
+    // debugger
   }
 
 
   like() {
       // debugger
       let val = this.state.counter;
+      let bool = this.state.bool;
       this.props.createLike(this.props.print).then((arg) => {
       // let printId = this.props.print.id
       // this.props.fetchPrints();
       // this.props.fetchPrint(Number(printId));
-      this.setState({ counter: val + 1 })
+      this.setState({ counter: val + 1, bool: !bool })
     })
   }
 
   unLike() {
       let val = this.state.counter;
+      let bool = this.state.bool;
+
       // debugger
       this.props.deleteLike(this.props.print).then(() => {
       // debugger
       // let printId = this.props.print.id
       // this.props.fetchPrints();
       // this.props.fetchPrint(Number(printId));
-      this.setState({ counter: val - 1 })
+      this.setState({ counter: val - 1, bool: !bool  })
     })
   }
 

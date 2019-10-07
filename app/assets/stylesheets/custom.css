@@ -185,7 +185,9 @@
   /* margin-left: 25px; */
   z-index: 2000;
   padding: 13px 107px 15px 24px;
-  border: 2px solid #ececec;
+  /* border: 2px solid #ececec; */
+  border: none;
+  border-right: 2px solid #ececec;
 }
 
 .fa-heart:hover {
@@ -196,7 +198,9 @@ p > .fa-heart {
   color: red;
   z-index: 2000;
   padding: 13px 107px 15px 24px;
-  border: 2px solid #ececec;
+  /* border: 2px solid #ececec; */
+  border: none;
+  border-right: 2px solid #ececec;
 }
 
 p > div > p > .fa-heart {

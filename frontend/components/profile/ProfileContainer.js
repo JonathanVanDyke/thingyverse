@@ -15,7 +15,8 @@ const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
   let userId = Number(ownProps.match.params.userId);
   return {
     currentUser: users[session.id] || {username: '', bio: '', avatar: '', prints: []},
-    viewUser: users[Number(userId)] || { username: '', bio: '', avatar: '', prints: [], designs: [] }
+    viewUser: users[Number(userId)] || { username: '', bio: '', avatar: '', prints: [], designs: [] },
+    parent: {parent: 0}
   };
 };
 
