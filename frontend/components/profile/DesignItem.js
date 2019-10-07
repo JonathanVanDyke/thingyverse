@@ -104,7 +104,7 @@ class DesignItem extends React.Component {
     }
     this.like = this.like.bind(this);
     this.unLike = this.unLike.bind(this);
-    debugger
+    // debugger
   }
 
 

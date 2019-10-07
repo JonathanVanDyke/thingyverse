@@ -178,11 +178,11 @@ const About = styled.h1`
   font-weight: bold;
 `
 
-class Profile extends React.Component {
+class DesignsProfile extends React.Component {
   constructor(props) {
     super(props);
     this.viewUser = { username: '', avatar: '', id: null, bio: '' }
-    this.state = {select: 1}
+    this.state = { select: 1 }
   }
 
   componentDidMount() {
@@ -195,7 +195,7 @@ class Profile extends React.Component {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     this.viewUser = this.props.viewUser || this.viewUser
     // debugger
-    
+
     let designs = this.viewUser.designs.map((print) => {
       // debugger
       return (
@@ -217,7 +217,7 @@ class Profile extends React.Component {
 
           <AvatarCage>
             <AvatarBox>
-              <Banner/>
+              <Banner />
               <Avatar src={!!this.viewUser.avatar ?
                 this.viewUser.avatar :
                 defaultImg}></Avatar>
@@ -228,29 +228,29 @@ class Profile extends React.Component {
               {this.viewUser.username}
             </Username>
             <EditButtonBox>
-              { this.viewUser.id === this.props.currentUser.id ? <EditButton>edit profile</EditButton> : null }
+              {this.viewUser.id === this.props.currentUser.id ? <EditButton>edit profile</EditButton> : null}
             </EditButtonBox>
           </AvatarCage>
 
           <BlockNav>
-            
+
           </BlockNav>
 
         </LeftPane>
 
         <RightPane>
           <ProfileNav>
-            <Link 
+            <Link
               to={`/profile/${this.viewUser.id}`}
               style={{ textDecoration: 'none' }}
-              >
+            >
               <About
-                onClick={() => this.setState({select: 1})}
+                onClick={() => this.setState({ select: 1 })}
               >
-            ABOUT
+                ABOUT
               </About>
             </Link>
-            <Link 
+            <Link
               to={`/profile/${this.viewUser.id}/prints`}
               style={{ textDecoration: 'none' }}
             >
@@ -261,25 +261,27 @@ class Profile extends React.Component {
               </About>
             </Link>
           </ProfileNav>
-          { 
-            this.state.select === 1 ? 
-            <BioBox>
-              <BioHeader>about you</BioHeader>
-              <Bio>
-                {!!this.viewUser.bio ? this.viewUser.bio : ''}
-              </Bio>
-            </BioBox> :
-            null
+          {/* {
+            this.state.select === 1 ?
+              <BioBox>
+                <BioHeader>about you</BioHeader>
+                <Bio>
+                  {!!this.viewUser.bio ? this.viewUser.bio : ''}
+                </Bio>
+              </BioBox> :
+              null
           }
-          { 
-            this.state.select === 2 ? 
+          {
+            this.state.select === 2 ?
               <DesignGrid>
                 {designs}
               </DesignGrid>
-             :
-            null
-          }
-
+              :
+              null
+          } */}
+          <DesignGrid>
+            {designs}
+          </DesignGrid>
         </RightPane>
 
       </ProfilePage>
@@ -287,4 +289,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile
+export default DesignsProfile

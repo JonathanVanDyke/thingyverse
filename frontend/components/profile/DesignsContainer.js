@@ -4,7 +4,7 @@ import { fetchPrint, fetchPrints, createLike, deleteLike } from './../../actions
 import DesignItem from './DesignItem';
 
 const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
-  debugger
+  // debugger
   let userId = Number(ownProps.match.params.userId);
   return {
     currentUser: users[session.id] || { username: '', bio: '', avatar: '', prints: [] },

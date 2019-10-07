@@ -18,6 +18,7 @@ import ProfileContainer from './profile/ProfileContainer';
 import PrintShowContainer from './prints/PrintShowContainer';
 import PrintFormContainer from './prints/PrintFormContainer';
 import EditPrintContainer from './prints/EditPrintContainer';
+import DesignsProfileContainer from './profile/DesignsProfileContainer';
 
 const Content = styled.div({
   position: 'absolute',
@@ -131,7 +132,7 @@ const App = () => (
           <AuthRoute exact path="/signup" component={SignUpFormContainer} />
           <AuthRoute exact path="/logged-in" component={SignUpFormContainer} />
           <Route exact path="/profile/:userId" component={ProfileContainer} />
-          <Route exact path="/profile/:userId/prints" component={ProfileContainer} />
+          <Route exact path="/profile/:userId/prints" component={DesignsProfileContainer} />
           <Route exact path="/print/:printId" component={PrintShowContainer} />
           <Route exact path="/create" component={PrintFormContainer} />
           <Route exact path="/edit/:printId" component={EditPrintContainer} />
