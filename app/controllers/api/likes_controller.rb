@@ -8,7 +8,7 @@ class Api::LikesController < ApplicationController
   end
 
   def create
-    debugger
+    # debugger
     @like = Like.create(user_id: current_user.id, print_id: @print.id)
     if @like
       render :show
@@ -30,7 +30,7 @@ class Api::LikesController < ApplicationController
   private
 
   def find_print
-    debugger
+    # debugger
     @print = Print.find(params[:printId])
   end
 

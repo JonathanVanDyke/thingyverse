@@ -8,7 +8,7 @@ export const fetchLikes = () => {
 }
 
 export const createLike = (printId, userId) => {
-  debugger
+  // debugger
   return(
     $.ajax({
       method: 'POST',

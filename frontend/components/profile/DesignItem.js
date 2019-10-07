@@ -139,26 +139,31 @@ class DesignItem extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.props.fetchPrint(this.props.print)
+    // this.props.receiveUser(this.props.userId)
+  }
+
 
   render() {
     // debugger
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     let currentUser = this.props.currentUser;
-    const checkId = (pojo) => {
-      // debugger
-      return pojo.user_id === currentUser.id;
-    }
+    // const checkId = (pojo) => {
+    //   return pojo.user_id === currentUser.id;
+    // }
+    // debugger
     return(
       <Top>
-        <Link to={`/print/${this.props.print.id}`}>
+        <Link to={`/print/${this.props.prints[this.props.print].id}`}>
 
           <Head>
-            <Avatar src={!!this.props.print.user.avatar ?
-              this.props.print.user.avatar :
+            <Avatar src={!!this.props.users[this.props.userId].avatar ?
+              this.props.users[this.props.userId].avatar :
               defaultImg}></Avatar>
             <TitleWrap>
-              <Title>{print.title}</Title>
-              <Byline>By: {this.props.print.user.username}</Byline>
+              <Title>{this.props.prints[this.props.print] ? this.props.prints[this.props.print].title : ''}</Title>
+              {/* <Byline>By: {this.props.prints[this.props.print] ? this.props.prints[this.props.print].user.username : ''}</Byline> */}
             </TitleWrap>
           </Head>
 
@@ -168,9 +173,9 @@ class DesignItem extends React.Component {
 
           
 
-          <Back src={this.props.print.photoUrl}/>
+          <Back src={this.props.prints[this.props.print] ? this.props.prints[this.props.print].photoUrl : ''}/>
         </Link>
-        <Ribbon>
+        {/* <Ribbon>
           { !!this.props.print.likes.find(checkId) ?
             <LikeButton >
               <p>
@@ -183,7 +188,7 @@ class DesignItem extends React.Component {
             </LikeButton>
           }
           <Likes>{this.props.print.likes.length}</Likes>
-        </Ribbon>
+        </Ribbon> */}
       </Top>
     )
   }

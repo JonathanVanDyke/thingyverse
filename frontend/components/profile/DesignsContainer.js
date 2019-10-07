@@ -1,16 +1,19 @@
 import { connect } from 'react-redux';
 import { createLike, deleteLike } from './../../actions/like_actions';
 import { fetchPrint, fetchPrints } from './../../actions/print_actions';
-
+import { fetchUser } from './../../actions/session_actions';
 import DesignItem from './DesignItem';
 
-const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   // debugger
   let userId = Number(ownProps.match.params.userId);
   return {
-    currentUser: users[session.id] || { username: '', bio: '', avatar: '', prints: [] },
-    viewUser: users[userId],
-    likes: ownProps.print.likes.length
+    currentUser: state.entities.users[state.session.id] || { username: '', bio: '', avatar: '', prints: [] },
+    viewUser: state.entities.users[userId],
+    users: state.entities.users,
+    prints: state.entities.prints,
+    userId: userId,
+    likes: state.entities.likes.filter((like) => { return like.print_id === ownProps.print }),
   };
 };
 

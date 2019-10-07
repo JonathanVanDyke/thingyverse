@@ -172,12 +172,12 @@ class PrintShow extends React.Component {
 
   like() {
     let val = this.state.counter;
-    debugger
+    // debugger
     this.props.createLike(this.props.print.id).then((arg) => {
       let printId = this.props.match.params.printId
       this.props.fetchPrints();
       this.props.fetchPrint(Number(printId));
-      this.setState({ counter: val + 1 })
+      // this.setState({ counter: val })
       // debugger
     })
   }
