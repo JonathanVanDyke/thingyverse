@@ -50,6 +50,6 @@ export const logout = () => dispatch => (
 );
 
 export const fetchUser = (id) => dispatch => {
-  // debugger
+  debugger
   return APIUtil.fetchUser(id).then((user) => dispatch(receiveUser(user)))
 }

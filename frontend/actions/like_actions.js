@@ -21,16 +21,16 @@ export const removeLike = (print) => ({
 
 
 export const fetchLikes = () => dispatch => {
-  debugger
+  // debugger
   return(
     LikeAPIUtil.fetchLikes().then(
       likes => (dispatch(receiveLikes(likes))))
   )
 };
-export const createLike = print => dispatch => {
-  // debugger
+export const createLike = (printId, userId) => dispatch => {
+  debugger
   return(
-    LikeAPIUtil.createLike(print).then(
+    LikeAPIUtil.createLike(printId, userId).then(
       print => (dispatch(receiveLike(print))))
   )
 };

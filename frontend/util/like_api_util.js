@@ -7,13 +7,16 @@ export const fetchLikes = () => {
   )
 }
 
-export const createLike = print => (
-  $.ajax({
-    method: 'POST',
-    url: `/api/prints/${ print.id }/likes`,
-    data: { print }
-  })
-);
+export const createLike = (printId, userId) => {
+  debugger
+  return(
+    $.ajax({
+      method: 'POST',
+      url: `/api/likes`,
+      data: { printId, userId }
+    })
+  )
+};
 
 export const deleteLike = (print) => {
   // debugger

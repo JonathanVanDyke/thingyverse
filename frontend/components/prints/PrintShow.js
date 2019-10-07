@@ -146,21 +146,25 @@ class PrintShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = { counter: this.props.likes};
-    // this.like = this.like.bind(this);
+    this.author = null;
+    this.like = this.like.bind(this);
     // this.unLike = this.unLike.bind(this);
   }
 
   componentDidMount() {
     let printId = this.props.match.params.printId
     this.props.fetchPrints();
-    this.props.fetchPrint(Number(printId));
+    this.props.fetchPrint(Number(printId)).then(()=> {
+      this.props.fetchUser(this.props.print.author)
+    })
     this.props.fetchLikes();
   }
 
 
   like() {
     let val = this.state.counter;
-    this.props.createLike(this.props.print).then((arg) => {
+    debugger
+    this.props.createLike(this.props.current_user_id, this.props.print.id).then((arg) => {
       let printId = this.props.match.params.printId
       this.props.fetchPrints();
       this.props.fetchPrint(Number(printId));
@@ -183,12 +187,12 @@ class PrintShow extends React.Component {
 
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
-    let current_user_id = this.props.current_user.id;
+    let current_user_id = this.props.current_user_id;
     const checkId = (pojo) => {
       // debugger
       return pojo.id === current_user_id;
     }
-    // debugger
+    debugger
     //! DO I NEED TO FETCH USERS INSIDE MAP?
     // let likes = this.props.likes.map((like) => {
     //   return(
@@ -226,7 +230,8 @@ class PrintShow extends React.Component {
                 <Link
                   to={`/profile/${this.props.print.author.id}`}
                 >
-                  {this.props.print.author.username || ""}
+                  {/* {this.props.print.author.username || ""} */}
+                  {this.props.users[this.props.print.author] ? this.props.users[this.props.print.author].username : ""}
                 </Link>
               </li> 
             </ul>
@@ -244,7 +249,7 @@ class PrintShow extends React.Component {
 
           <RightPane1>
             <ButtonWrap>
-              { this.props.print.author.id === this.props.current_user.id ?
+              { this.props.print.author.id === this.props.current_user_id ?
                 <EditButton print={this.props.print} /> : 
                 null
               }
