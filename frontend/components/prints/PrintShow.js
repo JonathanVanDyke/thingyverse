@@ -49,7 +49,53 @@ const Label = styled.h1`
 //RP1
 const RightPane1 = styled.div`
   width: 296px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 600px;
+  // 
+  
 `
+
+const ButtonWrap = styled.div`
+
+`
+
+const Heart = styled.button`
+  // padding-right: 62px;
+  // padding-top: 10px;
+  // padding-bottom: 10px;
+  background: white;
+  border-bottom: 1px solid #bebebe;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none;
+  padding: 0;
+`
+
+const Heartalign = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50px;
+  color: #666666;
+`
+
+const LikeCount = styled.p`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  font-size: 16px;
+  font-family: Helvetica,sans-serif;
+`
+
+const Count = styled.span`
+  margin-left: 172px;
+  font-size: 20px;
+  color: #666666
+`
+
 //Section 2
 const Section2 = styled.section`
   display: flex;
@@ -194,28 +240,47 @@ class PrintShow extends React.Component {
           </LeftPane1>
 
           <RightPane1>
+            <ButtonWrap>
+              { this.props.print.author.id === this.props.current_user.id ?
+                <EditButton print={this.props.print} /> : 
+                null
+              }
+            </ButtonWrap>
+            
+            <ButtonWrap>
+              {!!this.props.print.user_likes.find(checkId) ?
 
-            { this.props.print.author.id === this.props.current_user.id ?
-              <EditButton print={this.props.print} /> : 
-              null
-            }
-            {!!this.props.print.user_likes.find(checkId) ?
-              <button
-                onClick={() => this.unLike()}
-              >
-                UnLike
-            </button> :
-              <button
-                onClick={() => this.like()}
-              >
-                Like
-            </button>
-            }
-
+                <Heart onClick={() => this.unLike()}>
+                  <Heartalign>
+                    <p>
+                    <div>
+                    <p>
+                      <i className="fas fa-heart"></i>
+                    </p>
+                    </div>
+                    </p>
+                  <LikeCount>Like <Count>{this.state.counter}</Count></LikeCount>
+                  </Heartalign>
+                </Heart> 
+                
+                :
+                
+                <Heart onClick={() => this.like()}>
+                  <Heartalign>
+                    <p>
+                    <div>
+                    <i className="fas fa-heart"></i>
+                    </div>
+                    </p>
+                  <LikeCount>Like <Count>{this.state.counter}</Count></LikeCount>
+                  </Heartalign>
+                </Heart>
+              }
+            </ButtonWrap>
 
         
 
-            <p>Count:{this.state.counter}</p>
+            
           </RightPane1>
         </Section1>
 

@@ -20,6 +20,7 @@ const InputButton = styled.button`
   :hover {
     box-shadow: 10px 5px 18px #888888;
   }
+  margin-bottom: 25px;
 `
 
 const Txt = styled.div`
