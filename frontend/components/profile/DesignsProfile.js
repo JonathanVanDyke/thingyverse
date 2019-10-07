@@ -182,7 +182,14 @@ class DesignsProfile extends React.Component {
   constructor(props) {
     super(props);
     this.viewUser = { username: '', avatar: '', id: null, bio: '' }
-    this.state = { select: 1 }
+    this.state = { force: 0 }
+    // debugger
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    // debugger
+    this.setState({force: 1})
   }
 
   componentDidMount() {
@@ -195,6 +202,7 @@ class DesignsProfile extends React.Component {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     this.viewUser = this.props.viewUser || this.viewUser
     // debugger
+    // this.toggle = this.props.toggle();
 
     let designs = this.viewUser.designs.map((print) => {
       // debugger
@@ -203,6 +211,7 @@ class DesignsProfile extends React.Component {
           key={print.id}
           print={print}
           match={this.props.match}
+          toggle={this.toggle}
         >
         </DesignsContainer>
       )
@@ -212,7 +221,7 @@ class DesignsProfile extends React.Component {
     return (
       <ProfilePage>
         {/* top */}
-
+        {this.state.force}
         <LeftPane>
 
           <AvatarCage>
