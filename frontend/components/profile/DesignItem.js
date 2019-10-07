@@ -140,8 +140,10 @@ class DesignItem extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPrint(this.props.print)
-    // this.props.receiveUser(this.props.userId)
+    // debugger
+    this.props.fetchPrint(this.props.printId)
+    // debugger
+    this.props.receiveUser(this.props.userId)
   }
 
 
@@ -149,22 +151,29 @@ class DesignItem extends React.Component {
     // debugger
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     let currentUser = this.props.currentUser;
-    // const checkId = (pojo) => {
-    //   return pojo.user_id === currentUser.id;
-    // }
+    const checkId = (pojo) => {
+      return pojo.user_id === currentUser.id;
+    }
     // debugger
     return(
       <Top>
-        <Link to={`/print/${this.props.prints[this.props.print].id}`}>
+        <Link to={`/print/${this.props.printId}`}>
 
           <Head>
-            <Avatar src={!!this.props.users[this.props.userId].avatar ?
-              this.props.users[this.props.userId].avatar :
+
+            <Avatar src={!!this.props.viewUser ?
+              this.props.viewUser.avatar :
               defaultImg}></Avatar>
+
             <TitleWrap>
-              <Title>{this.props.prints[this.props.print] ? this.props.prints[this.props.print].title : ''}</Title>
-              {/* <Byline>By: {this.props.prints[this.props.print] ? this.props.prints[this.props.print].user.username : ''}</Byline> */}
+
+              <Title>{this.props.print ? this.props.print.title : ''}</Title>
+              <Byline>By: {!!this.props.viewUser ?
+                this.props.viewUser.username :
+                ''}</Byline>
+
             </TitleWrap>
+
           </Head>
 
     
@@ -173,10 +182,10 @@ class DesignItem extends React.Component {
 
           
 
-          <Back src={this.props.prints[this.props.print] ? this.props.prints[this.props.print].photoUrl : ''}/>
+          <Back src={this.props.print ? this.props.print.photoUrl : ''}/>
         </Link>
-        {/* <Ribbon>
-          { !!this.props.print.likes.find(checkId) ?
+        <Ribbon>
+          { !!this.props.print.user_likes.find(checkId) ?
             <LikeButton >
               <p>
                 <i onClick={() => this.unLike()} className="fas fa-heart"></i> 
@@ -187,8 +196,8 @@ class DesignItem extends React.Component {
               <i onClick={() => this.like()} className="fas fa-heart"></i>
             </LikeButton>
           }
-          <Likes>{this.props.print.likes.length}</Likes>
-        </Ribbon> */}
+          <Likes>{this.props.print.user_likes.length}</Likes>
+        </Ribbon>
       </Top>
     )
   }

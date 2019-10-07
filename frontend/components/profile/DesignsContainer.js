@@ -11,7 +11,9 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.entities.users[state.session.id] || { username: '', bio: '', avatar: '', prints: [] },
     viewUser: state.entities.users[userId],
     users: state.entities.users,
-    prints: state.entities.prints,
+    // prints: state.entities.prints,
+    print: state.entities.prints[ownProps.print] || {id: null, title: '', photoUrl: '', user_likes: []},
+    printId: ownProps.print,
     userId: userId,
     likes: state.entities.likes.filter((like) => { return like.print_id === ownProps.print }),
   };
