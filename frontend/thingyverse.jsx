@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Root from './components/root';
 import configureStore from './store/store';
-import { fetchCollection, fetchCollections, createCollection, updateCollection } from './actions/collection_actions'
+import { fetchCollection, fetchCollections, createCollection, updateCollection, deleteCollection } from './actions/collection_actions'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchCollections = fetchCollections
   window.createCollection = createCollection
   window.updateCollection = updateCollection
+  window.deleteCollection = deleteCollection
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });
