@@ -181,6 +181,19 @@
             transform-origin :100% 100%;
 }
 
+@keyframes jump {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes shadow {
+  0% { filter: drop-shadow(0px 0px 1px grey); }
+  25% { filter: drop-shadow(0px 0px 2px grey); }
+  50% { filter: drop-shadow(5px 15px 8px grey); }
+  100% { filter: drop-shadow(0px 0px 1px grey); }
+}
+
 .fa-heart {
   /* margin-left: 25px; */
   z-index: 2000;
@@ -192,7 +205,9 @@
 
 .fa-heart:hover {
   color: red;
+  animation: jump 1s ease-in 2, shadow 1s ease-in 2;
 }
+
 
 p > .fa-heart {
   color: red;
@@ -202,6 +217,15 @@ p > .fa-heart {
   border: none;
   border-right: 2px solid #ececec;
 }
+p > .fa-heart:hover {
+  color: red;
+  z-index: 2000;
+  padding: 13px 107px 15px 24px;
+  /* border: 2px solid #ececec; */
+  border: none;
+  border-right: 2px solid #ececec;
+  animation: jump 1s ease-in 2, shadow 1s ease-in 2;
+}
 
 .one > .fa-heart {
   /* position: absolute; */
@@ -209,6 +233,16 @@ p > .fa-heart {
   margin-left: -15px;
   padding: 17px 259px 20px 35px;
   border: none;
+  /* animation: jump 1s ease-in 2, shadow 1s ease-in 2; */
+}
+
+.one > .fa-heart:hover {
+  /* position: absolute; */
+  color: red;
+  margin-left: -15px;
+  padding: 17px 259px 20px 35px;
+  border: none;
+  animation: jump 1s ease-in 2, shadow 1s ease-in 2;
 }
 
 .two > .fa-heart { 
@@ -216,20 +250,31 @@ p > .fa-heart {
   margin-left: -15px;
   padding: 17px 259px 20px 35px;
   border: none;
+  /* animation: jump 1s ease-in 2, shadow 1s ease-in 2; */
 }
 
-/* @keyframes slideInFromLeft {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-} */
+.two > .fa-heart:hover { 
+  /* position: absolute; */
+  margin-left: -15px;
+  padding: 17px 259px 20px 35px;
+  border: none;
+  animation: jump 1s ease-in 2, shadow 1s ease-in 2;
+}
+
+/* @keyframes slideInFromLeft { */
+  /* 0% { */
+    /* opacity: 0; */
+    /* transform: scale(1.02); */
+  /* } */
+  /* 100% { */
+    /* opacity: 1; */
+    /* transform: scale(1); */
+  /* } */
+/* }  */
 
 /* div {   */
   /* This section calls the slideInFromLeft animation we defined above */
-  /* animation: .75s ease-out 0s 1 slideInFromLeft; */
+  /* animation: .75s ease-in 1s 1 slideInFromLeft; */
   
   /* background: #333; */
   /* padding: 30px; */
