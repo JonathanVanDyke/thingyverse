@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
+import LikedByAvatars from './LikedByAvatars';
 
 const PrintShowPage = styled.div`
   display: flex;
@@ -157,16 +158,17 @@ class PrintShow extends React.Component {
 
     this.props.fetchPrint(Number(printId)).then(()=> {
       this.props.fetchUser(this.props.print.author)
+    }).then(() => {
+      // this.props.print.user_likes.map
     })
 
-    this.props.fetchLikes().then(() => {
-      // debugger
-      this.props.likes.forEach((like) => {
-        // debugger
-        this.props.fetchUser(like.user_id)
-      })
-    })
+    this.props.fetchLikes();
+    
   }
+
+  // componentDidUpdate() {
+  //   this.avatargen();
+  // }
 
 
   like() {
@@ -184,6 +186,17 @@ class PrintShow extends React.Component {
     this.props.deleteLike(pickedLike)
   }
 
+  avatargen() {
+    let liked_avatars = this.props.print.user_like_profs.map((user) => {
+      return (
+        <LikedByAvatars
+          user={user}
+        />
+      )
+    })
+    return liked_avatars;
+  }
+
 
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
@@ -194,8 +207,15 @@ class PrintShow extends React.Component {
     }
 
     let author = this.props.users[this.props.print.author] || {username: '', avatar: null};
- 
     // debugger
+    // let liked_avatars = this.props.print.user_like_profs.map((user) => {
+    //   return(
+    //     <LikedByAvatars
+    //       user={user}
+    //     />
+    //   )
+    // })
+  
 
     return (
       <PrintShowPage>
@@ -282,7 +302,8 @@ class PrintShow extends React.Component {
 
             <Label>Liked By</Label>
             <ul>
-              {/* {} */}
+              {/* {liked_avatars} */}
+              {this.avatargen()}
             </ul>
 
           </LeftPane2>

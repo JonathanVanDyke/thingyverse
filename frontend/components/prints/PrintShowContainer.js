@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   // debugger
   return({
     current_user_id: state.session.id || null,
-    print: state.entities.prints[printId] || {title: '', photoUrl: '',user_likes: [] , author: {username: '', id: null, avatar: ''}},
+    print: state.entities.prints[printId] || { title: '', photoUrl: '', user_likes: [], user_like_profs: [], author: { username: '', id: null, avatar: ''}},
     likes: state.entities.likes ? state.entities.likes.filter((like) => {return like.print_id === printId}) : [],
     users: state.entities.users || {},
     // likers: state.entities.users

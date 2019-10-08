@@ -107,25 +107,9 @@ class DesignItem extends React.Component {
     // debugger
   }
 
-
   like() {
     this.props.createLike(this.props.print.id)
   }
-
-  // like() {
-  //     // debugger
-  //     let val = this.state.counter;
-  //     let bool = this.state.bool;
-  //     this.props.createLike(this.props.print).then((arg) => {
-  //       // debugger
-  //       let printId = this.props.print.id
-  //       // this.props.fetchPrints();
-  //       this.props.fetchPrint(Number(printId));
-  //       this.setState({ counter: val + 1, bool: !bool })
-  //       this.props.toggle()
-  //       // this.forceUpdate();
-  //   })
-  // }
 
   unLike() {
       let val = this.state.counter;

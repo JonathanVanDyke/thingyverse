@@ -31,16 +31,14 @@ const PrintsReducer = (oldState = {}, action) => {
     case RECEIVE_LIKE:
       // debugger
       newState[action.like.printId].user_likes.push(action.like.userId);
+      // newState[action.like.printId].user_like_profs.push(action.like.userId);
       return newState;
     case REMOVE_LIKE:
       //print means like here... fix...~!
       // debugger
       for (let i = 0; i < newState[action.print.printId].user_likes.length; i++) {
-        // debugger
         if (newState[action.print.printId].user_likes[i] === action.print.userId) {
-          // debugger
           newState[action.print.printId].user_likes.splice(i, 1)
-          // debugger
         }
       }
       return newState;
