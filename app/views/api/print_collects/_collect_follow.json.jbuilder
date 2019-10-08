@@ -1,0 +1,1 @@
+json.extract! print_collect, :id, :collection_id, :print_id
