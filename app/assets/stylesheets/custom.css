@@ -217,3 +217,21 @@ p > .fa-heart {
   padding: 17px 259px 20px 35px;
   border: none;
 }
+
+/* @keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+} */
+
+/* div {   */
+  /* This section calls the slideInFromLeft animation we defined above */
+  /* animation: .75s ease-out 0s 1 slideInFromLeft; */
+  
+  /* background: #333; */
+  /* padding: 30px; */
+/* } */
+

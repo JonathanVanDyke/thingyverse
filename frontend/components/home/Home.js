@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// import Slideshow from './Slideshow';
+import Slideshow from './Slideshow';
 import PrintIndexContainer from '../prints/PrintIndexContainer'
 import SlideshowV2 from './Slideshow_rev2';
 
@@ -47,6 +47,7 @@ const Feed = styled.section`
 const Featured = styled.section`
   margin-top: 18px;
   height: 365px;
+  // height: 1605px;
   width: 630px;
   // border: 1px solid #bebebe;
   overflow: hidden;
@@ -95,11 +96,11 @@ class Home extends React.Component {
     // debugger
     return (
       <>
-        {/* <div className={s.container}>
+        <div className={s.container}>
           <div className={s.main}>
             <Slideshow slides={this.slides} />
           </div>
-        </div> */}
+        </div>
         <div >
           <div >
             <SlideshowV2 slides={this.slides} />

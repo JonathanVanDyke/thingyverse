@@ -15,6 +15,7 @@ const ProfilePage = styled.div`
   // background-color: red;
   // padding: 10px;
   margin-top: 51px;
+  margin-bottom: 100px;
 `
 
 //LEFT

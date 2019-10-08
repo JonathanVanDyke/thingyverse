@@ -26,20 +26,20 @@ const Content = styled.div({
   flexDirection: 'column',
   alignContent: 'center',
   width: 971,
-  height: '100vh',
+  // height: '100vh',
   background: '#f5f5f5',
   // border: '1px solid red'
 });
 
 const Page = styled.div({
-  height: '100%',
-  width: '100%',
-  position: 'absolute',
+  // height: '100%',
+  // width: '100%',
+  // position: 'absolute',
   display: 'flex',
   justifyContent: 'center',
-  background: '#f5f5f5',
-  position: 'fixed',
-  Width: '100%',
+  // background: '#f5f5f5',
+  // position: 'fixed',
+  // Width: '100%',
   bottom: 0,
 });
 
@@ -63,7 +63,7 @@ const Footer = styled.footer`
   // margin-top: 30px;
   width: 100%;
   Height: 70px;
-  z-index: 10;
+  z-index: 10000;
   // background-color: black;
   background-image: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
   border-top: 1px solid #bebebe;
