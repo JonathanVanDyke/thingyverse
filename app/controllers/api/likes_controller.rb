@@ -37,7 +37,7 @@ class Api::LikesController < ApplicationController
   def find_like
     # debugger
     # @like = @print.likes.find(params[:id])
-    @like = @print.likes.find_by(user_id: current_user.id)
+    @like = Like.find(params[:id])
   end
 
 end

@@ -18,12 +18,12 @@ export const createLike = (printId, userId) => {
   )
 };
 
-export const deleteLike = (print) => {
+export const deleteLike = (like) => {
   // debugger
   return(
     $.ajax({
       method: 'DELETE',
-      url: `/api/prints/${print.id}/likes`
+      url: `/api/likes/${like.id}`
     })
   )
 };

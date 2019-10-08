@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createLike, deleteLike } from './../../actions/like_actions';
+import { createLike, deleteLike, fetchLikes } from './../../actions/like_actions';
 import { fetchPrint, fetchPrints } from './../../actions/print_actions';
 import { fetchUser } from './../../actions/session_actions';
 import DesignItem from './DesignItem';
@@ -23,6 +23,7 @@ const mapDispatchToProps = dispatch => ({
   receiveUser: (id) => dispatch(fetchUser(id)),
   createLike: (print) => dispatch(createLike(print)),
   deleteLike: (print) => dispatch(deleteLike(print)),
+  fetchLikes: () => dispatch(fetchLikes()),
   fetchPrint: id => dispatch(fetchPrint(id)),
   fetchPrints: () => dispatch(fetchPrints()),
 });

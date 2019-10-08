@@ -1,2 +1,2 @@
 # debugger
-json.extract! like, :user_id, :print_id
+json.extract! like, :id, :user_id, :print_id

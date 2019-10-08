@@ -148,13 +148,12 @@ class PrintShow extends React.Component {
     this.state = { counter: this.props.likes};
     this.author = null;
     this.like = this.like.bind(this);
-    // this.unLike = this.unLike.bind(this);
+    this.unLike = this.unLike.bind(this);
+    this.toggle = false;
   }
 
   componentDidMount() {
     let printId = this.props.match.params.printId
-
-    // this.props.fetchPrints();
 
     this.props.fetchPrint(Number(printId)).then(()=> {
       this.props.fetchUser(this.props.print.author)
@@ -171,33 +170,20 @@ class PrintShow extends React.Component {
 
 
   like() {
-    let val = this.state.counter;
-    // debugger
-    this.props.createLike(this.props.print.id).then((arg) => {
-      let printId = this.props.match.params.printId
-      this.props.fetchPrints();
-      this.props.fetchPrint(Number(printId));
-      // this.setState({ counter: val })
-      // debugger
-    })
+    this.props.createLike(this.props.print.id)
   }
 
-  // unLike() {
-  //   let val = this.state.counter;
-  //   debugger
-  //   this.props.deleteLike(this.props.print).then(() => {
-  //     // debugger
-  //     // let printId = this.props.match.params.printId
-  //     // this.props.fetchPrints();
-  //     // this.props.fetchPrint(Number(printId));
-  //     // this.setState({ counter: val - 1 })
-  //   })
-  // }
+  unLike() {
+    let val = this.state.counter;
+    // let current_user_id = this.props.current_user_id;
+    let pickedLike = this.props.likes.find((like) => {
+      return like.user_id === this.props.current_user_id && like.print_id === this.props.print.id
+    })
 
-  // getUserLikes () {
-  //   // debugger
-  //   this.props.fetchLikes()
-  // }
+    // debugger
+    this.props.deleteLike(pickedLike)
+  }
+
 
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
@@ -229,7 +215,7 @@ class PrintShow extends React.Component {
               <li>{this.props.print.title}</li> 
               <li>By: 
                 <Link
-                  to={`/profile/${this.props.print.author.id}`}
+                  to={`/profile/${author.id}`}
                 >
                   {author.username}
                 </Link>
@@ -256,17 +242,15 @@ class PrintShow extends React.Component {
             </ButtonWrap>
             
             <ButtonWrap>
-              {!!this.props.print.user_likes.find(checkId) ?
+              {!!this.props.print.user_likes.find(checkId) || this.toggle ?
 
                 <Heart onClick={() => this.unLike()}>
                   <Heartalign>
-                    <p>
-                    <div>
-                    <p>
+
+                    <div className='one'>
                       <i className="fas fa-heart"></i>
-                    </p>
                     </div>
-                    </p>
+
                     <LikeCount>Like <Count>{this.props.likes ? this.props.likes.length : 0}</Count></LikeCount>
                   </Heartalign>
                 </Heart> 
@@ -275,11 +259,11 @@ class PrintShow extends React.Component {
                 
                 <Heart onClick={() => this.like()}>
                   <Heartalign>
-                    <p>
-                    <div>
+
+                    <div className='two'>
                     <i className="fas fa-heart"></i>
                     </div>
-                    </p>
+
                     <LikeCount>Like <Count>{this.props.likes ? this.props.likes.length : 0}</Count></LikeCount>
                   </Heartalign>
                 </Heart>
