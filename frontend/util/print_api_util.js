@@ -9,6 +9,7 @@ export const fetchPrints = () => {
 };
 
 export const fetchPrint = (id) => {
+  // debugger
   return (
     $.ajax({
       method: 'GET',

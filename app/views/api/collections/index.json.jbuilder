@@ -5,6 +5,8 @@
 @collections.each do |collection|
   json.set! collection.id do
     json.extract! collection, :id, :author_id, :title
+    json.print_collects collection.print_collects
+    json.collect_follows collection.collect_follows
   end
 end
 

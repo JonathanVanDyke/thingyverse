@@ -19,6 +19,7 @@ import PrintShowContainer from './prints/PrintShowContainer';
 import PrintFormContainer from './prints/PrintFormContainer';
 import EditPrintContainer from './prints/EditPrintContainer';
 import DesignsProfileContainer from './profile/DesignsProfileContainer';
+import ShowCollectionContainer from './collections/ShowCollectionContainer'
 
 const Content = styled.div({
   position: 'absolute',
@@ -136,6 +137,7 @@ const App = () => (
           <Route exact path="/print/:printId" component={PrintShowContainer} />
           <Route exact path="/create" component={PrintFormContainer} />
           <Route exact path="/edit/:printId" component={EditPrintContainer} />
+          <Route exact path="/collection/:collectionId" component={ShowCollectionContainer} />
         </Switch>
 
       </Content>

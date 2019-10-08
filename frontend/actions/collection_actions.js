@@ -53,6 +53,6 @@ export const deleteCollection = (collection_id) => dispatch => {
 };
 
 export const updateCollection = (collection) => dispatch => {
-  debugger
+  // debugger
   return CollectionAPIUtil.updateCollection(collection).then((collection) => dispatch(receiveCollection(collection)));
 }
