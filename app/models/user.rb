@@ -16,7 +16,9 @@ class User < ApplicationRecord
     through: :likes,
     source: :print
 
-  # has_many :collections
+  has_many :collect_follows,
+    foreign_key: :follower_id,
+    source: :CollectFollow
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
