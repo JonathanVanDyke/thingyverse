@@ -3,8 +3,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import DesignsContainer from './DesignsContainer';
+import Collection from './Collection';
 
+// debugger
 const ProfilePage = styled.div`
   // margin-top: 100px;
   position: relative;
@@ -15,7 +16,6 @@ const ProfilePage = styled.div`
   // background-color: red;
   // padding: 10px;
   margin-top: 51px;
-  margin-bottom: 100px;
 `
 
 //LEFT
@@ -179,18 +179,11 @@ const About = styled.h1`
   font-weight: bold;
 `
 
-class DesignsProfile extends React.Component {
+class CollectionsProfile extends React.Component {
   constructor(props) {
     super(props);
     this.viewUser = { username: '', avatar: '', id: null, bio: '' }
-    this.state = { force: 0 }
-    // debugger
-    this.toggle = this.toggle.bind(this);
-  }
-
-  toggle() {
-    // debugger
-    this.setState({force: 1})
+    this.state = { select: 1 }
   }
 
   componentDidMount() {
@@ -203,26 +196,29 @@ class DesignsProfile extends React.Component {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     this.viewUser = this.props.viewUser || this.viewUser
     // debugger
-    // this.toggle = this.props.toggle();
 
-    let designs = this.viewUser.designs.map((print) => {
+    let collections = this.viewUser.collections ? this.viewUser.collections.map((collection) => {
       // debugger
       return (
-        <DesignsContainer
-          key={print.id}
-          print={print}
+        <Collection
+          key={collection.id}
+          collection={collection}
           match={this.props.match}
-          toggle={this.toggle}
+          fetchPrint={this.props.fetchPrint}
+          fetchPrints={this.props.fetchPrints}
+          fetchCollection={this.props.fetchCollection}
+          collections={this.props.collections}
+          prints={this.props.prints}
         >
-        </DesignsContainer>
+        </Collection>
       )
-    })
+    }) : []
 
     // debugger
     return (
       <ProfilePage>
         {/* top */}
-        {/* {this.state.force} */}
+
         <LeftPane>
 
           <AvatarCage>
@@ -281,27 +277,12 @@ class DesignsProfile extends React.Component {
               </About>
             </Link>
           </ProfileNav>
-          {/* {
-            this.state.select === 1 ?
-              <BioBox>
-                <BioHeader>about you</BioHeader>
-                <Bio>
-                  {!!this.viewUser.bio ? this.viewUser.bio : ''}
-                </Bio>
-              </BioBox> :
-              null
-          }
-          {
-            this.state.select === 2 ?
-              <DesignGrid>
-                {designs}
-              </DesignGrid>
-              :
-              null
-          } */}
+
           <DesignGrid>
-            {designs}
+            {collections}
           </DesignGrid>
+
+
         </RightPane>
 
       </ProfilePage>
@@ -309,4 +290,4 @@ class DesignsProfile extends React.Component {
   }
 }
 
-export default DesignsProfile
+export default CollectionsProfile

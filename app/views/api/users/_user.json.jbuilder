@@ -26,3 +26,4 @@ json.extract! user, :id, :username, :avatar, :bio
 json.designs user.print_ids
 
 json.liked_prints user.liked_print_ids
+json.collections user.collections

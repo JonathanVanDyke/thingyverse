@@ -20,7 +20,8 @@ import PrintFormContainer from './prints/PrintFormContainer';
 import EditPrintContainer from './prints/EditPrintContainer';
 import DesignsProfileContainer from './profile/DesignsProfileContainer';
 import ShowCollectionContainer from './collections/ShowCollectionContainer'
-
+import ShowAllPrintsContainer from '../allprints/ShowAllPrintsContainer';
+import CollectionsProfileContainer from './profile/CollectionsProfileContainer'
 const Content = styled.div({
   position: 'absolute',
   display: 'flex',
@@ -129,11 +130,13 @@ const App = () => (
         </Header>
         <Switch>
           <Route exact path="/" component={Home} />
+          {/* <Route exact path="/allprints" component={ShowAllPrintsContainer} /> */}
           <AuthRoute exact path="/login" component={LogInFormContainer} />
           <AuthRoute exact path="/signup" component={SignUpFormContainer} />
           <AuthRoute exact path="/logged-in" component={SignUpFormContainer} />
           <Route exact path="/profile/:userId" component={ProfileContainer} />
           <Route exact path="/profile/:userId/prints" component={DesignsProfileContainer} />
+          <Route exact path="/profile/:userId/collections" component={CollectionsProfileContainer} />
           <Route exact path="/print/:printId" component={PrintShowContainer} />
           <Route exact path="/create" component={PrintFormContainer} />
           <Route exact path="/edit/:printId" component={EditPrintContainer} />
