@@ -1,5 +1,6 @@
 class Api::CollectionsController < ApplicationController
   def index
+    # debugger
     @collections = Collection.all
   end
 

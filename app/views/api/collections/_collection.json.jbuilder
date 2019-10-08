@@ -1,1 +1,2 @@
-json.extract! collection, :id, :author_id, :title
+# debugger
+# json.extract! collection, :id, :author_id, :title

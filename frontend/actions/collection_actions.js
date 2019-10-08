@@ -28,6 +28,14 @@ export const fetchCollections = () => dispatch => {
   )
 };
 
+export const fetchCollection = (id) => dispatch => {
+  // debugger
+  return (
+    CollectionAPIUtil.fetchCollection(id).then(
+      collection => (dispatch(receiveCollection(collection))))
+  )
+};
+
 export const createCollection = (collection) => dispatch => {
   // debugger
   return (

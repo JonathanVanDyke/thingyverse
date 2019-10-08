@@ -1,4 +1,6 @@
 # debugger
-json.id @collection.id
-json.author_id @collection.author_id
-json.title @collection.title
+json.set! @collection.id do
+  json.id @collection.id
+  json.author_id @collection.author_id
+  json.title @collection.title
+end
