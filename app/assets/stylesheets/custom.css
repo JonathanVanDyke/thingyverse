@@ -200,7 +200,7 @@
   padding: 13px 107px 15px 24px;
   /* border: 2px solid #ececec; */
   border: none;
-  border-right: 2px solid #ececec;
+  /* border-right: 2px solid #ececec; */
 }
 
 .fa-heart:hover {
@@ -215,7 +215,7 @@ p > .fa-heart {
   padding: 13px 107px 15px 24px;
   /* border: 2px solid #ececec; */
   border: none;
-  border-right: 2px solid #ececec;
+  /* border-right: 2px solid #ececec; */
 }
 p > .fa-heart:hover {
   color: red;
@@ -223,7 +223,7 @@ p > .fa-heart:hover {
   padding: 13px 107px 15px 24px;
   /* border: 2px solid #ececec; */
   border: none;
-  border-right: 2px solid #ececec;
+  /* border-right: 2px solid #ececec; */
   animation: jump 1s ease-in 2, shadow 1s ease-in 2;
 }
 
