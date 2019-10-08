@@ -1,5 +1,5 @@
 class PrintCollect < ApplicationRecord
-  valides :, presence: true 
+  validates :collection_id, presence: true 
 
   belongs_to :print,
     foreign_key: :print_id,
