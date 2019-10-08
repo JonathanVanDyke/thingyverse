@@ -14,20 +14,10 @@ const CollectionsReducer = (oldState = {}, action) => {
       // debugger
       return action.collections
     case RECEIVE_COLLECTION:
-      debugger
+      // debugger
       newState = merge({}, oldState, action.collection)
-      debugger
-      // newState.push({ id: action.like.id, user_id: action.like.userId, print_id: action.like.printId });
       return newState
     case REMOVE_COLLECTION:
-      // debugger
-      // delete newState[action.print.id];
-      // for (let i = 0; i < newState.length; i++) {
-      //   if (newState[i].id === action.print.id) {
-      //     newState.splice(i, 1)
-      //   }
-      // }
-      // debugger
       return [].concat(newState)
     default:
       return newState;

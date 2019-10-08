@@ -54,5 +54,5 @@ export const deleteCollection = (collection_id) => dispatch => {
 
 export const updateCollection = (collection) => dispatch => {
   debugger
-  return PrintApiUtil.updateCollection(collection).then((collection) => dispatch(receiveCollection(collection)));
+  return CollectionAPIUtil.updateCollection(collection).then((collection) => dispatch(receiveCollection(collection)));
 }

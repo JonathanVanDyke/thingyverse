@@ -11,19 +11,19 @@ class Api::CollectionsController < ApplicationController
 
   def create
     # debugger
-    @collection = Print.new(collection)
+    @collection = Collection.new(collection_params)
     @collection.author_id = current_user.id
     if @collection.save
       render :show
     else
-      render json: @print.errors.full_messages
+      render json: @collection.errors.full_messages
     end
   end
 
   def update
     # debugger
-    @collection = Print.find(params[:id])
-    if @collection.update(collection)
+    @collection = Collection.find(params[:id])
+    if @collection.update(collection_params)
       render :show
     else
       render json: @collection.errors.full_messages, status: 422
@@ -31,7 +31,7 @@ class Api::CollectionsController < ApplicationController
   end
 
   def destroy 
-    @collection = Print.find(params[:id])
+    @collection = Collection.find(params[:id])
     if @collection.destroy
       render :show
     else 

@@ -1,6 +1,6 @@
 class Print < ApplicationRecord
   validates :title, presence: true
-
+  # debugger
   has_one_attached :photo
 
   belongs_to :user,

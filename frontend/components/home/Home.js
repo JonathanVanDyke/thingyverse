@@ -96,11 +96,11 @@ class Home extends React.Component {
     // debugger
     return (
       <>
-        <div className={s.container}>
+        {/* <div className={s.container}>
           <div className={s.main}>
             <Slideshow slides={this.slides} />
           </div>
-        </div>
+        </div> */}
         <div >
           <div >
             <SlideshowV2 slides={this.slides} />

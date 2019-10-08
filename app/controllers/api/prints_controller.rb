@@ -1,8 +1,9 @@
 class Api::PrintsController < ApplicationController
   def index
-    prints = Print.all
+    # debugger
+    @prints = Print.all
 
-    @prints = prints.includes(:user_likes)
+    # @prints = prints.includes(:user_likes)
   end
 
   def show
