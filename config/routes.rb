@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :prints
     resources :likes
+    #probably want to nest under collection... then use collectionId from params in controllers
+    resources :collections
+    resources :collect_follows
+    resources :print_collects
   end
 
   root "static_pages#root"
