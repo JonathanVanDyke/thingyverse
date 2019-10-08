@@ -150,7 +150,7 @@ class ShowCollectionItem extends React.Component {
     // let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     let currentUser = this.props.currentUser;
     const checkId = (pojo) => {
-      debugger
+      // debugger
       return pojo === currentUser;
     }
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'

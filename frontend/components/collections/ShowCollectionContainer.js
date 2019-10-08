@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     current_user_id: state.session.id || null,
     collection: state.entities.collections[Number(collectionId)] || { title: '', author_id: null, print_collects: [] },
     prints: state.entities.prints
+    
   })
 }
 
