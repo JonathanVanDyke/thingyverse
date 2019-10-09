@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
 import { createLike, deleteLikeById, fetchLikes } from '../../../actions/like_actions';
 import { fetchPrint, fetchPrints } from '../../../actions/print_actions';
-import { fetchUser } from '../../../actions/session_actions'
+import { createCollection, updateCollection, fetchCollection } from '../../../actions/collection_actions';
+import { fetchUser } from '../../../actions/session_actions';
 import PrintCard from './PrintCard';
 
 const mapStateToProps = (state, ownProps) => {
   //ownProps=printId
   let printId = ownProps.printId;
+  debugger
   let print = state.entities.prints[printId];
   let currentUserId = state.session.id;
   let likes = state.entities.likes;
@@ -36,14 +38,19 @@ const mapStateToProps = (state, ownProps) => {
     return collection.title
   })
 
+  let user_collection_id;
   let collected = false;
   for (let i = 0; i < user_collection_ids.length; i++) {
     for (let j = 0; j < print_collects_collection_ids.length; j++) {
       if (user_collection_ids[i] === print_collects_collection_ids[i]) {
+        user_collection_id = user_collection_ids[i];
         collected = true;
+        // debugger
       }
     }
   }
+
+  let userCollectedId = currentUser.collect_follows[0].collection_id;
 
   return {
     printId,
@@ -55,6 +62,8 @@ const mapStateToProps = (state, ownProps) => {
     currentUser,
     collected,
     userCollectionTitles,
+    user_collection_id,
+    userCollectedId,
   };
 };
 
@@ -65,6 +74,10 @@ const mapDispatchToProps = dispatch => ({
   fetchLikes: () => dispatch(fetchLikes()),
   fetchPrint: id => dispatch(fetchPrint(id)),
   fetchPrints: () => dispatch(fetchPrints()),
+  createCollection: (collection) => dispatch(createCollection(collection)),
+  updateCollection: (collection) => dispatch(updateCollection(collection)),
+  fetchCollection: (id) => dispatch(fetchCollection(id)),
 });
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrintCard);

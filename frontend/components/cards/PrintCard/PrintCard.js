@@ -154,6 +154,7 @@ const Select = styled.select`
   height: 40px;
   margin-left: 8px;
   outline: none;
+  font-size: 15px;
 `
 
 const Buttons = styled.div`
@@ -225,7 +226,13 @@ class PrintCard extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    return console.log(this.state.selectedCollection)
+    debugger
+    this.props.updateCollection({
+      id: this.props.userCollectedId,
+      print_id: this.props.printId,
+    }).then(() => {
+      // this.props.fetchCollection(this.props.userCollectedId)
+    })
     // this.props.processForm(this.state).then(() => this.props.history.push('/'));
   }
 

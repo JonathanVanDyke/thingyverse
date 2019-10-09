@@ -91,11 +91,11 @@ class Home extends React.Component {
         </div>
 
         {/* Slideshow Option Two */}
-        <div >
+        {/* <div >
           <div >
             <SlideshowV2 slides={this.slides} />
           </div>
-        </div>
+        </div> */}
 
         {/* Area Under Slideshow */}
         <Section2>

@@ -12,4 +12,8 @@ class Collection < ApplicationRecord
   has_many :print_collects,
     foreign_key: :collection_id,
     class_name: :PrintCollect
+
+  has_many :prints,
+    through: :print_collects,
+    source: :print
 end

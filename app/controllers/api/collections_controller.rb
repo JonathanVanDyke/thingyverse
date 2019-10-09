@@ -14,6 +14,10 @@ class Api::CollectionsController < ApplicationController
     @collection = Collection.new(collection_params)
     @collection.author_id = current_user.id
     if @collection.save
+      # debugger
+      @collection.prints << Print.find(params[:collection][:print_id].to_i)
+      # debugger
+      #put association push here
       render :show
     else
       render json: @collection.errors.full_messages
@@ -23,7 +27,7 @@ class Api::CollectionsController < ApplicationController
   def update
     # debugger
     @collection = Collection.find(params[:id])
-    if @collection.update(collection_params)
+    if @collection.prints << Print.find(params[:collection][:print_id].to_i)
       render :show
     else
       render json: @collection.errors.full_messages, status: 422

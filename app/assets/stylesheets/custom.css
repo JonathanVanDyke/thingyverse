@@ -225,13 +225,13 @@ p > .fa-heart:hover {
 }
 
 .fa-layer-group:hover {
-  color: rgb(14, 255, 14);
+  color: rgb(77, 193, 77);
   animation: jump 1s ease-in 2, shadow 1s ease-in 2;
 }
 
 
 p > .fa-layer-group {
-  color: rgb(14, 255, 14);
+  color: rgb(77, 193, 77);
   z-index: 2000;
   padding: 13px 107px 15px 24px;
   /* border: 2px solid #ececec; */
@@ -239,7 +239,7 @@ p > .fa-layer-group {
   /* border-right: 2px solid #ececec; */
 }
 p > .fa-layer-group:hover {
-  color: rgb(14, 255, 14);
+  color: rgb(77, 193, 77);
   z-index: 2000;
   padding: 13px 107px 15px 24px;
   /* border: 2px solid #ececec; */
@@ -250,7 +250,7 @@ p > .fa-layer-group:hover {
 
 .one > .fa-layer-group {
   /* position: absolute; */
-  color: rgb(14, 255, 14);
+  color: rgb(77, 193, 77);
   margin-left: -15px;
   padding: 17px 259px 20px 35px;
   border: none;
@@ -259,7 +259,7 @@ p > .fa-layer-group:hover {
 
 .one > .fa-layer-group:hover {
   /* position: absolute; */
-  color: rgb(14, 255, 14);
+  color: rgb(77, 193, 77);
   margin-left: -15px;
   padding: 17px 259px 20px 35px;
   border: none;

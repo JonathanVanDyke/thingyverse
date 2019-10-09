@@ -188,6 +188,7 @@ class CollectionsProfile extends React.Component {
 
   componentDidMount() {
     // debugger
+    // this.fetchCollection()
     let userId = this.props.match.params.userId
     this.props.receiveUser(Number(userId))
   }
@@ -195,7 +196,7 @@ class CollectionsProfile extends React.Component {
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     this.viewUser = this.props.viewUser || this.viewUser
-    // debugger
+    debugger
 
     let collections = this.viewUser.collections ? this.viewUser.collections.map((collection) => {
       // debugger
@@ -214,7 +215,7 @@ class CollectionsProfile extends React.Component {
       )
     }) : []
 
-    // debugger
+    debugger
     return (
       <ProfilePage>
         {/* top */}
