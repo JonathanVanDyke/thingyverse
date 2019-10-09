@@ -24,6 +24,19 @@ const Top = styled.div`
   box-shadow: 8px 14px 18px lightgrey;  
   // animation: ${left} .25s linear 1
 `
+
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 262px;
+  width: 295px;
+  overflow: hidden;
+  box-shadow: 8px 14px 18px lightgrey;  
+  justify-content: center;
+  align-items: center;
+  background: #6ea734;
+`
+
 //Head
 const Head = styled.div`
   display: flex;
@@ -181,28 +194,8 @@ class PrintCard extends React.Component {
       <>
       { !this.state.collectFormShown ?
       <Top>
-        {this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1>}
-        <form onSubmit={this.handleSubmit}>
-          <select 
-            name="collection"
-            onChange={this.update()}
-          >
-            <option 
-              value={this.props.userCollectionTitles}
-              onChange={this.update()}
-            >
-              {this.props.userCollectionTitles}
-            </option>
-            <option 
-              value='hmm'
-              onChange={this.update()}
-            >
-                hmm
-            </option>
-          </select>
-          <p>{this.props.userCollectionTitles}</p>
-          <input type='submit' value='Save'></input>
-        </form>
+
+        
  
         <Link to={`/print/${this.props.printId}`}>
 
@@ -263,12 +256,38 @@ class PrintCard extends React.Component {
                 </LikeButton>
             }
             {/* print.user_likes.length */}
-            <Likes>{this.props.print.user_likes.length}</Likes>
+            <Likes>{this.props.print.print_collects.length}</Likes>
           </RibbonButton>
         </Ribbon>
         }
       </Top> :
-        <h1>hi</h1>
+        <Form>
+          {this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1>}
+          <form onSubmit={this.handleSubmit}>
+            <SelectDrop>
+              <select
+                name="collection"
+                onChange={this.update()}
+              >
+                <option
+                  value={this.props.userCollectionTitles}
+                  onChange={this.update()}
+                >
+                  {this.props.userCollectionTitles}
+                </option>
+                <option
+                  value='hmm'
+                  onChange={this.update()}
+                >
+                  hmm
+                </option>
+              </select>
+            </SelectDrop>
+            <p>{this.props.userCollectionTitles}</p>
+            <input type='submit' value='Save'></input>
+            <button onClick={() => this.toggleForm()}>Cancel</button>
+          </form>
+        </Form>
       }
       </>
     )
@@ -280,6 +299,7 @@ PrintCard.defaultProps = {
     title: '',
     photoUrl: '',
     user_likes: [],
+    print_collects: [],
   }
 }
 
