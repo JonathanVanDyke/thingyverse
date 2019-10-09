@@ -5,16 +5,16 @@ import { fetchUser } from '../../../actions/session_actions';
 import CollectionCard from './CollectionCard';
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
+  let mini = ownProps.mini;
   let collectionId = ownProps.collectionId;
   let collection = state.entities.collections ? state.entities.collections[collectionId] : { print_collects: []};
   let currentUserId = state.session.id;
 
   let authorId = collection ? collection.author_id : null;
-  debugger
+  // debugger
   let printId = collection.print_collects[0] ? collection.print_collects[0].print_id : null;
   let prints = state.entities.prints ? state.entities.prints : {};
-  debugger
+  // debugger
   let print = prints[printId] ? prints[printId] : {photoUrl: ''}
   let author = collection ? state.entities.users[authorId] : {};
   // debugger
@@ -26,6 +26,7 @@ const mapStateToProps = (state, ownProps) => {
     printId,
     print,
     currentUserId,
+    mini,
   };
 };
 

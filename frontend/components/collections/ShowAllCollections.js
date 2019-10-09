@@ -16,10 +16,16 @@ const Page = styled.section`
 class ShowAllCollections extends React.Component {
   constructor(props) {
     super(props);
+    this.state={mini: false};
+    this.toggleMini = this.toggleMini.bind(this);
   };
 
   componentDidMount() {
     this.props.fetchCollections()
+  }
+
+  toggleMini() {
+    this.setState({mini: !this.state.mini})
   }
 
   render() {
@@ -28,12 +34,17 @@ class ShowAllCollections extends React.Component {
     })
 
     //CollectionCards takes an array of collectionIds
+    //and mini boolean
     return (
-      <Page>
-        <CollectionCards
-          collectionIds={collectionIds}
-        />
-      </Page>
+      <>
+        <button onClick={() => this.toggleMini()}></button>
+        <Page>
+          <CollectionCards
+            collectionIds={collectionIds}
+            mini={this.state.mini}
+          />
+        </Page>
+      </>
     )
   }
 }

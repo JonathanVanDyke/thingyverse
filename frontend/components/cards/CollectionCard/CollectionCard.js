@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 
 //Card
@@ -96,19 +96,62 @@ const Back = styled.img`
   width: 295px;
 `
 
+//MINI Styling!!
+const morph = keyframes`
+  0% { border-radius: 5px; }
+  50% { border-radius: 50%; }
+  100% { border-radius: 5px; }
+`
+
+const spin = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`
+
+const rock = keyframes`
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  75% { transform: rotate(-1deg); }
+  100% { transform: rotate(0deg); }
+`
+
+const Img = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 5px;
+  // :hover{
+  //   animation: ${morph} 1s linear 1, ${spin} 1s ease-in-out 1;
+  // }
+  :hover{
+    animation: ${rock} .2s ease-out 2;
+  }
+`
+
+const ImgWrap = styled.button`
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  height: 125px;
+  width: 125px;
+  // margin: 10px 0 30px 0;
+  margin-bottom: 0;
+`
+//END OF MINI STYLE
+
 class CollectionCard extends React.Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    debugger
+    // debugger
     this.props.fetchCollection(this.props.collectionId).then(() => {
       this.props.fetchPrint(this.props.printId).then(() => {
         this.props.fetchUser(this.props.authorId);
       })
     })
-    debugger
+    // debugger
   }
 
 
@@ -119,39 +162,50 @@ class CollectionCard extends React.Component {
       return pojo === currentUserId;
     }
     return (
-      <Top>
-        <Link to={`/collection/${this.props.collectionId}`}>
+      <>
+        {!this.props.mini ? 
+        <Top>
+          <Link to={`/collection/${this.props.collectionId}`}>
 
-          <Head>
+            <Head>
 
-            <Avatar src={this.props.author ?
-              this.props.author.avatar :
-              defaultImg}></Avatar>
+              <Avatar src={this.props.author ?
+                this.props.author.avatar :
+                defaultImg}></Avatar>
 
-            <TitleWrap>
+              <TitleWrap>
 
-              <Title>{this.props.collection ? this.props.collection.title : ''}</Title>
-              <Byline>
-                By: 
-                {
-                  this.props.author ?
-                  this.props.author.username :
-                  ''
-                }</Byline>
+                <Title>{this.props.collection ? this.props.collection.title : ''}</Title>
+                <Byline>
+                  By: 
+                  {
+                    this.props.author ?
+                    this.props.author.username :
+                    ''
+                  }</Byline>
 
-            </TitleWrap>
+              </TitleWrap>
 
-          </Head>
-
-
-
-          <Fade />
+            </Head>
 
 
 
-          <Back src={this.props.print ? this.props.print.photoUrl : ''} />
-        </Link>
-      </Top>
+            <Fade />
+
+
+
+            <Back src={this.props.print ? this.props.print.photoUrl : ''} />
+          </Link>
+        </Top> 
+        : 
+          <ImgWrap>
+            <Link to={`/collection/${this.props.collectionId}`}>
+              <Img src={this.props.print ? this.props.print.photoUrl : ''} />
+            </Link>
+            <p>{this.props.collection.title}</p>
+          </ImgWrap>
+        }
+      </>
     )
   }
 };
@@ -182,6 +236,7 @@ CollectionCard.propTypes = {
   printId: PropTypes.number,
   print: PropTypes.object,
   currentUserId: PropTypes.number,
+  mini: PropTypes.bool,
 }
 
 export default CollectionCard

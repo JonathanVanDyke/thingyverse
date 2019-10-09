@@ -5,12 +5,13 @@ import CollectionCardContainer from './CollectionCardContainer';
 //? Input: Array of Collection Ids
 //? Output: Collection Cards
 
-const CollectionCards = ({ collectionIds }) => {
+const CollectionCards = ({ collectionIds, mini }) => {
   let collectionCards = collectionIds.map((collectionId) => {
     return (
       <CollectionCardContainer
         key={collectionId}
         collectionId={collectionId}
+        mini={mini}
       >
       </CollectionCardContainer>
     );

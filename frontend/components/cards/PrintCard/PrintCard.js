@@ -130,7 +130,7 @@ class PrintCard extends React.Component {
 
 
   componentDidMount() {
-    debugger
+    // debugger
     this.props.fetchPrint(this.props.printId).then(() => {
       this.props.fetchUser(this.props.authorId).then(() => {
         this.props.fetchLikes();

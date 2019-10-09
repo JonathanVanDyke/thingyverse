@@ -63,6 +63,18 @@ const Splash = ({ currentUser, logout }) => {
         </Link>
         <NavButtnWrap>
           <Link
+            to='/allprints'
+            style={{ textDecoration: 'none' }}
+          >
+            <Create>prints</Create>
+          </Link>
+          <Link
+            to='/allcollections'
+            style={{ textDecoration: 'none' }}
+          >
+            <Create>collections</Create>
+          </Link>
+          <Link
             to='/create'
             style={{ textDecoration: 'none' }}
           >
