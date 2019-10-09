@@ -107,7 +107,7 @@ class Collection extends React.Component {
 
 
   componentDidMount() {
-    debugger
+    // debugger
     // this.props.fetchLikes()
     this.props.collection
     this.props.fetchCollection(this.props.collection.id).then(() => {

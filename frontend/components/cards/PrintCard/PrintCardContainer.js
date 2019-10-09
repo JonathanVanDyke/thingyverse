@@ -8,7 +8,7 @@ import PrintCard from './PrintCard';
 const mapStateToProps = (state, ownProps) => {
   //ownProps=printId
   let printId = ownProps.printId;
-  debugger
+  // debugger
   let print = state.entities.prints[printId];
   let currentUserId = state.session.id;
   let likes = state.entities.likes;
@@ -50,7 +50,7 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
 
-  let userCollectedId = currentUser.collect_follows[0].collection_id;
+  let userCollectedId = currentUser.collect_follows[0] ? currentUser.collect_follows[0].collection_id : null
 
   return {
     printId,

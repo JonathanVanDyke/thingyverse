@@ -133,7 +133,8 @@ const SelectDrop = styled.div`
   height: 262px;
   width: 295px;
   overflow: hidden;
-  box-shadow: 8px 14px 18px lightgrey;  
+  box-shadow: 8px 14px 18px lightgrey;
+  font-family: Helvetica, sans-serif;
 `
 
 const FormTitle = styled.h1`
@@ -146,6 +147,7 @@ const FormSub = styled.h3`
   font-size: 16px;
   padding: 10px;
   color: white;
+
 `
 
 const Select = styled.select`
@@ -155,6 +157,7 @@ const Select = styled.select`
   margin-left: 8px;
   outline: none;
   font-size: 15px;
+  font-family: Helvetica, sans-serif;
 `
 
 const Buttons = styled.div`
@@ -162,6 +165,7 @@ const Buttons = styled.div`
   height: 40px;
   justify-content: flex-start;
   margin: 9px;
+  font-family: Helvetica, sans-serif;
 `
 
 const FormSave = styled.input`
@@ -169,6 +173,9 @@ const FormSave = styled.input`
   text-transform: uppercase;
   font-size: 127px;
   box-sizing: content-box;
+  font-family: Helvetica, sans-serif;
+  background-color: white;
+  // font-size: 13px;
 `
 
 const FormCancel = styled.button`
@@ -176,6 +183,8 @@ const FormCancel = styled.button`
   width: 94px;
   margin-left: 10px;
   text-transform: uppercase;
+  font-family: Helvetica, sans-serif;
+  font-size: 13px;
 `
 
 

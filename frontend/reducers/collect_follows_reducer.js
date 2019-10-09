@@ -14,7 +14,7 @@ const CollectFollowsReducer = (oldState = {}, action) => {
       // debugger
       return action.collections
     case RECEIVE_COLLECTION:
-      debugger
+      // debugger
       newState = merge({}, oldState, action.collection)
       return newState
     case REMOVE_COLLECTION:

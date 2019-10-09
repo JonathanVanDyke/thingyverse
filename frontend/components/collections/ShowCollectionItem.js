@@ -108,7 +108,7 @@ class ShowCollectionItem extends React.Component {
   }
 
   like() {
-    debugger
+    // debugger
     this.props.createLike(this.props.print.id)
   }
 

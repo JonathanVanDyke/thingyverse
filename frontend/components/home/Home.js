@@ -24,11 +24,13 @@ const Section2 = styled.section`
 `
 
 const Feed = styled.section`
-  margin-top: 30px;
+  margin-top: 18px;
   height: 460px;
   width: 320px;
   // background-color: green;
-  // border: 1px solid #bebebe;
+  border: 1px solid #ececec;
+  background-color: white;
+  margin-right: 20px;
   overflow: hidden;
   align-items: flex-start;
   display: flex;
@@ -37,7 +39,7 @@ const Feed = styled.section`
 
 const Featured = styled.section`
   margin-top: 18px;
-  height: 365px;
+  height: 350px;
   // height: 1605px;
   width: 630px;
   // border: 1px solid #bebebe;
@@ -50,6 +52,7 @@ const Featured = styled.section`
 const FeatureTitle = styled.h1`
   font-size: 20px;
   color: #666666;
+  margin-bottom: 2px;
   font-family: Helvetica, Arial, sans-serif;
 `
 

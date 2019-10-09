@@ -24,6 +24,20 @@ const Header = styled.header`
 const PrintInfo = styled.div`
   display: flex;
   flex-direction: columns;
+  margin-bottom: 20px;
+`
+
+const Title = styled.li`
+  font-size: 30px;
+  margin: 5px;
+`
+
+const Sub = styled.li`
+  text-transform: lowercase;
+  color: #666;
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  margin-left: 6px;
 `
 
 //Section 1
@@ -45,6 +59,7 @@ const Label = styled.h1`
   font-family: "AntennaMedium",Helvetica,Arial,sans-serif;
   margin: 0px 0 20px;
   padding: 0 0 8px 0;
+  font-family: Helvetica, sans-serif;
 `
 
 //RP1
@@ -114,6 +129,7 @@ const RightPane2 = styled.div`
   margin-top: 20px;
   height: 240px;
   width: 635px;
+  font-family: Helvetica, sans-serif;
   // background-color: blue;
 `
 
@@ -232,14 +248,14 @@ class PrintShow extends React.Component {
 
           <PrintInfo>
             <ul>
-              <li>{this.props.print.title}</li> 
-              <li>By: 
+              <Title>{this.props.print.title}</Title> 
+              <Sub>By: 
                 <Link
                   to={`/profile/${author.id}`}
                 >
                   {author.username}
                 </Link>
-              </li> 
+              </Sub> 
             </ul>
           </PrintInfo>
 

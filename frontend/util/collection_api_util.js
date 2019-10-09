@@ -28,7 +28,7 @@ export const createCollection = (collection) => {
 };
 
 export const updateCollection = (collection) => {
-  debugger
+  // debugger
   return (
     $.ajax({
       url: `/api/collections/${collection.id}`,

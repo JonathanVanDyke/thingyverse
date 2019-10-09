@@ -7,7 +7,7 @@ import PrintIndexItem from './PrintIndexItem'
 
 const PrintWrap = styled.div`
   display: grid;
-  grid-gap: 39px;
+  grid-gap: 32px
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(100px, auto);
   // display: flex;
