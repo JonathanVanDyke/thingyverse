@@ -11,7 +11,7 @@ const Avatar = styled.img`
 `
 
 const LikedByAvatars = ({user}) => {
-  // debugger
+  let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
   return(
     <li
       key={user.id}
