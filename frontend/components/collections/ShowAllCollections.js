@@ -13,6 +13,19 @@ const Page = styled.section`
   grid-auto-rows: minmax(100px, auto);
 `
 
+// const MiniButton = styled.div`
+//   height: 20px;
+//   width: 100px;
+//   padding: 3px;
+//   margin: 20px;
+//   background-color: white;
+//   border: 1px solid #bebebe;
+//   border-radius: 8px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `
+
 class ShowAllCollections extends React.Component {
   constructor(props) {
     super(props);
@@ -37,7 +50,9 @@ class ShowAllCollections extends React.Component {
     //and mini boolean
     return (
       <>
-        <button onClick={() => this.toggleMini()}></button>
+        {/* <MiniButton onClick={() => this.toggleMini()}>
+          Shrink/Expand
+        </MiniButton> */}
         <Page>
           <CollectionCards
             collectionIds={collectionIds}
