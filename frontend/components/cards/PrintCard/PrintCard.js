@@ -128,6 +128,55 @@ const Back = styled.img`
   object-fit: cover;
 `
 
+//Form
+const SelectDrop = styled.div`
+  height: 262px;
+  width: 295px;
+  overflow: hidden;
+  box-shadow: 8px 14px 18px lightgrey;  
+`
+
+const FormTitle = styled.h1`
+  font-size: 24px;
+  padding: 10px;
+  color: white;
+`
+
+const FormSub = styled.h3`
+  font-size: 16px;
+  padding: 10px;
+  color: white;
+`
+
+const Select = styled.select`
+  display: flex;
+  width: 250px;
+  height: 40px;
+  margin-left: 8px;
+  outline: none;
+`
+
+const Buttons = styled.div`
+  display: flex;
+  height: 40px;
+  justify-content: flex-start;
+  margin: 9px;
+`
+
+const FormSave = styled.input`
+  width: 74px;
+  text-transform: uppercase;
+  font-size: 127px;
+  box-sizing: content-box;
+`
+
+const FormCancel = styled.button`
+  height: 26px;
+  width: 94px;
+  margin-left: 10px;
+  text-transform: uppercase;
+`
+
 
 class PrintCard extends React.Component {
   constructor(props) {
@@ -262,10 +311,12 @@ class PrintCard extends React.Component {
         }
       </Top> :
         <Form>
-          {this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1>}
+          {/* {this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1>} */}
           <form onSubmit={this.handleSubmit}>
             <SelectDrop>
-              <select
+              <FormTitle>Select a Collection</FormTitle>
+              <FormSub>or create a new one below:</FormSub>
+              <Select
                 name="collection"
                 onChange={this.update()}
               >
@@ -281,11 +332,13 @@ class PrintCard extends React.Component {
                 >
                   hmm
                 </option>
-              </select>
+              </Select>
+              {/* <p>{this.props.userCollectionTitles}</p> */}
+              <Buttons>
+                  <FormSave type='submit' value='Save'></FormSave>
+                  <FormCancel onClick={() => this.toggleForm()}>Cancel</FormCancel>
+              </Buttons>
             </SelectDrop>
-            <p>{this.props.userCollectionTitles}</p>
-            <input type='submit' value='Save'></input>
-            <button onClick={() => this.toggleForm()}>Cancel</button>
           </form>
         </Form>
       }
