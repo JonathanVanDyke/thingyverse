@@ -50,7 +50,10 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
 
-  // let userCollectedId = currentUser.collect_follows[0] ? currentUser.collect_follows[0].collection_id : null
+  let userCollectedId = null;
+  if (currentUser.collect_follows.length >= 1) {
+    let userCollectedId = currentUser.collect_follows[0].collection_id
+  }
 
   return {
     printId,
