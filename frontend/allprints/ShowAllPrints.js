@@ -1,56 +1,45 @@
-// import React from 'react';
-// import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
-// import ShowAllPrintsItemContainer from './ShowAllPrintsContainer';
+import React from 'react';
+import PrintCards from '../components/cards/PrintCards';
+import styled, {keyframes} from 'styled-components';
 
 
-// class ShowAllPrints extends React.Component {
-//   constructor(props) {
-//     super(props);
 
-//   }
+const Page = styled.section`
+  width: 970px;
+  margin-bottom: 150px;
+  margin-top: 50px;
+  display: grid;
+  grid-gap: 39px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+`
 
-//   componentDidMount() {
-//     this.props.fetchPrints()
-//   }
 
-//   render() {
-//     // debugger
-//     // let prints = this.props.prints.map((print) => {
-//     //   return(
-//     //     <div key={print.print_id}>
-//     //       <DesignsContainer
-//     //         key={print.id}
-//     //         print={print}
-//     //         match={this.props.match}
-//     //       >
-//     //       </DesignsContainer>
-//     //     </div>
-//     //   )
-//     // })
-  
-//     let prints = this.props.prints.map((print) => {
-//       return (
-//         <h1 key={print.id}>
-//           <ShowCollectionItemContainer
-//             print={print.id}
-//             match={this.props.match}
-//           >
-//           </ShowCollectionItemContainer>
-//         </h1>
-//       )
-//     })
-    
 
-//     return (
-//       <div>
-//         <h1>{this.props.collection.title}</h1>
-//         <h1>{this.props.collection.title}</h1>
-//         {prints}
+class ShowAllPrints extends React.Component {
+  constructor(props) {
+    super(props);
+  };
 
-//       </div>
-//     )
-//   }
-// };
+  componentDidMount() {
+    this.props.fetchPrints()
+  }
 
-// export default ShowAllPrints;
+  render() {
+    // debugger
+    let printIds = this.props.prints.map((print) => {
+      return print.id
+    })
+
+    //PrintCards takes an array of printIds
+    return(
+      <Page>
+        <PrintCards
+          printIds={printIds}
+        />
+      </Page>
+    )
+  }
+}
+
+export default ShowAllPrints

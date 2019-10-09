@@ -112,7 +112,7 @@ class Home extends React.Component {
             <FeatureSub>Download and print today</FeatureSub>
 
             <Link 
-              to="/"
+              to="/allprints"
               style={{ textDecoration: 'none', cursor: 'pointer' }}
             >
               <FeatureLink>see more</FeatureLink>

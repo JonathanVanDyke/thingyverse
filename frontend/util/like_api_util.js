@@ -27,3 +27,13 @@ export const deleteLike = (like) => {
     })
   )
 };
+
+export const deleteLikeById = (id) => {
+  // debugger
+  return(
+    $.ajax({
+      method: 'DELETE',
+      url: `/api/likes/${id}`
+    })
+  )
+};

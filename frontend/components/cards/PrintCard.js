@@ -1,7 +1,18 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
+const rand = () => {
+  let myArray = [300, 0, -300];
+  let rand = myArray[Math.floor(Math.random() * myArray.length)];
+  return rand
+}
+
+const left = keyframes`
+  // 0% { transform: translate3d(${rand()}px, 10px, 10px); }
+  // 100% { transform: translate3d(0px, 0px, 0px); }
+`
 
 //Card
 const Top = styled.div`
@@ -9,6 +20,8 @@ const Top = styled.div`
   flex-direction: column;
   height: 262px;
   width: 295px;
+  overflow: hidden;
+  // animation: ${left} .25s linear 1
 `
 //Head
 const Head = styled.div`
@@ -93,102 +106,89 @@ const Ribbon = styled.section`
 const Back = styled.img`
   height: 262px;
   width: 295px;
+  object-fit: cover;
 `
 
-class DesignItem extends React.Component {
+class PrintCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      counter: this.props.likes,
-      bool: true
-    }
     this.like = this.like.bind(this);
     this.unLike = this.unLike.bind(this);
-    // debugger
   }
 
   like() {
-    this.props.createLike(this.props.print.id)
-  }
+    this.props.createLike(this.props.printId)
+  };
 
   unLike() {
-    let val = this.state.counter;
-    let bool = this.state.bool;
-
-    let pickedLike = this.props.likes.find((like) => {
-      return like.user_id === this.props.currentUser.id && like.print_id === this.props.print.id
-    })
-
     // debugger
-    this.props.deleteLike(pickedLike).then(() => {
-      // debugger
-      let printId = this.props.print.id
-      // this.props.fetchPrints();
-      this.props.fetchPrint(Number(printId));
-      this.setState({ counter: val - 1, bool: !bool })
-      this.props.toggle()
-      // this.forceUpdate();
-    })
-  }
+    this.props.deleteLike(this.props.likeId).then(() => {
+      let printId = this.props.printId;
+      this.props.fetchPrint(printId);
+    });
+  };
+
 
   componentDidMount() {
-    // debugger
-    this.props.fetchLikes()
-    this.props.fetchPrint(this.props.printId)
-    // debugger
-    this.props.receiveUser(this.props.userId)
+    
+    this.props.fetchPrint(this.props.printId).then(() => {
+      this.props.fetchUser(this.props.authorId).then(() => {
+        this.props.fetchLikes();
+      })
+    })
   }
 
 
   render() {
-    // debugger
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
-    let currentUser = this.props.currentUser;
+    let currentUserId = this.props.currentUserId;
     const checkId = (pojo) => {
-      return pojo === currentUser.id;
+      return pojo === currentUserId;
     }
-    // debugger
     return (
       <Top>
         <Link to={`/print/${this.props.printId}`}>
 
           <Head>
 
-            <Avatar src={!!this.props.viewUser ?
-              this.props.viewUser.avatar :
+            <Avatar src={this.props.author ?
+              this.props.author.avatar :
               defaultImg}></Avatar>
 
             <TitleWrap>
 
               <Title>{this.props.print ? this.props.print.title : ''}</Title>
-              <Byline>By: {!!this.props.viewUser ?
-                this.props.viewUser.username :
-                ''}</Byline>
+              <Byline>
+                By: 
+                {
+                  this.props.author ?
+                  this.props.author.username :
+                  ''
+                }
+                </Byline>
 
             </TitleWrap>
 
           </Head>
 
-
-
           <Fade />
-
-
 
           <Back src={this.props.print ? this.props.print.photoUrl : ''} />
         </Link>
         <Ribbon>
-          {!!this.props.print.user_likes.find(checkId) ?
+          {
+            this.props.likeId ?
             <LikeButton >
               <p>
-                <i onClick={() => this.unLike()} className="fas fa-heart"></i>
+                  <i onClick={() => this.unLike()} className="fas fa-heart"></i>
               </p>
             </LikeButton>
             :
-            <LikeButton >
+            <LikeButton>
               <i onClick={() => this.like()} className="fas fa-heart"></i>
             </LikeButton>
           }
+          {/* print.user_likes.length */}
           <Likes>{this.props.print.user_likes.length}</Likes>
         </Ribbon>
       </Top>
@@ -196,4 +196,23 @@ class DesignItem extends React.Component {
   }
 };
 
-export default DesignItem
+PrintCard.defaultProps = {
+  print: {
+    title: '',
+    photoUrl: '',
+    user_likes: [],
+  }
+}
+
+PrintCard.propTypes = {
+  createLike: PropTypes.func,
+  deleteLike: PropTypes.func,
+  fetchPrint: PropTypes.func,
+  fetchUser: PropTypes.func,
+  author: PropTypes.object,
+  authorId: PropTypes.number,
+  print: PropTypes.object,
+  likeId: PropTypes.number,
+}
+
+export default PrintCard

@@ -42,3 +42,11 @@ export const deleteLike = (print) => dispatch => {
       (print) => (dispatch(removeLike(print))))
   )
 };
+
+export const deleteLikeById = (id) => dispatch => {
+  // debugger
+  return(
+    LikeAPIUtil.deleteLikeById(id).then(
+      (print) => (dispatch(removeLike(print))))
+  )
+};
