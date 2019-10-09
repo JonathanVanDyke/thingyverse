@@ -11,5 +11,10 @@ class Print < ApplicationRecord
   has_many :user_likes,
     through: :likes,
     source: :user
+
+  has_many :print_collects,
+    foreign_key: :print_id,
+    class_name: :PrintCollect
+
 # rails g model Like post:references user:references
 end

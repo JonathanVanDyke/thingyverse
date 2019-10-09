@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   let print = state.entities.prints[printId];
   let currentUserId = state.session.id;
   let likes = state.entities.likes;
-
+  let currentUser = state.entities.users[currentUserId] ? state.entities.users[currentUserId] : {};
   let authorId = print ? print.author : null;
   let author = print ? state.entities.users[print.author] : {};
   let likeId = 0; 
@@ -28,6 +28,7 @@ const mapStateToProps = (state, ownProps) => {
     authorId,
     likeId,
     currentUserId,
+    currentUser,
   };
 };
 

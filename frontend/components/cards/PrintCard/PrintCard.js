@@ -103,11 +103,18 @@ const Ribbon = styled.section`
   border-radius: 3px;
 `
 
+const RibbonButton = styled.div`
+  display: flex;
+  align-items: center;
+`
+
 const Back = styled.img`
   height: 262px;
   width: 295px;
   object-fit: cover;
 `
+
+const CollectIcon = styled.i
 
 class PrintCard extends React.Component {
   constructor(props) {
@@ -133,7 +140,9 @@ class PrintCard extends React.Component {
     // debugger
     this.props.fetchPrint(this.props.printId).then(() => {
       this.props.fetchUser(this.props.authorId).then(() => {
-        this.props.fetchLikes();
+        this.props.fetchUser(this.props.currentUser.id).then(() => {
+          this.props.fetchLikes();
+        })
       })
     })
   }
@@ -145,6 +154,33 @@ class PrintCard extends React.Component {
     const checkId = (pojo) => {
       return pojo === currentUserId;
     }
+
+    // print -> prints_collected -> collections -> collection.follows -> userId
+    let print_collects_collection_ids = this.props.print.print_collects.map((print_collect) => {
+      return(
+        print_collect.collection_id
+      )
+    })
+
+    let user_collection_ids = this.props.currentUser.collections.map((collection) => {
+      return(
+        collection.id
+      )
+    })
+
+
+    let collected;
+    for (let i = 0; i < user_collection_ids.length; i++) {
+      for (let j = 0; j < print_collects_collection_ids.length; j++) {
+        if (user_collection_ids[i] === print_collects_collection_ids[i]) {
+          collected = true;
+        } 
+      }
+    }
+ 
+
+
+    debugger
     return (
       <Top>
         <Link to={`/print/${this.props.printId}`}>
@@ -176,20 +212,38 @@ class PrintCard extends React.Component {
           <Back src={this.props.print ? this.props.print.photoUrl : ''} />
         </Link>
         <Ribbon>
-          {
-            this.props.likeId ?
-            <LikeButton >
-              <p>
-                  <i onClick={() => this.unLike()} className="fas fa-heart"></i>
-              </p>
-            </LikeButton>
-            :
-            <LikeButton>
-              <i onClick={() => this.like()} className="fas fa-heart"></i>
-            </LikeButton>
-          }
-          {/* print.user_likes.length */}
-          <Likes>{this.props.print.user_likes.length}</Likes>
+          <RibbonButton>
+            {
+              this.props.likeId ?
+              <LikeButton >
+                <p>
+                    <i onClick={() => this.unLike()} className="fas fa-heart"></i>
+                </p>
+              </LikeButton>
+              :
+              <LikeButton>
+                <i onClick={() => this.like()} className="fas fa-heart"></i>
+              </LikeButton>
+            }
+            {/* print.user_likes.length */}
+            <Likes>{this.props.print.user_likes.length}</Likes>
+          </RibbonButton>
+          <RibbonButton>
+            {
+              collected ?
+                <LikeButton >
+                  <p>
+                    <i onClick={() => this.Like()} className="fas fa-layer-group"></i>
+                  </p>
+                </LikeButton>
+                :
+                <LikeButton>
+                  <i onClick={() => this.Like()} className="fas fa-layer-group"></i>
+                </LikeButton>
+            }
+            {/* print.user_likes.length */}
+            <Likes>{this.props.print.user_likes.length}</Likes>
+          </RibbonButton>
         </Ribbon>
       </Top>
     )

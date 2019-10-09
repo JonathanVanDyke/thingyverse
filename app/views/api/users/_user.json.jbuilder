@@ -27,3 +27,4 @@ json.designs user.print_ids
 
 json.liked_prints user.liked_print_ids
 json.collections user.collections
+json.collect_follows user.collect_follows
