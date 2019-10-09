@@ -1,10 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-import PrintCardContainer from './PrintCardContainer';
+import PrintCardContainer from '../PrintCard/PrintCardContainer';
 
 const PrintCards = ({ printIds }) => {
-  // debugger
   let printCards = printIds.map((printId) => {
     return(
       <PrintCardContainer

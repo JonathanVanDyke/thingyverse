@@ -1,5 +1,5 @@
 import React from 'react';
-import PrintCards from '../components/cards/PrintCards';
+import PrintCards from '../cards/PrintCard/PrintCards';
 import styled, {keyframes} from 'styled-components';
 
 

@@ -1,18 +1,8 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
+import { PropTypes } from 'prop-types';
+import styled from 'styled-components';
 
-const rand = () => {
-  let myArray = [300, 0, -300];
-  let rand = myArray[Math.floor(Math.random() * myArray.length)];
-  return rand
-}
-
-const left = keyframes`
-  // 0% { transform: translate3d(${rand()}px, 10px, 10px); }
-  // 100% { transform: translate3d(0px, 0px, 0px); }
-`
 
 //Card
 const Top = styled.div`
@@ -20,8 +10,6 @@ const Top = styled.div`
   flex-direction: column;
   height: 262px;
   width: 295px;
-  overflow: hidden;
-  // animation: ${left} .25s linear 1
 `
 //Head
 const Head = styled.div`
@@ -106,36 +94,21 @@ const Ribbon = styled.section`
 const Back = styled.img`
   height: 262px;
   width: 295px;
-  object-fit: cover;
 `
 
-class PrintCard extends React.Component {
+class CollectionCard extends React.Component {
   constructor(props) {
     super(props);
-    this.like = this.like.bind(this);
-    this.unLike = this.unLike.bind(this);
   }
 
-  like() {
-    this.props.createLike(this.props.printId)
-  };
-
-  unLike() {
-    // debugger
-    this.props.deleteLike(this.props.likeId).then(() => {
-      let printId = this.props.printId;
-      this.props.fetchPrint(printId);
-    });
-  };
-
-
   componentDidMount() {
-    
-    this.props.fetchPrint(this.props.printId).then(() => {
-      this.props.fetchUser(this.props.authorId).then(() => {
-        this.props.fetchLikes();
+    debugger
+    this.props.fetchCollection(this.props.collectionId).then(() => {
+      this.props.fetchPrint(this.props.printId).then(() => {
+        this.props.fetchUser(this.props.authorId);
       })
     })
+    debugger
   }
 
 
@@ -147,7 +120,7 @@ class PrintCard extends React.Component {
     }
     return (
       <Top>
-        <Link to={`/print/${this.props.printId}`}>
+        <Link to={`/collection/${this.props.collectionId}`}>
 
           <Head>
 
@@ -157,62 +130,58 @@ class PrintCard extends React.Component {
 
             <TitleWrap>
 
-              <Title>{this.props.print ? this.props.print.title : ''}</Title>
+              <Title>{this.props.collection ? this.props.collection.title : ''}</Title>
               <Byline>
                 By: 
                 {
                   this.props.author ?
                   this.props.author.username :
                   ''
-                }
-                </Byline>
+                }</Byline>
 
             </TitleWrap>
 
           </Head>
 
+
+
           <Fade />
+
+
 
           <Back src={this.props.print ? this.props.print.photoUrl : ''} />
         </Link>
-        <Ribbon>
-          {
-            this.props.likeId ?
-            <LikeButton >
-              <p>
-                  <i onClick={() => this.unLike()} className="fas fa-heart"></i>
-              </p>
-            </LikeButton>
-            :
-            <LikeButton>
-              <i onClick={() => this.like()} className="fas fa-heart"></i>
-            </LikeButton>
-          }
-          {/* print.user_likes.length */}
-          <Likes>{this.props.print.user_likes.length}</Likes>
-        </Ribbon>
       </Top>
     )
   }
 };
 
-PrintCard.defaultProps = {
+CollectionCard.defaultProps = {
   print: {
     title: '',
     photoUrl: '',
     user_likes: [],
+  },
+  collection: {
+    title: '',
+    author_id: null,
+    id: null,
+    print_collects: [],
+    collect_follows: [],
   }
 }
 
-PrintCard.propTypes = {
-  createLike: PropTypes.func,
-  deleteLike: PropTypes.func,
+CollectionCard.propTypes = {
   fetchPrint: PropTypes.func,
   fetchUser: PropTypes.func,
+  fetchCollection: PropTypes.func,
+  collectionId: PropTypes.number,
+  collection: PropTypes.object,
   author: PropTypes.object,
   authorId: PropTypes.number,
+  printId: PropTypes.number,
   print: PropTypes.object,
-  likeId: PropTypes.number,
+  currentUserId: PropTypes.number,
 }
 
-export default PrintCard
+export default CollectionCard

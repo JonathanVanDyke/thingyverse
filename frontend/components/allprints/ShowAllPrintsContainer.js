@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ShowAllPrints from './ShowAllPrints';
-import { fetchPrints } from './../actions/print_actions';
+import { fetchPrints } from '../../actions/print_actions';
 
 
 const mapStateToProps = (state) => {

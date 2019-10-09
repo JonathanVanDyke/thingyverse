@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { createLike, deleteLikeById, fetchLikes } from './../../actions/like_actions';
-import { fetchPrint, fetchPrints } from './../../actions/print_actions';
-import { fetchUser } from './../../actions/session_actions';
+import { createLike, deleteLikeById, fetchLikes } from '../../../actions/like_actions';
+import { fetchPrint, fetchPrints } from '../../../actions/print_actions';
+import { fetchUser } from '../../../actions/session_actions'
 import PrintCard from './PrintCard';
 
 const mapStateToProps = (state, ownProps) => {
