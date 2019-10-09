@@ -38,6 +38,7 @@ const receivePrint = (print) => {
 }
 
 export const fetchPrint = (id) => dispatch => {
+  // debugger
   return PrintApiUtil.fetchPrint(id).then((print) => {
     dispatch(receivePrint(print))});
 }
@@ -58,6 +59,6 @@ export const createPrint = (print) => dispatch => {
 }
 
 export const updatePrint = (id) => dispatch => {
-  debugger
+  // debugger
   return PrintApiUtil.updatePrint(id).then((print) => dispatch(receivePrint(print)));
 }

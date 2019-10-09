@@ -19,27 +19,29 @@ import PrintShowContainer from './prints/PrintShowContainer';
 import PrintFormContainer from './prints/PrintFormContainer';
 import EditPrintContainer from './prints/EditPrintContainer';
 import DesignsProfileContainer from './profile/DesignsProfileContainer';
-
+import ShowCollectionContainer from './collections/ShowCollectionContainer'
+import ShowAllPrintsContainer from '../allprints/ShowAllPrintsContainer';
+import CollectionsProfileContainer from './profile/CollectionsProfileContainer'
 const Content = styled.div({
   position: 'absolute',
   display: 'flex',
   flexDirection: 'column',
   alignContent: 'center',
   width: 971,
-  height: '100vh',
+  // height: '100vh',
   background: '#f5f5f5',
   // border: '1px solid red'
 });
 
 const Page = styled.div({
-  height: '100%',
-  width: '100%',
-  position: 'absolute',
+  // height: '100%',
+  // width: '100%',
+  // position: 'absolute',
   display: 'flex',
   justifyContent: 'center',
-  background: '#f5f5f5',
-  position: 'fixed',
-  Width: '100%',
+  // background: '#f5f5f5',
+  // position: 'fixed',
+  // Width: '100%',
   bottom: 0,
 });
 
@@ -63,7 +65,7 @@ const Footer = styled.footer`
   // margin-top: 30px;
   width: 100%;
   Height: 70px;
-  z-index: 10;
+  z-index: 10000;
   // background-color: black;
   background-image: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
   border-top: 1px solid #bebebe;
@@ -128,14 +130,17 @@ const App = () => (
         </Header>
         <Switch>
           <Route exact path="/" component={Home} />
+          {/* <Route exact path="/allprints" component={ShowAllPrintsContainer} /> */}
           <AuthRoute exact path="/login" component={LogInFormContainer} />
           <AuthRoute exact path="/signup" component={SignUpFormContainer} />
           <AuthRoute exact path="/logged-in" component={SignUpFormContainer} />
           <Route exact path="/profile/:userId" component={ProfileContainer} />
           <Route exact path="/profile/:userId/prints" component={DesignsProfileContainer} />
+          <Route exact path="/profile/:userId/collections" component={CollectionsProfileContainer} />
           <Route exact path="/print/:printId" component={PrintShowContainer} />
           <Route exact path="/create" component={PrintFormContainer} />
           <Route exact path="/edit/:printId" component={EditPrintContainer} />
+          <Route exact path="/collection/:collectionId" component={ShowCollectionContainer} />
         </Switch>
 
       </Content>

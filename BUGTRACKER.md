@@ -18,6 +18,9 @@
 ## Day...(sunday)
 * > why do likes reset to zero once refresh, but correct on nav?
 
+## Monday
+* > refactor state to normalize
+
 # Notes
 
 p.photo.attach(io: File.open("<filepath>"), filename: "<filename>")

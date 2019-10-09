@@ -260,6 +260,16 @@ class Profile extends React.Component {
                 DESIGNS
               </About>
             </Link>
+            <Link
+              to={`/profile/${this.viewUser.id}/collections`}
+              style={{ textDecoration: 'none' }}
+            >
+              <About
+                onClick={() => this.setState({ select: 2 })}
+              >
+                COLLECTIONS
+              </About>
+            </Link>
           </ProfileNav>
           { 
             this.state.select === 1 ? 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
+import LikedByAvatars from './LikedByAvatars';
 
 const PrintShowPage = styled.div`
   display: flex;
@@ -146,63 +147,76 @@ class PrintShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = { counter: this.props.likes};
+    this.author = null;
     this.like = this.like.bind(this);
     this.unLike = this.unLike.bind(this);
+    this.toggle = false;
   }
 
   componentDidMount() {
     let printId = this.props.match.params.printId
-    this.props.fetchPrints();
-    this.props.fetchPrint(Number(printId));
+
+    this.props.fetchPrint(Number(printId)).then(()=> {
+      this.props.fetchUser(this.props.print.author)
+    }).then(() => {
+      // this.props.print.user_likes.map
+    })
+
+    this.props.fetchLikes();
+    
   }
+
+  // componentDidUpdate() {
+  //   this.avatargen();
+  // }
 
 
   like() {
-    let val = this.state.counter;
-    this.props.createLike(this.props.print).then((arg) => {
-      let printId = this.props.match.params.printId
-      this.props.fetchPrints();
-      this.props.fetchPrint(Number(printId));
-      this.setState({ counter: val + 1 })
-    })
+    this.props.createLike(this.props.print.id)
   }
 
   unLike() {
     let val = this.state.counter;
-    // debugger
-    this.props.deleteLike(this.props.print).then(() => {
-      // debugger
-      let printId = this.props.match.params.printId
-      this.props.fetchPrints();
-      this.props.fetchPrint(Number(printId));
-      this.setState({ counter: val - 1 })
+    // let current_user_id = this.props.current_user_id;
+    let pickedLike = this.props.likes.find((like) => {
+      return like.user_id === this.props.current_user_id && like.print_id === this.props.print.id
     })
+
+    // debugger
+    this.props.deleteLike(pickedLike)
   }
+
+  avatargen() {
+    let liked_avatars = this.props.print.user_like_profs.map((user) => {
+      return (
+        <LikedByAvatars
+          user={user}
+        />
+      )
+    })
+    return liked_avatars;
+  }
+
 
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
-    let current_user_id = this.props.current_user.id;
-    const checkId = (pojo) => {
+    let current_user_id = this.props.current_user_id;
+    let checkId = (pojo) => {
       // debugger
-      return pojo.id === current_user_id;
+      return pojo === current_user_id;
     }
+
+    let author = this.props.users[this.props.print.author] || {username: '', avatar: null};
     // debugger
-    let user_likes = this.props.print.user_likes.map((user) => {
-      return(
-        <li
-          key={user.username}
-        >
-          <Avatar
-            src={
-              !!user.avatar ?
-                user.avatar :
-                defaultImg
-            }
-          />
-          {user.username}
-        </li>
-        )
-    })
+    // let liked_avatars = this.props.print.user_like_profs.map((user) => {
+    //   return(
+    //     <LikedByAvatars
+    //       user={user}
+    //     />
+    //   )
+    // })
+  
+
     return (
       <PrintShowPage>
 
@@ -210,8 +224,8 @@ class PrintShow extends React.Component {
 
           <Avatar 
             src={
-              !!this.props.print.author.avatar ? 
-              this.props.print.author.avatar : 
+              !!author.avatar ? 
+              author.avatar : 
               defaultImg
             } 
           />
@@ -221,9 +235,9 @@ class PrintShow extends React.Component {
               <li>{this.props.print.title}</li> 
               <li>By: 
                 <Link
-                  to={`/profile/${this.props.print.author.id}`}
+                  to={`/profile/${author.id}`}
                 >
-                  {this.props.print.author.username || ""}
+                  {author.username}
                 </Link>
               </li> 
             </ul>
@@ -241,25 +255,23 @@ class PrintShow extends React.Component {
 
           <RightPane1>
             <ButtonWrap>
-              { this.props.print.author.id === this.props.current_user.id ?
+              { this.props.print.author === this.props.current_user_id ?
                 <EditButton print={this.props.print} /> : 
                 null
               }
             </ButtonWrap>
             
             <ButtonWrap>
-              {!!this.props.print.user_likes.find(checkId) ?
+              {!!this.props.print.user_likes.find(checkId) || this.toggle ?
 
                 <Heart onClick={() => this.unLike()}>
                   <Heartalign>
-                    <p>
-                    <div>
-                    <p>
+
+                    <div className='one'>
                       <i className="fas fa-heart"></i>
-                    </p>
                     </div>
-                    </p>
-                  <LikeCount>Like <Count>{this.state.counter}</Count></LikeCount>
+
+                    <LikeCount>Like <Count>{this.props.likes ? this.props.likes.length : 0}</Count></LikeCount>
                   </Heartalign>
                 </Heart> 
                 
@@ -267,12 +279,12 @@ class PrintShow extends React.Component {
                 
                 <Heart onClick={() => this.like()}>
                   <Heartalign>
-                    <p>
-                    <div>
+
+                    <div className='two'>
                     <i className="fas fa-heart"></i>
                     </div>
-                    </p>
-                  <LikeCount>Like <Count>{this.state.counter}</Count></LikeCount>
+
+                    <LikeCount>Like <Count>{this.props.likes ? this.props.likes.length : 0}</Count></LikeCount>
                   </Heartalign>
                 </Heart>
               }
@@ -290,7 +302,8 @@ class PrintShow extends React.Component {
 
             <Label>Liked By</Label>
             <ul>
-              {user_likes}
+              {/* {liked_avatars} */}
+              {this.avatargen()}
             </ul>
 
           </LeftPane2>

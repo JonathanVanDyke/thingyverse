@@ -107,28 +107,20 @@ class DesignItem extends React.Component {
     // debugger
   }
 
-
   like() {
-      debugger
-      let val = this.state.counter;
-      let bool = this.state.bool;
-      this.props.createLike(this.props.print).then((arg) => {
-        debugger
-        let printId = this.props.print.id
-        // this.props.fetchPrints();
-        this.props.fetchPrint(Number(printId));
-        this.setState({ counter: val + 1, bool: !bool })
-        this.props.toggle()
-        // this.forceUpdate();
-    })
+    this.props.createLike(this.props.print.id)
   }
 
   unLike() {
       let val = this.state.counter;
       let bool = this.state.bool;
 
-      debugger
-      this.props.deleteLike(this.props.print).then(() => {
+      let pickedLike = this.props.likes.find((like) => {
+        return like.user_id === this.props.currentUser.id && like.print_id === this.props.print.id
+      })
+
+      // debugger
+      this.props.deleteLike(pickedLike).then(() => {
         // debugger
         let printId = this.props.print.id
         // this.props.fetchPrints();
@@ -139,27 +131,42 @@ class DesignItem extends React.Component {
     })
   }
 
+  componentDidMount() {
+    // debugger
+    this.props.fetchLikes()
+    this.props.fetchPrint(this.props.printId)
+    // debugger
+    this.props.receiveUser(this.props.userId)
+  }
+
 
   render() {
     // debugger
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     let currentUser = this.props.currentUser;
     const checkId = (pojo) => {
-      debugger
-      return pojo.user_id === currentUser.id;
+      return pojo === currentUser.id;
     }
+    // debugger
     return(
       <Top>
-        <Link to={`/print/${this.props.print.id}`}>
+        <Link to={`/print/${this.props.printId}`}>
 
           <Head>
-            <Avatar src={!!this.props.print.user.avatar ?
-              this.props.print.user.avatar :
+
+            <Avatar src={!!this.props.viewUser ?
+              this.props.viewUser.avatar :
               defaultImg}></Avatar>
+
             <TitleWrap>
-              <Title>{print.title}</Title>
-              <Byline>By: {this.props.print.user.username}</Byline>
+
+              <Title>{this.props.print ? this.props.print.title : ''}</Title>
+              <Byline>By: {!!this.props.viewUser ?
+                this.props.viewUser.username :
+                ''}</Byline>
+
             </TitleWrap>
+
           </Head>
 
     
@@ -168,10 +175,10 @@ class DesignItem extends React.Component {
 
           
 
-          <Back src={this.props.print.photoUrl}/>
+          <Back src={this.props.print ? this.props.print.photoUrl : ''}/>
         </Link>
         <Ribbon>
-          { !!this.props.print.likes.find(checkId) ?
+          { !!this.props.print.user_likes.find(checkId) ?
             <LikeButton >
               <p>
                 <i onClick={() => this.unLike()} className="fas fa-heart"></i> 
@@ -182,7 +189,7 @@ class DesignItem extends React.Component {
               <i onClick={() => this.like()} className="fas fa-heart"></i>
             </LikeButton>
           }
-          <Likes>{this.props.print.likes.length}</Likes>
+          <Likes>{this.props.print.user_likes.length}</Likes>
         </Ribbon>
       </Top>
     )

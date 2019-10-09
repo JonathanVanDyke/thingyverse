@@ -1,10 +1,15 @@
 class Api::LikesController < ApplicationController
-  before_action :find_print
+  before_action :find_print, only: [:create]
   before_action :find_like, only: [:destroy]
+
+  def index
+    # debugger
+    @likes = Like.all
+  end
 
   def create
     # debugger
-    @like = @print.likes.create(user_id: current_user.id)
+    @like = Like.create(user_id: current_user.id, print_id: @print.id)
     if @like
       render :show
     else
@@ -26,13 +31,13 @@ class Api::LikesController < ApplicationController
 
   def find_print
     # debugger
-    @print = Print.find(params[:print_id])
+    @print = Print.find(params[:printId])
   end
 
   def find_like
     # debugger
     # @like = @print.likes.find(params[:id])
-    @like = @print.likes.find_by(user_id: current_user.id)
+    @like = Like.find(params[:id])
   end
 
 end

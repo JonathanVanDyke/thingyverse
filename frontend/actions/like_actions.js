@@ -1,7 +1,13 @@
 import * as LikeAPIUtil from '../util/like_api_util';
 
+export const RECEIVE_LIKES = 'RECEIVE_LIKES';
 export const RECEIVE_LIKE = 'RECEIVE_LIKE';
 export const REMOVE_LIKE = 'REMOVE_LIKE';
+
+export const receiveLikes = likes => ({
+  type: RECEIVE_LIKES,
+  likes
+});
 
 export const receiveLike = like => ({
   type: RECEIVE_LIKE,
@@ -14,10 +20,17 @@ export const removeLike = (print) => ({
 });
 
 
-export const createLike = print => dispatch => {
+export const fetchLikes = () => dispatch => {
   // debugger
   return(
-    LikeAPIUtil.createLike(print).then(
+    LikeAPIUtil.fetchLikes().then(
+      likes => (dispatch(receiveLikes(likes))))
+  )
+};
+export const createLike = (printId, userId) => dispatch => {
+  // debugger
+  return(
+    LikeAPIUtil.createLike(printId, userId).then(
       print => (dispatch(receiveLike(print))))
   )
 };

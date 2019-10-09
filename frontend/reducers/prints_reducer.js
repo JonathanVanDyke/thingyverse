@@ -3,6 +3,10 @@ import {
   RECEIVE_PRINT,
   REMOVE_PRINT,
 } from '../actions/print_actions';
+import {
+  RECEIVE_LIKE,
+  REMOVE_LIKE,
+} from '../actions/like_actions'
 import merge from 'lodash/merge';
 
 const PrintsReducer = (oldState = {}, action) => {
@@ -17,7 +21,26 @@ const PrintsReducer = (oldState = {}, action) => {
       // debugger
       return merge({}, oldState, {[action.print.id]: action.print});
     case REMOVE_PRINT:
-      delete newState[action.printId];
+      newState[action.like.printId].user_likes
+      for (let i = 0; i < newState[action.like.printId].user_likes.length; i++) {
+        if (newState[action.like.printId].user_likes[i] === action.like.userId) {
+          newState[action.like.printId].user_likes.splice(i,1)
+        }
+      }
+      return newState;
+    case RECEIVE_LIKE:
+      // debugger
+      newState[action.like.printId].user_likes.push(action.like.userId);
+      // newState[action.like.printId].user_like_profs.push(action.like.userId);
+      return newState;
+    case REMOVE_LIKE:
+      //print means like here... fix...~!
+      // debugger
+      for (let i = 0; i < newState[action.print.printId].user_likes.length; i++) {
+        if (newState[action.print.printId].user_likes[i] === action.print.userId) {
+          newState[action.print.printId].user_likes.splice(i, 1)
+        }
+      }
       return newState;
     default:
       return newState;

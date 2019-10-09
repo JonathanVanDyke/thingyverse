@@ -15,6 +15,7 @@ const ProfilePage = styled.div`
   // background-color: red;
   // padding: 10px;
   margin-top: 51px;
+  margin-bottom: 100px;
 `
 
 //LEFT
@@ -221,7 +222,7 @@ class DesignsProfile extends React.Component {
     return (
       <ProfilePage>
         {/* top */}
-        {this.state.force}
+        {/* {this.state.force} */}
         <LeftPane>
 
           <AvatarCage>
@@ -267,6 +268,16 @@ class DesignsProfile extends React.Component {
                 onClick={() => this.setState({ select: 2 })}
               >
                 DESIGNS
+              </About>
+            </Link>
+            <Link
+              to={`/profile/${this.viewUser.id}/collections`}
+              style={{ textDecoration: 'none' }}
+            >
+              <About
+                onClick={() => this.setState({ select: 2 })}
+              >
+                COLLECTIONS
               </About>
             </Link>
           </ProfileNav>

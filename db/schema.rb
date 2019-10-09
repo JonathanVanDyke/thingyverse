@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_06_131852) do
+ActiveRecord::Schema.define(version: 2019_10_08_145941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,23 @@ ActiveRecord::Schema.define(version: 2019_10_06_131852) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "collect_follows", force: :cascade do |t|
+    t.integer "collection_id"
+    t.integer "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_collect_follows_on_collection_id"
+    t.index ["follower_id"], name: "index_collect_follows_on_follower_id"
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "cover_url"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "print_id", null: false
@@ -44,6 +61,15 @@ ActiveRecord::Schema.define(version: 2019_10_06_131852) do
     t.index ["print_id"], name: "index_likes_on_print_id"
     t.index ["user_id", "print_id"], name: "index_likes_on_user_id_and_print_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "print_collects", force: :cascade do |t|
+    t.integer "collection_id", null: false
+    t.integer "print_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_print_collects_on_collection_id"
+    t.index ["print_id"], name: "index_print_collects_on_print_id"
   end
 
   create_table "prints", force: :cascade do |t|

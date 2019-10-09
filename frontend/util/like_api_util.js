@@ -1,17 +1,29 @@
-export const createLike = print => (
-  $.ajax({
-    method: 'POST',
-    url: `/api/prints/${ print.id }/likes`,
-    data: { print }
-  })
-);
+export const fetchLikes = () => {
+  return(
+    $.ajax({
+      method: 'GET',
+      url: `/api/likes`,
+    })
+  )
+}
 
-export const deleteLike = (print) => {
+export const createLike = (printId, userId) => {
+  // debugger
+  return(
+    $.ajax({
+      method: 'POST',
+      url: `/api/likes`,
+      data: { printId, userId }
+    })
+  )
+};
+
+export const deleteLike = (like) => {
   // debugger
   return(
     $.ajax({
       method: 'DELETE',
-      url: `/api/prints/${print.id}/likes`
+      url: `/api/likes/${like.id}`
     })
   )
 };

@@ -2,19 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// import Slideshow from './Slideshow';
+import Slideshow from './SlideshowV1/Slideshow';
 import PrintIndexContainer from '../prints/PrintIndexContainer'
-import SlideshowV2 from './Slideshow_rev2';
+import SlideshowV2 from './SlideshowV2/Slideshow_rev2';
 
-const FirstContent = styled.div`
-  height: 341px;
-  width: 970px;
-  margin-top: 25px;
-  background-image: url(https://www.machinedesign.com/sites/machinedesign.com/files/G1-article-version_0.jpg);
-  background-position: center;
-  background-size: cover;
-  position: relative;
-`
 
 const s = {
   container: "screenW screenH dGray col",
@@ -46,7 +37,8 @@ const Feed = styled.section`
 
 const Featured = styled.section`
   margin-top: 18px;
-  height: 400px;
+  height: 365px;
+  // height: 1605px;
   width: 630px;
   // border: 1px solid #bebebe;
   overflow: hidden;
@@ -88,37 +80,47 @@ class Home extends React.Component {
     this.slides = slides;
   }
 
-
- 
-
   render() {
-    // debugger
     return (
       <>
-        {/* <div className={s.container}>
+        {/* Slideshow Option One */}
+        <div className={s.container}>
           <div className={s.main}>
             <Slideshow slides={this.slides} />
           </div>
-        </div> */}
+        </div>
+
+        {/* Slideshow Option Two */}
         <div >
           <div >
             <SlideshowV2 slides={this.slides} />
           </div>
         </div>
+
+        {/* Area Under Slideshow */}
         <Section2>
+
+          {/* To be Filled Out */}
           <Feed>
             
           </Feed>
+
+          {/* Needs Update to Collection Rather than Prints */}
           <Featured>
+
             <FeatureTitle>Featured Collections</FeatureTitle>
             <FeatureSub>Download and print today</FeatureSub>
+
             <Link 
               to="/"
               style={{ textDecoration: 'none', cursor: 'pointer' }}
             >
               <FeatureLink>see more</FeatureLink>
             </Link>
+
+            {/* Displays All Prints */}
             <PrintIndexContainer/>
+
           </Featured>
 
         </Section2>

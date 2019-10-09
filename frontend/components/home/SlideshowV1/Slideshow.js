@@ -63,7 +63,8 @@ class Slideshow extends React.Component {
   componentWillUnmount() {
     clearInterval(this.carouselInterval);
   }
-  
+
+
   startCarousel() {
     //defines interval function to be invoked on mount
     this.carouselInterval = setInterval(() => {

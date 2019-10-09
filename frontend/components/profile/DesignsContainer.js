@@ -1,16 +1,20 @@
 import { connect } from 'react-redux';
-import { createLike, deleteLike } from './../../actions/like_actions';
+import { createLike, deleteLike, fetchLikes } from './../../actions/like_actions';
 import { fetchPrint, fetchPrints } from './../../actions/print_actions';
-
+import { fetchUser } from './../../actions/session_actions';
 import DesignItem from './DesignItem';
 
-const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
-  debugger
+const mapStateToProps = (state, ownProps) => {
+  // debugger
   let userId = Number(ownProps.match.params.userId);
   return {
-    currentUser: users[session.id] || { username: '', bio: '', avatar: '', prints: [] },
-    viewUser: users[userId],
-    likes: ownProps.print.likes.length
+    currentUser: state.entities.users[state.session.id] || { username: '', bio: '', avatar: '', prints: [] },
+    viewUser: state.entities.users[userId],
+    users: state.entities.users,
+    print: state.entities.prints[ownProps.print] || {id: null, title: '', photoUrl: '', user_likes: []},
+    printId: ownProps.print,
+    userId: userId,
+    likes: state.entities.likes.filter((like) => { return like.print_id === ownProps.print }),
   };
 };
 
@@ -18,6 +22,7 @@ const mapDispatchToProps = dispatch => ({
   receiveUser: (id) => dispatch(fetchUser(id)),
   createLike: (print) => dispatch(createLike(print)),
   deleteLike: (print) => dispatch(deleteLike(print)),
+  fetchLikes: () => dispatch(fetchLikes()),
   fetchPrint: id => dispatch(fetchPrint(id)),
   fetchPrints: () => dispatch(fetchPrints()),
 });
