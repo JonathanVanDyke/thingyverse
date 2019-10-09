@@ -48,7 +48,8 @@ const NavButtnWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 320px;
-  margin-left: 397px;
+  margin-right: 344px;
+  z-index: 300;
 `
 
 const Splash = ({ currentUser, logout }) => {
