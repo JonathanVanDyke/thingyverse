@@ -21,6 +21,7 @@ const Top = styled.div`
   height: 262px;
   width: 295px;
   overflow: hidden;
+  box-shadow: 8px 14px 18px lightgrey;  
   // animation: ${left} .25s linear 1
 `
 //Head
@@ -114,13 +115,18 @@ const Back = styled.img`
   object-fit: cover;
 `
 
-const CollectIcon = styled.i
 
 class PrintCard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { 
+      selectedCollection: this.props.userCollectionTitles[0],
+      collectFormShown: false,
+    }
     this.like = this.like.bind(this);
     this.unLike = this.unLike.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
   }
 
   like() {
@@ -135,6 +141,10 @@ class PrintCard extends React.Component {
     });
   };
 
+  toggleForm() {
+    this.setState({collectFormShown: !this.state.collectFormShown})
+  }
+
 
   componentDidMount() {
     // debugger
@@ -147,6 +157,16 @@ class PrintCard extends React.Component {
     })
   }
 
+  update() {
+    return e => this.setState({ selectedCollection: e.target.value })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    return console.log(this.state.selectedCollection)
+    // this.props.processForm(this.state).then(() => this.props.history.push('/'));
+  }
+
 
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
@@ -155,34 +175,35 @@ class PrintCard extends React.Component {
       return pojo === currentUserId;
     }
 
-    // print -> prints_collected -> collections -> collection.follows -> userId
-    let print_collects_collection_ids = this.props.print.print_collects.map((print_collect) => {
-      return(
-        print_collect.collection_id
-      )
-    })
+    { this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1> }
 
-    let user_collection_ids = this.props.currentUser.collections.map((collection) => {
-      return(
-        collection.id
-      )
-    })
-
-
-    let collected;
-    for (let i = 0; i < user_collection_ids.length; i++) {
-      for (let j = 0; j < print_collects_collection_ids.length; j++) {
-        if (user_collection_ids[i] === print_collects_collection_ids[i]) {
-          collected = true;
-        } 
-      }
-    }
- 
-
-
-    debugger
     return (
+      <>
+      { !this.state.collectFormShown ?
       <Top>
+        {this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1>}
+        <form onSubmit={this.handleSubmit}>
+          <select 
+            name="collection"
+            onChange={this.update()}
+          >
+            <option 
+              value={this.props.userCollectionTitles}
+              onChange={this.update()}
+            >
+              {this.props.userCollectionTitles}
+            </option>
+            <option 
+              value='hmm'
+              onChange={this.update()}
+            >
+                hmm
+            </option>
+          </select>
+          <p>{this.props.userCollectionTitles}</p>
+          <input type='submit' value='Save'></input>
+        </form>
+ 
         <Link to={`/print/${this.props.printId}`}>
 
           <Head>
@@ -230,22 +251,26 @@ class PrintCard extends React.Component {
           </RibbonButton>
           <RibbonButton>
             {
-              collected ?
+              this.props.collected ?
                 <LikeButton >
                   <p>
-                    <i onClick={() => this.Like()} className="fas fa-layer-group"></i>
+                    <i onClick={() => this.toggleForm()} className="fas fa-layer-group"></i>
                   </p>
                 </LikeButton>
                 :
                 <LikeButton>
-                  <i onClick={() => this.Like()} className="fas fa-layer-group"></i>
+                  <i onClick={() => this.toggleForm()} className="fas fa-layer-group"></i>
                 </LikeButton>
             }
             {/* print.user_likes.length */}
             <Likes>{this.props.print.user_likes.length}</Likes>
           </RibbonButton>
         </Ribbon>
-      </Top>
+        }
+      </Top> :
+        <h1>hi</h1>
+      }
+      </>
     )
   }
 };

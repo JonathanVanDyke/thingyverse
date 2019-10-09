@@ -19,7 +19,31 @@ const mapStateToProps = (state, ownProps) => {
       likeId = likes[i].id;
     };
   };
-  // debugger
+
+  let print_collects_collection_ids = print.print_collects.map((print_collect) => {
+    return (
+      print_collect.collection_id
+    )
+  })
+
+  let user_collection_ids = currentUser.collections.map((collection) => {
+    return (
+      collection.id
+    )
+  })
+
+  let userCollectionTitles = currentUser.collections.map((collection) => {
+    return collection.title
+  })
+
+  let collected = false;
+  for (let i = 0; i < user_collection_ids.length; i++) {
+    for (let j = 0; j < print_collects_collection_ids.length; j++) {
+      if (user_collection_ids[i] === print_collects_collection_ids[i]) {
+        collected = true;
+      }
+    }
+  }
 
   return {
     printId,
@@ -29,6 +53,8 @@ const mapStateToProps = (state, ownProps) => {
     likeId,
     currentUserId,
     currentUser,
+    collected,
+    userCollectionTitles,
   };
 };
 
