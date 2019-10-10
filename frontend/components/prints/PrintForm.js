@@ -30,11 +30,11 @@ const InputButton = styled.button`
   text-transform: uppercase;
   align-items: center;
   padding-top: 10px;
-  box-shadow: 5px 10px 18px #888888;
+  box-shadow: 8px 14px 18px lightgrey;
   transition: box-shadow 1s;
   text-transform: uppercase;
   :hover {
-    box-shadow: 10px 5px 18px #888888;
+    box-shadow: 14px 8px 18px lightgrey;
   }
   cursor: pointer;
 `
@@ -108,10 +108,10 @@ const Inpt = styled.input`
   padding: 10px;
   border: 1px solid white;
   margin-top: 10px;
-  box-shadow: 1px 1px 18px #888888;
+  box-shadow: 8px 14px 18px lightgrey;
   transition: box-shadow 1s;
   :hover {
-    box-shadow: 1px 2px 18px #888888;
+    box-shadow: 14px 8px 18px lightgrey;
   }
   outline: none;
   z-index: 100;
@@ -131,10 +131,10 @@ const TxtArea = styled.textarea`
   width: 439;
   height: 300px;
   margin-top: 10px;
-  box-shadow: 1px 1px 18px #888888;
+  box-shadow: 8px 14px 18px lightgrey;
   transition: box-shadow 1s;
   :hover {
-    box-shadow: 1px 2px 18px #888888;
+    box-shadow: 14px 8px 18px lightgrey;
   }
 `
 

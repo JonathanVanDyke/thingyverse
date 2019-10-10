@@ -44,10 +44,10 @@ const InputButton = styled.button`
   align-items: center;
   padding-top: 10px;
   margin-top: 15px;
-  box-shadow: 5px 10px 18px #888888;
+  box-shadow: 8px 14px 18px lightgrey;
   transition: box-shadow 1s;
   :hover {
-    box-shadow: 10px 5px 18px #888888;
+  box-shadow: 14px 8px 18px lightgrey;
   }
 `
 
@@ -55,10 +55,10 @@ const Inpt = styled.input`
   padding: 10px;
   border: 1px solid white;
   margin-top: 10px;
-  box-shadow: 5px 10px 18px #888888;
+  box-shadow: 8px 14px 18px lightgrey;
   transition: box-shadow 1s;
   :hover {
-    box-shadow: 10px 5px 18px #888888;
+    box-shadow: 14px 8px 18px lightgrey;
   }
   outline: none;
 `
@@ -125,10 +125,10 @@ const Demo = styled.button`
   align-items: center;
   padding-top: 10px;
   margin-top: 15px;
-  box-shadow: 5px 10px 18px #888888;
+  box-shadow: 8px 14px 18px lightgrey;
   transition: box-shadow 1s;
   :hover {
-    box-shadow: 10px 5px 18px #888888;
+    box-shadow: 14px 8px 18px lightgrey;
   }
   background-color: #e9e9e9;
   color: #666666;
