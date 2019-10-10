@@ -258,7 +258,7 @@ class PrintCard extends React.Component {
   }
 
   deletePrintFromCollection() {
-    debugger
+    // debugger
     this.props.deleteCollection({
       id: this.props.userCollectedId,
       print_id: this.props.printId,

@@ -39,7 +39,7 @@ export const updateCollection = (collection) => {
 };
 
 export const deleteCollection = (collection) => {
-  debugger
+  // debugger
   return (
     $.ajax({
       method: 'DELETE',
