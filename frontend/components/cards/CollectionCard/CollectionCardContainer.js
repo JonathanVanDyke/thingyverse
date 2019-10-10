@@ -11,13 +11,12 @@ const mapStateToProps = (state, ownProps) => {
   let currentUserId = state.session.id;
 
   let authorId = collection ? collection.author_id : null;
-  // debugger
-  let printId = collection.print_collects[0] ? collection.print_collects[0].print_id : null;
+  let printId = collection ? collection.print_collects[0].print_id : null;
   let prints = state.entities.prints ? state.entities.prints : {};
-  // debugger
   let print = prints[printId] ? prints[printId] : {photoUrl: ''}
   let author = collection ? state.entities.users[authorId] : {};
-  // debugger
+  let users = state.entities.users || {};
+  let user = users[authorId]
   return {
     collectionId,
     collection,
@@ -27,6 +26,7 @@ const mapStateToProps = (state, ownProps) => {
     print,
     currentUserId,
     mini,
+    user,
   };
 };
 

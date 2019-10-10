@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Collection from './Collection';
+import CollectionCards from './../cards/CollectionCard/CollectionCards';
 
 // debugger
 const ProfilePage = styled.div`
@@ -182,9 +183,16 @@ const About = styled.h1`
 class CollectionsProfile extends React.Component {
   constructor(props) {
     super(props);
-    this.viewUser = { username: '', avatar: '', id: null, bio: '' }
-    this.state = { select: 1 }
+    this.viewUser = { username: '', avatar: '', id: null, bio: '', collections: { print_collects: [] } }
+    this.state = { mini: false };
+    this.toggle = this.toggle.bind(this);
   }
+
+  toggle() {
+    this.setState({mini: !this.state.mini})
+  }
+
+
 
   componentDidMount() {
     // debugger
@@ -196,29 +204,15 @@ class CollectionsProfile extends React.Component {
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     this.viewUser = this.props.viewUser || this.viewUser
-    // debugger
 
-    let collections = this.viewUser.collections ? this.viewUser.collections.map((collection) => {
-      // debugger
-      return (
-        <Collection
-          key={collection.id}
-          collection={collection}
-          match={this.props.match}
-          fetchPrint={this.props.fetchPrint}
-          fetchPrints={this.props.fetchPrints}
-          fetchCollection={this.props.fetchCollection}
-          collections={this.props.collections}
-          prints={this.props.prints}
-        />
-      )
-    }) : []
+    let collections = [];
+    collections = this.props.viewUser.collections.map((collection) => {
+      return collection.id
+    })
 
-    // debugger
     return (
       <ProfilePage>
         {/* top */}
-
         <LeftPane>
 
           <AvatarCage>
@@ -245,6 +239,7 @@ class CollectionsProfile extends React.Component {
         </LeftPane>
 
         <RightPane>
+          <div onClick={() => this.toggle()}>click me</div>
           <ProfileNav>
             <Link
               to={`/profile/${this.viewUser.id}`}
@@ -279,7 +274,11 @@ class CollectionsProfile extends React.Component {
           </ProfileNav>
 
           <DesignGrid>
-            {collections}
+            {/* {collections} */}
+            <CollectionCards 
+              collectionIds={collections}
+              mini={this.state.mini}
+            />
           </DesignGrid>
 
 

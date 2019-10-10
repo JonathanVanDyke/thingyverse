@@ -94,6 +94,7 @@ const Ribbon = styled.section`
 const Back = styled.img`
   height: 262px;
   width: 295px;
+  object-fit: cover;
 `
 
 //MINI Styling!!
@@ -125,6 +126,7 @@ const Img = styled.img`
   :hover{
     animation: ${rock} .2s ease-out 2;
   }
+  
 `
 
 const ImgWrap = styled.button`
@@ -145,22 +147,18 @@ class CollectionCard extends React.Component {
   }
 
   componentDidMount() {
-    // debugger
     this.props.fetchCollection(this.props.collectionId).then(() => {
       this.props.fetchPrint(this.props.printId).then(() => {
         this.props.fetchUser(this.props.authorId);
       })
     })
-    // debugger
   }
 
 
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     let currentUserId = this.props.currentUserId;
-    const checkId = (pojo) => {
-      return pojo === currentUserId;
-    }
+
     return (
       <>
         {!this.props.mini ? 
