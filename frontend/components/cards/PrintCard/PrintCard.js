@@ -251,6 +251,7 @@ class PrintCard extends React.Component {
     e.preventDefault();
 
     //maybe conditional for if title value exists or not
+    debugger
     this.props.updateCollection({
       id: this.props.userCollectedId,
       print_id: this.props.printId,

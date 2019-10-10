@@ -22,11 +22,11 @@ const mapStateToProps = (state, ownProps) => {
     };
   };
 
-  let print_collects_collection_ids = print.print_collects.map((print_collect) => {
+  let print_collects_collection_ids = print ? print.print_collects.map((print_collect) => {
     return (
       print_collect.collection_id
     )
-  })
+  }) : []
 
   let user_collection_ids = currentUser.collections.map((collection) => {
     return (

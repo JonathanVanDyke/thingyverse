@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import DesignsContainer from './DesignsContainer';
+import PrintCards from './../cards/PrintCard/PrintCards';
 
 const ProfilePage = styled.div`
   // margin-top: 100px;
@@ -202,21 +203,21 @@ class DesignsProfile extends React.Component {
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     this.viewUser = this.props.viewUser || this.viewUser
-    // debugger
+    debugger
     // this.toggle = this.props.toggle();
 
-    let designs = this.viewUser.designs.map((print) => {
-      // debugger
-      return (
-        <DesignsContainer
-          key={print.id}
-          print={print}
-          match={this.props.match}
-          toggle={this.toggle}
-        >
-        </DesignsContainer>
-      )
-    })
+    // let designs = this.viewUser.designs.map((print) => {
+    //   debugger
+    //   return (
+    //     <DesignsContainer
+    //       key={print.id}
+    //       print={print}
+    //       match={this.props.match}
+    //       toggle={this.toggle}
+    //     >
+    //     </DesignsContainer>
+    //   )
+    // }) 
 
     // debugger
     return (
@@ -300,7 +301,9 @@ class DesignsProfile extends React.Component {
               null
           } */}
           <DesignGrid>
-            {designs}
+            {<PrintCards
+              printIds={this.viewUser.designs}
+            />}
           </DesignGrid>
         </RightPane>
 
