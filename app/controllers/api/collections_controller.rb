@@ -10,7 +10,7 @@ class Api::CollectionsController < ApplicationController
   end
 
   def create
-    debugger
+    # debugger
     @collection = Collection.new(collection_params)
     @collection.author_id = current_user.id
     if @collection.save
@@ -37,6 +37,7 @@ class Api::CollectionsController < ApplicationController
   def destroy 
     @collection = Collection.find(params[:id])
     # if @collection.destroy
+    # debugger
     printId = params[:collection][:print_id]
     if @collection.print_collects.find_by(print_id: printId).delete
       @collection.delete if @collection.print_collects.length === 0

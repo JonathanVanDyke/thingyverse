@@ -30,7 +30,8 @@ const usersReducer = (state = {}, action) => {
       //     newArr = Object.values(action.collection)[0].collected_prints.splice(i, 1)
       //   }
       // }
-      debugger
+      
+      // debugger
       if (Object.values(newState)[0] && Object.values(action.collection)[0].collected_prints) {
         Object.values(newState)[0].first_collection_prints = Object.values(action.collection)[0].collected_prints
         return newState

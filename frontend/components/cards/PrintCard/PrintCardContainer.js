@@ -65,7 +65,7 @@ const mapStateToProps = (state, ownProps) => {
   
 
   let userCollectedId = null;
-  debugger
+  // debugger
   if (currentUser.collect_follows) {
     if (currentUser.collect_follows.length && currentUser.collect_follows.length >= 1) {
       userCollectedId = currentUser.collect_follows[0].collection_id

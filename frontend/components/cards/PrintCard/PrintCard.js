@@ -2,6 +2,8 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
+import { withRouter } from 'react-router-dom';
+
 
 const rand = () => {
   let myArray = [300, 0, -300];
@@ -281,7 +283,7 @@ class PrintCard extends React.Component {
     }
 
     // { this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1> }
-    debugger
+    // debugger
     return (
       <>
       {/* {this.props.collectionParent.length} */}
@@ -336,13 +338,14 @@ class PrintCard extends React.Component {
           <RibbonButton>
             {
               this.props.collected2 ?
-                <Link to={`/allcollections`}>
-                <LikeButton >
-                  <p>
-                    {/* Hello */}
-                      <i onClick={() => this.deletePrintFromCollection()} className="fas fa-layer-group"></i>
-                  </p>
-                </LikeButton>
+
+                <Link to={this.props.location.pathname}>
+                  <LikeButton >
+                    <p>
+                      {/* Hello */}
+                        <i onClick={() => this.deletePrintFromCollection()} className="fas fa-layer-group"></i>
+                    </p>
+                  </LikeButton>
                 </Link>
                 :
                 <LikeButton>
@@ -413,4 +416,4 @@ PrintCard.propTypes = {
   likeId: PropTypes.number,
 }
 
-export default PrintCard
+export default withRouter(PrintCard)

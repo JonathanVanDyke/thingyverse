@@ -18,7 +18,7 @@ const Button = styled.button`
   text-transform: capitalize;
   justify-content: center;
   margin-right: -11px;
-
+  
 `
 
 const SignOutButton = ({ logout }) => {
