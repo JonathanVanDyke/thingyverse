@@ -338,23 +338,28 @@ class PrintCard extends React.Component {
           <RibbonButton>
             {
               this.props.collected2 ?
-
-                <Link to={this.props.location.pathname}>
-                  <LikeButton >
-                    <p>
-                      {/* Hello */}
-                        <i onClick={() => this.deletePrintFromCollection()} className="fas fa-layer-group"></i>
-                    </p>
-                  </LikeButton>
-                </Link>
+                <>
+                  <Link to={this.props.location.pathname}>
+                    <LikeButton >
+                      <p>
+                        {/* Hello */}
+                          <i onClick={() => this.deletePrintFromCollection()} className="fas fa-layer-group"></i>
+                      </p>
+                    </LikeButton>
+                  </Link>
+                  <Likes>1</Likes>
+                </>
                 :
-                <LikeButton>
-                  {/* GoodBye */}
-                  <i onClick={() => this.toggleForm()} className="fas fa-layer-group"></i>
-                </LikeButton>
+                <>
+                  <LikeButton>
+                    {/* GoodBye */}
+                    <i onClick={() => this.toggleForm()} className="fas fa-layer-group"></i>
+                  </LikeButton>
+                  <Likes>0</Likes>
+                </>
             }
             {/* print.user_likes.length */}
-              <Likes>{this.props.first_collection_length}</Likes>
+              {/* <Likes>{this.props.print.collections_in.length}</Likes> */}
           </RibbonButton>
         </Ribbon>
         }

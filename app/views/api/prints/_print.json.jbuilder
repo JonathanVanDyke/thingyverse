@@ -13,4 +13,4 @@ json.print_collects print.print_collects
 #to be refactored out
 
 
-json.collections_in print.print_collect_ids
+json.collections_in print.collection_ids

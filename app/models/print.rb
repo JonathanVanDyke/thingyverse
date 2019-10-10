@@ -16,5 +16,9 @@ class Print < ApplicationRecord
     foreign_key: :print_id,
     class_name: :PrintCollect
 
+  has_many :collections,
+    through: :print_collects,
+    source: :collection
+
 # rails g model Like post:references user:references
 end

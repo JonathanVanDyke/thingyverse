@@ -7,10 +7,15 @@ import {
   RECEIVE_LIKE,
   REMOVE_LIKE,
 } from '../actions/like_actions'
+import {
+  REMOVE_COLLECTION,
+  RECEIVE_COLLECTION
+} from '../actions/collection_actions'
 import merge from 'lodash/merge';
 
 const PrintsReducer = (oldState = {}, action) => {
   // debugger
+  let newCollectionId;
   Object.freeze(oldState);
   let newState = merge({}, oldState);
   switch (action.type) {
@@ -41,6 +46,23 @@ const PrintsReducer = (oldState = {}, action) => {
           newState[action.print.printId].user_likes.splice(i, 1)
         }
       }
+      return newState;
+    case RECEIVE_COLLECTION:
+      newCollectionId = Object.values(action.collection)[0].id
+      //iterate over collections print ids
+      Object.values(action.collection)[0].collected_prints.forEach((printId) => {
+        newState[printId].collections_in = [newCollectionId]
+      })
+      debugger
+      return newState;
+    case REMOVE_COLLECTION:
+      newCollectionId = Object.values(action.collection)[0].id
+      //iterate over collections print ids... NO
+      //send down printId
+      Object.values(action.collection)[0].collected_prints.forEach((printId) => {
+        newState[printId].collections_in = []
+      })
+      debugger
       return newState;
     default:
       return newState;
