@@ -256,6 +256,7 @@ class PrintCard extends React.Component {
       id: this.props.userCollectedId,
       print_id: this.props.printId,
     })
+    this.toggleForm()
   }
 
   deletePrintFromCollection() {
