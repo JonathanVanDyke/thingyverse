@@ -199,6 +199,7 @@ class PrintCard extends React.Component {
     this.unLike = this.unLike.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.deletePrintFromCollection = this.deletePrintFromCollection.bind(this);
   }
 
   like() {
@@ -218,15 +219,28 @@ class PrintCard extends React.Component {
   }
 
 
+  // componentDidMount() {
+  //   // debugger
+  //   this.props.fetchPrint(this.props.printId).then(() => {
+  //     this.props.fetchUser(this.props.authorId).then(() => {
+  //       this.props.fetchUser(this.props.currentUser.id).then(() => {
+  //         this.props.fetchLikes();
+  //       })
+  //     })
+  //   })
+  // }
+
+
+  async setupData() {
+    await this.props.fetchPrint(this.props.printId);
+    await this.props.fetchUser(this.props.currentUser.id);
+    await this.props.fetchUser(this.props.authorId);
+    await this.props.fetchLikes();
+
+  }
+
   componentDidMount() {
-    // debugger
-    this.props.fetchPrint(this.props.printId).then(() => {
-      this.props.fetchUser(this.props.authorId).then(() => {
-        this.props.fetchUser(this.props.currentUser.id).then(() => {
-          this.props.fetchLikes();
-        })
-      })
-    })
+    this.setupData();
   }
 
   update() {
@@ -235,14 +249,21 @@ class PrintCard extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+
+    //maybe conditional for if title value exists or not
     this.props.updateCollection({
       id: this.props.userCollectedId,
       print_id: this.props.printId,
-    }).then(() => {
-      // this.props.fetchCollection(this.props.userCollectedId)
     })
-    // this.props.processForm(this.state).then(() => this.props.history.push('/'));
+  }
+
+  deletePrintFromCollection() {
+    debugger
+    this.props.deleteCollection({
+      id: this.props.userCollectedId,
+      print_id: this.props.printId,
+    })
+
   }
 
 
@@ -312,7 +333,7 @@ class PrintCard extends React.Component {
               this.props.collected ?
                 <LikeButton >
                   <p>
-                    <i onClick={() => this.toggleForm()} className="fas fa-layer-group"></i>
+                      <i onClick={() => this.deletePrintFromCollection()} className="fas fa-layer-group"></i>
                   </p>
                 </LikeButton>
                 :

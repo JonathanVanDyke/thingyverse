@@ -38,12 +38,13 @@ export const updateCollection = (collection) => {
   );
 };
 
-export const deleteCollection = (collection_id) => {
-  // debugger
+export const deleteCollection = (collection) => {
+  debugger
   return (
     $.ajax({
       method: 'DELETE',
-      url: `/api/collections/${collection_id}`
+      url: `/api/collections/${collection.id}`,
+      data: { collection }
     })
   )
 };

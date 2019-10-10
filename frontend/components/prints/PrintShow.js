@@ -169,17 +169,29 @@ class PrintShow extends React.Component {
     this.toggle = false;
   }
 
-  componentDidMount() {
+  // componentDidMount() {
+  //   let printId = this.props.match.params.printId
+
+  //   this.props.fetchPrint(Number(printId)).then(()=> {
+  //     this.props.fetchUser(this.props.print.author)
+  //   }).then(() => {
+  //     // this.props.print.user_likes.map
+  //   })
+
+  //   this.props.fetchLikes();
+    
+  // }
+
+  async getData() {
     let printId = this.props.match.params.printId
 
-    this.props.fetchPrint(Number(printId)).then(()=> {
-      this.props.fetchUser(this.props.print.author)
-    }).then(() => {
-      // this.props.print.user_likes.map
-    })
-
-    this.props.fetchLikes();
+    await this.props.fetchPrint(Number(printId));
+    await this.props.fetchUser(this.props.print.author);
+    await this.props.fetchLikes();
     
+  }
+  componentDidMount() {
+    this.getData();
   }
 
   // componentDidUpdate() {

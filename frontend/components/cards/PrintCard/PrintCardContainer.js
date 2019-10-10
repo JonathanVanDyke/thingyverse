@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createLike, deleteLikeById, fetchLikes } from '../../../actions/like_actions';
 import { fetchPrint, fetchPrints } from '../../../actions/print_actions';
-import { createCollection, updateCollection, fetchCollection } from '../../../actions/collection_actions';
+import { createCollection, updateCollection, fetchCollection, deleteCollection } from '../../../actions/collection_actions';
 import { fetchUser } from '../../../actions/session_actions';
 import PrintCard from './PrintCard';
 
@@ -52,7 +52,7 @@ const mapStateToProps = (state, ownProps) => {
 
   let userCollectedId = null;
   if (currentUser.collect_follows.length >= 1) {
-    let userCollectedId = currentUser.collect_follows[0].collection_id
+    userCollectedId = currentUser.collect_follows[0].collection_id
   }
 
   return {
@@ -80,6 +80,7 @@ const mapDispatchToProps = dispatch => ({
   createCollection: (collection) => dispatch(createCollection(collection)),
   updateCollection: (collection) => dispatch(updateCollection(collection)),
   fetchCollection: (id) => dispatch(fetchCollection(id)),
+  deleteCollection: (id) => dispatch(deleteCollection(id)),
 });
 
 

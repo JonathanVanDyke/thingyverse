@@ -35,8 +35,13 @@ class Api::CollectionsController < ApplicationController
   end
 
   def destroy 
+    debugger
     @collection = Collection.find(params[:id])
-    if @collection.destroy
+    # if @collection.destroy
+    debugger
+    printId = params[:collection][:print_id]
+    if @collection.print_collects.find_by(print_id: printId).delete
+      debugger
       render :show
     else 
       render json: @collection.errors.full_messages, status: 422

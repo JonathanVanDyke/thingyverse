@@ -210,8 +210,7 @@ class CollectionsProfile extends React.Component {
           fetchCollection={this.props.fetchCollection}
           collections={this.props.collections}
           prints={this.props.prints}
-        >
-        </Collection>
+        />
       )
     }) : []
 
