@@ -220,29 +220,31 @@ class PrintCard extends React.Component {
   }
 
 
-  // componentDidMount() {
-  //   // debugger
-  //   this.props.fetchPrint(this.props.printId).then(() => {
-  //     this.props.fetchUser(this.props.authorId).then(() => {
-  //       this.props.fetchUser(this.props.currentUser.id).then(() => {
-  //         this.props.fetchLikes();
-  //       })
-  //     })
-  //   })
+  componentDidMount() {
+    // debugger
+    this.props.fetchPrint(this.props.printId).then(() => {
+      this.props.fetchUser(this.props.authorId).then(() => {
+        this.props.fetchUser(this.props.currentUser.id).then(() => {
+          this.props.fetchLikes();
+        })
+      })
+    })
+  }
+
+
+  // async setupData() {
+  //   await this.props.fetchPrint(this.props.printId);
+  //   debugger
+  //   await this.props.fetchUser(this.props.currentUser.id);
+  //   await this.props.fetchUser(this.props.authorId);
+  //   debugger
+  //   await this.props.fetchLikes();
+  //   await this.props.fetchCollections();
   // }
 
-
-  async setupData() {
-    await this.props.fetchPrint(this.props.printId);
-    await this.props.fetchUser(this.props.currentUser.id);
-    await this.props.fetchUser(this.props.authorId);
-    await this.props.fetchLikes();
-    await this.props.fetchCollections();
-  }
-
-  componentDidMount() {
-    this.setupData();
-  }
+  // componentDidMount() {
+  //   this.setupData();
+  // }
 
   update() {
     return e => this.setState({ selectedCollection: e.target.value })
@@ -334,12 +336,14 @@ class PrintCard extends React.Component {
           <RibbonButton>
             {
               this.props.collected2 ?
+                <Link to={`/allcollections`}>
                 <LikeButton >
                   <p>
                     {/* Hello */}
                       <i onClick={() => this.deletePrintFromCollection()} className="fas fa-layer-group"></i>
                   </p>
                 </LikeButton>
+                </Link>
                 :
                 <LikeButton>
                   {/* GoodBye */}

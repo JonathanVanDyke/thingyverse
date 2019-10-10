@@ -89,20 +89,33 @@ const Splash = ({ currentUser, logout }) => {
   } else {
     return(
       <NavBar>
-        <Link 
-          to="/" 
-          className="header-link"
-        >
+        <Link
+          to="/"
+          style={{ textDecoration: 'none' }}>
           <Logo>Thingyverse</Logo>
         </Link>
-        <Link
-          to='/'
-          style={{ textDecoration: 'none' }}
-        >
-          <Create>create</Create>
-        </Link>
-        {/* <SearchDummy></SearchDummy> */}
-        <SignInJoinButton currentUser={currentUser}/>
+        <NavButtnWrap>
+          <Link
+            to='/allprints'
+            style={{ textDecoration: 'none' }}
+          >
+            <Create>prints</Create>
+          </Link>
+          <Link
+            to='/allcollections'
+            style={{ textDecoration: 'none' }}
+          >
+            <Create>collections</Create>
+          </Link>
+          <Link
+            to='/create'
+            style={{ textDecoration: 'none' }}
+          >
+            <Create>create</Create>
+          </Link>
+          {/* <SearchDummy></SearchDummy> */}
+        </NavButtnWrap>
+        <SignInJoinButton currentUser={currentUser} />
       </NavBar>
     );
   };

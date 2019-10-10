@@ -38,6 +38,7 @@ user.collections.each do |collection|
   collected_prints << collection.print_ids
 end
 
-user.collections[0].print_ids
+user.collections[0].print_ids if user.collections[0]
 
-json.first_collection_prints user.collections[0].print_ids
+
+json.first_collection_prints user.collections[0].print_ids if user.collections[0]

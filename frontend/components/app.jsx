@@ -137,9 +137,9 @@ const App = () => (
           <Route exact path="/" component={HomeContainer} />
           <Route exact path="/allprints" component={ShowAllPrintsContainer} />
           <Route exact path="/allcollections" component={ShowAllCollectionsContainer} />
-          <AuthRoute exact path="/login" component={LogInFormContainer} />
-          <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-          <AuthRoute exact path="/logged-in" component={SignUpFormContainer} />
+          <Route exact path="/login" component={LogInFormContainer} />
+          <Route exact path="/signup" component={SignUpFormContainer} />
+          <Route exact path="/logged-in" component={SignUpFormContainer} />
           <Route exact path="/profile/:userId" component={ProfileContainer} />
           <Route exact path="/profile/:userId/prints" component={DesignsProfileContainer} />
           <Route exact path="/profile/:userId/collections" component={CollectionsProfileContainer} />

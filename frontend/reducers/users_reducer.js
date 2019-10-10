@@ -14,7 +14,12 @@ const usersReducer = (state = {}, action) => {
       return merge({}, state, { [action.user.id]: {id: action.user.id, bio: action.user.bio, avatar: action.user.avatar, username: action.user.username, designs: action.user.designs} });
     case RECEIVE_COLLECTION:
       // debugger
-      return merge({}, state, { [Object.values(action.collection)[0].author_id]: {first_collection_prints:  Object.values(action.collection)[0].collected_prints} });
+      if (Object.values(action.collection)[0].author_id && Object.values(action.collection)[0].collected_prints) {
+        return merge({}, state, { [Object.values(action.collection)[0].author_id]: {first_collection_prints:  Object.values(action.collection)[0].collected_prints} });
+      } else {
+        return newState
+      }
+
     case REMOVE_COLLECTION:
       // debugger
 
@@ -26,13 +31,19 @@ const usersReducer = (state = {}, action) => {
       //   }
       // }
       debugger
-      Object.values(newState)[0].first_collection_prints = Object.values(action.collection)[0].collected_prints
-      debugger
+      if (Object.values(newState)[0] && Object.values(action.collection)[0].collected_prints) {
+        Object.values(newState)[0].first_collection_prints = Object.values(action.collection)[0].collected_prints
+        return newState
+      } else {
+        return newState
+      }
+       
+
       // newState = merge({}, state, { [Object.values(action.collection)[0].author_id]: { first_collection_prints: newArr } })
-      return newState
+      // return newState
 
       // return merge({}, state, { [Object.values(action.collection)[0].author_id]: { first_collection_prints: Object.values(action.collection)[0].collected_prints } });
-      return state;
+      // return state;
     default:
       return state;
   }

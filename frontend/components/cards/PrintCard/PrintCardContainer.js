@@ -33,15 +33,15 @@ const mapStateToProps = (state, ownProps) => {
   }) : []
 
   //return all user collections
-  let user_collection_ids = currentUser.collections.map((collection) => {
+  let user_collection_ids = currentUser.collections ? currentUser.collections.map((collection) => {
     return (
       collection.id
     )
-  })
+  }) : []
 
-  let userCollectionTitles = currentUser.collections.map((collection) => {
+  let userCollectionTitles = currentUser.collections ? currentUser.collections.map((collection) => {
     return collection.title
-  })
+  }) : []
 
   let user_collection_id;
   let collected = false;
@@ -57,19 +57,23 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   let collected2 = false;
-  currentUser.first_collection_prints.forEach((userPrintId) => {
+  currentUser.first_collection_prints ? currentUser.first_collection_prints.forEach((userPrintId) => {
     if (userPrintId === printId) {
       collected2 = true;
     };
-  });
+  }) : null
   
 
   let userCollectedId = null;
-  if (currentUser.collect_follows.length >= 1) {
-    userCollectedId = currentUser.collect_follows[0].collection_id
+  debugger
+  if (currentUser.collect_follows) {
+    if (currentUser.collect_follows.length && currentUser.collect_follows.length >= 1) {
+      userCollectedId = currentUser.collect_follows[0].collection_id
+    }
   }
+ 
 
-  let first_collection_length = currentUser.first_collection_prints.length;
+  let first_collection_length = currentUser.first_collection_prints ? currentUser.first_collection_prints.length : 0;
 
   return {
     printId,

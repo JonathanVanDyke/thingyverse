@@ -21,6 +21,9 @@ const NavButton = styled.button`
     //   border-left: 1px solid #fff;
     // border-right: 1px solid #fff;
   outline: none;
+  align-items: flex-end;
+  position: absolute;
+  margin-left: 842px;
 `
 
 const NavButtonDrop = styled.button`
