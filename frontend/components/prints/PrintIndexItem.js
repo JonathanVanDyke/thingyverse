@@ -42,9 +42,9 @@ const ImgWrap = styled.button`
   height: 125px;
   width: 125px;
   // margin: 10px 0 30px 0;
-  :hover {
-    opacity: .75;
-  }
+  // :hover {
+  //   opacity: .75;
+  // }
   margin-bottom: 0;
 `
 
