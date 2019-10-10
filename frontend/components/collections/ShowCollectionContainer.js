@@ -10,9 +10,10 @@ const mapStateToProps = (state, ownProps) => {
   // debugger
   return ({
     current_user_id: state.session.id || null,
-    collection: state.entities.collections[Number(collectionId)] || { title: '', author_id: null, print_collects: [] },
-    prints: state.entities.prints
-    
+    collection: state.entities.collections[Number(collectionId)] || { title: '', author_id: null, print_collects: [], author: {id: null, username: ''} },
+    prints: state.entities.prints,
+    users: state.entities.users,
+    user: state.entities.collections[Number(collectionId)] ? state.entities.users[state.entities.collections[Number(collectionId)].author_id] : {id: null, username: '', avatar: ''},
   })
 }
 

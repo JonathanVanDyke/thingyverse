@@ -203,7 +203,7 @@ class DesignsProfile extends React.Component {
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     this.viewUser = this.props.viewUser || this.viewUser
-    debugger
+    // debugger
     // this.toggle = this.props.toggle();
 
     // let designs = this.viewUser.designs.map((print) => {
