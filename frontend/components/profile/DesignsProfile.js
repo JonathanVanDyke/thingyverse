@@ -224,6 +224,7 @@ class DesignsProfile extends React.Component {
       <ProfilePage>
         {/* top */}
         {/* {this.state.force} */}
+        <p>{this.props.collections.length}</p>
         <LeftPane>
 
           <AvatarCage>
@@ -303,6 +304,7 @@ class DesignsProfile extends React.Component {
           <DesignGrid>
             {<PrintCards
               printIds={this.viewUser.designs}
+              collectionParent={this.props.collections}
             />}
           </DesignGrid>
         </RightPane>

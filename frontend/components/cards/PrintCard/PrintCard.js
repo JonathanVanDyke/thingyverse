@@ -194,6 +194,7 @@ class PrintCard extends React.Component {
     this.state = { 
       selectedCollection: this.props.userCollectionTitles[0],
       collectFormShown: false,
+      bool: true,
     }
     this.like = this.like.bind(this);
     this.unLike = this.unLike.bind(this);
@@ -251,12 +252,13 @@ class PrintCard extends React.Component {
     e.preventDefault();
 
     //maybe conditional for if title value exists or not
-    debugger
+    // debugger
     this.props.updateCollection({
       id: this.props.userCollectedId,
       print_id: this.props.printId,
     })
     this.toggleForm()
+    this.setState({bool: !this.state.bool})
   }
 
   deletePrintFromCollection() {
@@ -270,6 +272,7 @@ class PrintCard extends React.Component {
 
 
   render() {
+    let collections = this.props.collections;
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     let currentUserId = this.props.currentUserId;
     const checkId = (pojo) => {
@@ -280,10 +283,9 @@ class PrintCard extends React.Component {
 
     return (
       <>
+      {/* {this.props.collectionParent.length} */}
       { !this.state.collectFormShown ?
-      <Top>
-
-        
+      <Top>        
  
         <Link to={`/print/${this.props.printId}`}>
 

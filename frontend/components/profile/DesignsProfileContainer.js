@@ -10,13 +10,14 @@ import { createLike, deleteLike } from './../../actions/like_actions';
 // import { edit } from '../../actions/session_actions';
 import DesignsProfile from './DesignsProfile';
 
-const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
+const mapStateToProps = ({ session, entities: { users, collections } }, ownProps) => {
   // debugger
   let userId = Number(ownProps.match.params.userId);
   return {
     currentUser: users[session.id] || { username: '', bio: '', avatar: '', prints: [] },
     viewUser: users[Number(userId)] || { username: '', bio: '', avatar: '', prints: [], designs: [] },
-    parent: { parent: 0 }
+    parent: { parent: 0 },
+    collections: collections,
   };
 };
 

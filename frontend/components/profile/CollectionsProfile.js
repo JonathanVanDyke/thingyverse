@@ -209,10 +209,11 @@ class CollectionsProfile extends React.Component {
     collections = this.props.viewUser.collections.map((collection) => {
       return collection.id
     })
-
+    debugger
     return (
       <ProfilePage>
         {/* top */}
+        
         <LeftPane>
 
           <AvatarCage>
@@ -280,7 +281,7 @@ class CollectionsProfile extends React.Component {
               mini={this.state.mini}
             />
           </DesignGrid>
-
+            
 
         </RightPane>
 
