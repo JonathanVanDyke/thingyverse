@@ -347,7 +347,7 @@ class PrintCard extends React.Component {
                 </LikeButton>
             }
             {/* print.user_likes.length */}
-            <Likes>{this.props.print.print_collects.length}</Likes>
+              <Likes>{this.props.first_collection_length}</Likes>
           </RibbonButton>
         </Ribbon>
         }

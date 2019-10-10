@@ -69,6 +69,8 @@ const mapStateToProps = (state, ownProps) => {
     userCollectedId = currentUser.collect_follows[0].collection_id
   }
 
+  let first_collection_length = currentUser.first_collection_prints.length;
+
   return {
     printId,
     print,
@@ -82,7 +84,8 @@ const mapStateToProps = (state, ownProps) => {
     user_collection_id,
     userCollectedId,
     collections,
-    collected2
+    collected2,
+    first_collection_length
     // collectionParent
   };
 };

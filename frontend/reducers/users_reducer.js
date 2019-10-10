@@ -5,6 +5,7 @@ import { RECEIVE_COLLECTION, REMOVE_COLLECTION } from '../actions/collection_act
 //may need to include assocatiations
 
 const usersReducer = (state = {}, action) => {
+  let newState = merge({}, state);
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
@@ -12,17 +13,25 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USER:
       return merge({}, state, { [action.user.id]: {id: action.user.id, bio: action.user.bio, avatar: action.user.avatar, username: action.user.username, designs: action.user.designs} });
     case RECEIVE_COLLECTION:
-      debugger
+      // debugger
       return merge({}, state, { [Object.values(action.collection)[0].author_id]: {first_collection_prints:  Object.values(action.collection)[0].collected_prints} });
-      return state;
     case REMOVE_COLLECTION:
-      // for (let i = 0; i < newState[action.like.printId].user_likes.length; i++) {
-      //   if (newState[action.like.printId].user_likes[i] === action.like.userId) {
-      //     newState[action.like.printId].user_likes.splice(i, 1)
+      // debugger
+
+      // need to splice...
+      // let newArr
+      // for (let i = 0; i < Object.values(action.collection)[0].collected_prints.length ;i++) {
+      //   if (Object.values(action.collection)[0].collected_prints[i] !== collectionId) {
+      //     newArr = Object.values(action.collection)[0].collected_prints.splice(i, 1)
       //   }
       // }
-      // debugger
-      // return merge({}, state, { [action.collection.author_id]: {id: action.user.id, bio: action.user.bio, avatar: action.user.avatar, username: action.user.username, designs: action.user.designs} });
+      debugger
+      Object.values(newState)[0].first_collection_prints = Object.values(action.collection)[0].collected_prints
+      debugger
+      // newState = merge({}, state, { [Object.values(action.collection)[0].author_id]: { first_collection_prints: newArr } })
+      return newState
+
+      // return merge({}, state, { [Object.values(action.collection)[0].author_id]: { first_collection_prints: Object.values(action.collection)[0].collected_prints } });
       return state;
     default:
       return state;
