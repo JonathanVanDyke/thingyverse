@@ -49,6 +49,7 @@ const InputButton = styled.button`
   :hover {
   box-shadow: 14px 8px 18px lightgrey;
   }
+  outline: none;
 `
 
 const Inpt = styled.input`
@@ -134,6 +135,7 @@ const Demo = styled.button`
   color: #666666;
   border: 1px solid #bababa;
   border-radius: 20px;
+  outline: none;
 `
 
 const ButtonWrap = styled.div`
