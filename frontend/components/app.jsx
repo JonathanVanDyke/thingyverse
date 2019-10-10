@@ -16,7 +16,7 @@ import styled from 'styled-components';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import Splash from './splash/SplashContainer';
-import Home from './home/Home';
+import HomeContainer from './home/HomeContainer';
 import ProfileContainer from './profile/ProfileContainer';
 import PrintShowContainer from './prints/PrintShowContainer';
 import PrintFormContainer from './prints/PrintFormContainer';
@@ -134,7 +134,7 @@ const App = () => (
           <Route path="/" component={Splash} />
         </Header>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={HomeContainer} />
           <Route exact path="/allprints" component={ShowAllPrintsContainer} />
           <Route exact path="/allcollections" component={ShowAllCollectionsContainer} />
           <AuthRoute exact path="/login" component={LogInFormContainer} />

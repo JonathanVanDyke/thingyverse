@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Slideshow from './SlideshowV1/Slideshow';
 import PrintIndexContainer from '../prints/PrintIndexContainer'
 import SlideshowV2 from './SlideshowV2/Slideshow_rev2';
-
+import CollectionCards from '../cards/CollectionCard/CollectionCards'
 
 const s = {
   container: "screenW screenH dGray col",
@@ -24,9 +24,10 @@ const Section2 = styled.section`
 `
 
 const Feed = styled.section`
+  padding: 20px;
   margin-top: 18px;
   height: 460px;
-  width: 320px;
+  width: 300px;
   // background-color: green;
   border: 1px solid #ececec;
   background-color: white;
@@ -34,7 +35,8 @@ const Feed = styled.section`
   overflow: hidden;
   align-items: flex-start;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  // justify-content: center;
 `
 
 const Featured = styled.section`
@@ -53,6 +55,13 @@ const FeatureTitle = styled.h1`
   font-size: 20px;
   color: #666666;
   margin-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+`
+
+const FeedTitle = styled.h1`
+  font-size: 20px;
+  color: #666666;
+  margin-bottom: 20px;
   font-family: Helvetica, Arial, sans-serif;
 `
 
@@ -86,6 +95,10 @@ class Home extends React.Component {
     this.slides = slides;
   }
 
+  componentDidMount() {
+    this.props.fetchCollections();
+  }
+
   render() {
     return (
       <>
@@ -108,13 +121,18 @@ class Home extends React.Component {
 
           {/* To be Filled Out */}
           <Feed>
-            
+            <FeedTitle>Featured Collections</FeedTitle>
+            <CollectionCards 
+              collectionIds={this.props.collectionIds}
+              mini
+            />
+            {/* <PrintIndexContainer /> */}
           </Feed>
 
           {/* Needs Update to Collection Rather than Prints */}
           <Featured>
 
-            <FeatureTitle>Featured Collections</FeatureTitle>
+            <FeatureTitle>Featured Prints</FeatureTitle>
             <FeatureSub>Download and print today</FeatureSub>
 
             <Link 

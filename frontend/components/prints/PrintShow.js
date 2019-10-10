@@ -261,7 +261,7 @@ class PrintShow extends React.Component {
           <PrintInfo>
             <ul>
               <Title>{this.props.print.title}</Title> 
-              <Sub>By: 
+              <Sub>By: {' '}
                 <Link
                   to={`/profile/${author.id}`}
                 >

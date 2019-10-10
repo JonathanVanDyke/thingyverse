@@ -237,7 +237,7 @@ class PrintCard extends React.Component {
     await this.props.fetchUser(this.props.currentUser.id);
     await this.props.fetchUser(this.props.authorId);
     await this.props.fetchLikes();
-
+    await this.props.fetchCollections();
   }
 
   componentDidMount() {
@@ -258,7 +258,6 @@ class PrintCard extends React.Component {
       print_id: this.props.printId,
     })
     this.toggleForm()
-    this.setState({bool: !this.state.bool})
   }
 
   deletePrintFromCollection() {
@@ -279,8 +278,8 @@ class PrintCard extends React.Component {
       return pojo === currentUserId;
     }
 
-    { this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1> }
-
+    // { this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1> }
+    debugger
     return (
       <>
       {/* {this.props.collectionParent.length} */}
@@ -299,7 +298,7 @@ class PrintCard extends React.Component {
 
               <Title>{this.props.print ? this.props.print.title : ''}</Title>
               <Byline>
-                By: 
+                By: {' '} 
                 {
                   this.props.author ?
                   this.props.author.username :
@@ -337,11 +336,13 @@ class PrintCard extends React.Component {
               this.props.collected ?
                 <LikeButton >
                   <p>
+                    {/* Hello */}
                       <i onClick={() => this.deletePrintFromCollection()} className="fas fa-layer-group"></i>
                   </p>
                 </LikeButton>
                 :
                 <LikeButton>
+                  {/* GoodBye */}
                   <i onClick={() => this.toggleForm()} className="fas fa-layer-group"></i>
                 </LikeButton>
             }

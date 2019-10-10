@@ -10,7 +10,7 @@ class Api::CollectionsController < ApplicationController
   end
 
   def create
-    # debugger
+    debugger
     @collection = Collection.new(collection_params)
     @collection.author_id = current_user.id
     if @collection.save

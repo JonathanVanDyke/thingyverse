@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createLike, deleteLikeById, fetchLikes } from '../../../actions/like_actions';
 import { fetchPrint, fetchPrints } from '../../../actions/print_actions';
-import { createCollection, updateCollection, fetchCollection, deleteCollection } from '../../../actions/collection_actions';
+import { createCollection, updateCollection, fetchCollection, fetchCollections, deleteCollection } from '../../../actions/collection_actions';
 import { fetchUser } from '../../../actions/session_actions';
 import PrintCard from './PrintCard';
 
@@ -25,12 +25,14 @@ const mapStateToProps = (state, ownProps) => {
     };
   };
 
+  //returns all print collection ids
   let print_collects_collection_ids = print ? print.print_collects.map((print_collect) => {
     return (
       print_collect.collection_id
     )
   }) : []
 
+  //return all user collections
   let user_collection_ids = currentUser.collections.map((collection) => {
     return (
       collection.id
@@ -43,12 +45,13 @@ const mapStateToProps = (state, ownProps) => {
 
   let user_collection_id;
   let collected = false;
+  debugger
   for (let i = 0; i < user_collection_ids.length; i++) {
     for (let j = 0; j < print_collects_collection_ids.length; j++) {
       if (user_collection_ids[i] === print_collects_collection_ids[i]) {
         user_collection_id = user_collection_ids[i];
         collected = true;
-        // debugger
+        debugger
       }
     }
   }
@@ -85,6 +88,7 @@ const mapDispatchToProps = dispatch => ({
   createCollection: (collection) => dispatch(createCollection(collection)),
   updateCollection: (collection) => dispatch(updateCollection(collection)),
   fetchCollection: (id) => dispatch(fetchCollection(id)),
+  fetchCollections: () => dispatch(fetchCollections()),
   deleteCollection: (id) => dispatch(deleteCollection(id)),
 });
 

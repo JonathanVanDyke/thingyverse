@@ -106,7 +106,7 @@ class ShowCollection extends React.Component {
           <PrintInfo>
             <ul>
               <Title>{this.props.collection.title}</Title>
-              <Sub>By:
+              <Sub>By: {' '}
                   <Link
                   to={`/profile/${author_id}`}
                 >
