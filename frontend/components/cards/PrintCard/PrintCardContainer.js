@@ -45,16 +45,24 @@ const mapStateToProps = (state, ownProps) => {
 
   let user_collection_id;
   let collected = false;
-  debugger
+  
   for (let i = 0; i < user_collection_ids.length; i++) {
     for (let j = 0; j < print_collects_collection_ids.length; j++) {
       if (user_collection_ids[i] === print_collects_collection_ids[i]) {
         user_collection_id = user_collection_ids[i];
         collected = true;
-        debugger
+        
       }
     }
   }
+
+  let collected2 = false;
+  currentUser.first_collection_prints.forEach((userPrintId) => {
+    if (userPrintId === printId) {
+      collected2 = true;
+    };
+  });
+  
 
   let userCollectedId = null;
   if (currentUser.collect_follows.length >= 1) {
@@ -74,6 +82,7 @@ const mapStateToProps = (state, ownProps) => {
     user_collection_id,
     userCollectedId,
     collections,
+    collected2
     // collectionParent
   };
 };

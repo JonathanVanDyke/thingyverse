@@ -14,9 +14,9 @@ const CollectionsReducer = (oldState = {}, action) => {
       // debugger
       return action.collections
     case RECEIVE_COLLECTION:
-      // debugger
+      debugger
       newState = merge({}, oldState, action.collection)
-      // debugger
+      debugger
       return newState
     case REMOVE_COLLECTION:
       return [].concat(newState)

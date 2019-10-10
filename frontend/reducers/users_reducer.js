@@ -12,8 +12,8 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USER:
       return merge({}, state, { [action.user.id]: {id: action.user.id, bio: action.user.bio, avatar: action.user.avatar, username: action.user.username, designs: action.user.designs} });
     case RECEIVE_COLLECTION:
-      // debugger
-      // return merge({}, state, { [Object.values(action.collection)[0].id]: Object.values(action.collection)[0]} );
+      debugger
+      return merge({}, state, { [Object.values(action.collection)[0].author_id]: {first_collection_prints:  Object.values(action.collection)[0].collected_prints} });
       return state;
     case REMOVE_COLLECTION:
       // for (let i = 0; i < newState[action.like.printId].user_likes.length; i++) {

@@ -28,3 +28,16 @@ json.designs user.print_ids
 json.liked_prints user.liked_print_ids
 json.collections user.collections
 json.collect_follows user.collect_follows
+
+json.owned_collections user.collection_ids
+
+collected_prints = []
+user.collections.each do |collection|
+  # json.extract! collection, :collected_prints
+  # debugger
+  collected_prints << collection.print_ids
+end
+
+user.collections[0].print_ids
+
+json.first_collection_prints user.collections[0].print_ids

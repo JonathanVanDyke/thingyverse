@@ -5,4 +5,6 @@ json.set! @collection.id do
   json.title @collection.title
   json.print_collects @collection.print_collects
   json.collect_follows @collection.collect_follows
+  json.collected_prints @collection.print_ids
+
 end

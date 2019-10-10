@@ -333,7 +333,7 @@ class PrintCard extends React.Component {
           </RibbonButton>
           <RibbonButton>
             {
-              this.props.collected ?
+              this.props.collected2 ?
                 <LikeButton >
                   <p>
                     {/* Hello */}

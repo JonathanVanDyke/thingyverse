@@ -218,6 +218,7 @@ class PrintShow extends React.Component {
     let liked_avatars = this.props.print.user_like_profs.map((user) => {
       return (
         <LikedByAvatars
+          key={user.id}
           user={user}
         />
       )
