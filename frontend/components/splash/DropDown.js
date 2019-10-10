@@ -15,6 +15,7 @@ const DropDownTag = styled.div`
   border: 1px solid #bebebe;
   background-color: #fff;
   height: ${props => props.height}
+  position: relative;
 `
 const Username = styled.li`
   display: flex;

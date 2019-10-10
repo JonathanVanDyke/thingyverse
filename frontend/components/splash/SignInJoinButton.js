@@ -84,7 +84,7 @@ const DropDownWrap = styled.div`
   height: 80px;
   width: 400px;
   z-index: 100;
-  position: fixed;
+  position: absolute;
   margin-left: 572px;
   // border: 1px solid skyblue;
 `
