@@ -51,18 +51,22 @@ const PrintsReducer = (oldState = {}, action) => {
       newCollectionId = Object.values(action.collection)[0].id
       //iterate over collections print ids
       Object.values(action.collection)[0].collected_prints.forEach((printId) => {
-        newState[printId].collections_in = [newCollectionId]
+        if ( newState[printId] ) {
+          newState[printId].collections_in = [newCollectionId]
+        }
       })
-      debugger
+      // debugger
       return newState;
     case REMOVE_COLLECTION:
       newCollectionId = Object.values(action.collection)[0].id
       //iterate over collections print ids... NO
       //send down printId
       Object.values(action.collection)[0].collected_prints.forEach((printId) => {
-        newState[printId].collections_in = []
+        if (newState[printId]) {
+          newState[printId].collections_in = []
+        }
       })
-      debugger
+      // debugger
       return newState;
     default:
       return newState;

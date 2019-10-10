@@ -91,6 +91,7 @@ class ShowCollection extends React.Component {
     })
 
     let author_id = this.props.collection.author;
+    debugger
     let user = this.props.user;
     return (
       <div>

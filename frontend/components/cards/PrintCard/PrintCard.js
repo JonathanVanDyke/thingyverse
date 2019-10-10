@@ -50,7 +50,7 @@ const TitleWrap = styled.div`
 `
 
 const Title = styled.h1`
-  z-index: 10;
+  z-index: 5;
   position: absolute;
   color: white;
   margin-left: 60px;
@@ -58,7 +58,7 @@ const Title = styled.h1`
 `
 
 const Byline = styled.h4`
-  z-index: 10;
+  z-index: 5;
   position: absolute;
   color: white;
   margin-left: 60px;

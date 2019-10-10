@@ -16,6 +16,7 @@ const DropDownTag = styled.div`
   background-color: #fff;
   height: ${props => props.height}
   position: relative;
+  z-index: 110;
 `
 const Username = styled.li`
   display: flex;

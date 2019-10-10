@@ -138,7 +138,7 @@ class ShowCollectionItem extends React.Component {
 
     //wrongid
     this.props.fetchPrint(this.props.print_id).then(() => {
-      this.props.receiveUser(this.props.print.author)
+      this.props.receiveUser(this.props.print.author).then(() => this.props.fetchCollections())
     })
     // debugger
     //wrongid
