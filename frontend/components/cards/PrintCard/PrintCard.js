@@ -160,6 +160,7 @@ const Select = styled.select`
   outline: none;
   font-size: 15px;
   font-family: Helvetica, sans-serif;
+  margin: auto;
 `
 
 const Buttons = styled.div`
@@ -197,6 +198,10 @@ class PrintCard extends React.Component {
       selectedCollection: this.props.userCollectionTitles[0],
       collectFormShown: false,
       bool: true,
+      title: '',
+      currentUserId: this.props.currentUserId,
+      id: this.props.userCollectedId,
+      print_id: this.props.printId,
     }
     this.like = this.like.bind(this);
     this.unLike = this.unLike.bind(this);
@@ -252,14 +257,30 @@ class PrintCard extends React.Component {
     return e => this.setState({ selectedCollection: e.target.value })
   }
 
+  update2() {
+    return e => this.setState({ title: e.target.value })
+  }
+
   handleSubmit(e) {
     e.preventDefault();
 
     //maybe conditional for if title value exists or not
-    // debugger
-    this.props.updateCollection({
-      id: this.props.userCollectedId,
-      print_id: this.props.printId,
+    debugger
+    // this.props.updateCollection({
+    //   id: this.props.userCollectedId,
+    //   print_id: this.props.printId,
+    // })
+    this.props.updateCollection(this.state)
+    this.toggleForm()
+  }
+
+  handleSubmit2(e) {
+    e.preventDefault();
+
+    //maybe conditional for if title value exists or not
+    debugger
+    this.props.createCollection({
+      title: this.state.title,
     })
     this.toggleForm()
   }
@@ -273,6 +294,21 @@ class PrintCard extends React.Component {
 
   }
 
+  // createSelectItems() {
+  //   let items = [];
+  //   for (let i = 0; i <= this.props.userCollectionTitles; i++) {
+  //     items.push(<option key={i} value={i}>{i}</option>);
+  //     //here I will be creating my options dynamically based on
+  //     //what props are currently passed to the parent component
+  //   }
+  //   return items;
+  // }
+
+  onDropdownSelected(e) {
+    console.log("THE VAL", e.target.value);
+    //here you will see the current selected value of the select input
+  }
+
 
   render() {
     let collections = this.props.collections;
@@ -283,7 +319,7 @@ class PrintCard extends React.Component {
     }
 
     // { this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1> }
-    // debugger
+    debugger
     return (
       <>
       {/* {this.props.collectionParent.length} */}
@@ -370,7 +406,7 @@ class PrintCard extends React.Component {
             <SelectDrop>
               <FormTitle>Select a Collection</FormTitle>
               <FormSub>or create a new one below:</FormSub>
-              <Select
+              {/* <Select
                 name="collection"
                 onChange={this.update()}
               >
@@ -386,14 +422,30 @@ class PrintCard extends React.Component {
                 >
                   hmm
                 </option>
+              </Select> */}
+              <Select name="country" value={'title'}>
+              {this.props.userCollectionTitles.map((e, key) => {
+                return <option onChange={this.update()} key={key} value={e}>{e}</option>;
+              })}
               </Select>
               {/* <p>{this.props.userCollectionTitles}</p> */}
               <Buttons>
                   <FormSave type='submit' value='Save'></FormSave>
                   <FormCancel onClick={() => this.toggleForm()}>Cancel</FormCancel>
               </Buttons>
+
+              <label>Create Collection
+                <input
+                  type='text'
+                  value={this.state.title}
+                  onChange={this.update2()}
+                />
+              </label>
+
             </SelectDrop>
           </form>
+
+
         </Form>
       }
       </>

@@ -25,12 +25,25 @@ class Api::CollectionsController < ApplicationController
   end
 
   def update
-    # debugger
-    @collection = Collection.find(params[:id])
-    if @collection.prints << Print.find(params[:collection][:print_id].to_i)
-      render :show
+    if params[:collection][:title].length > 0
+      # debugger
+      title = collection_params["title"]
+      author_id = collection_params["currentUserId"]
+      @collection = Collection.new({title: title, author_id: author_id})
+      if @collection.save
+        @collection.prints << Print.find(params[:collection][:print_id].to_i)
+        # debugger
+        render :show
+      else
+        render json: @collection.errors.full_messages, status: 422
+      end
     else
-      render json: @collection.errors.full_messages, status: 422
+      @collection = Collection.find(params[:id])
+      if @collection.prints << Print.find(params[:collection][:print_id].to_i)
+        render :show
+      else
+        render json: @collection.errors.full_messages, status: 422
+      end
     end
   end
 
@@ -52,7 +65,7 @@ class Api::CollectionsController < ApplicationController
   def collection_params
     # debugger
     #changed :photo to :photoUrl
-    params.require(:collection).permit(:title, :cover_url, :author_id)
+    params.require(:collection).permit(:title, :cover_url, :author_id, :selectedCollection, :collectFormShown, :bool, :currentUserId, :id, :print_id)
   end
 
 end
