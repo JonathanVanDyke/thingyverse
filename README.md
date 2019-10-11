@@ -2,10 +2,10 @@
 
   ## HomePage
   <p align="center">
-    <img src="https://thingyverse-public.s3.amazonaws.com/homepage.png" width="1000" >
+    <img src="https://thingyverse-public.s3.amazonaws.com/homepage.png" width="600" >
   </p>
   
-  ### Homepage gif
+  * Homepage gif
   
   <p align="center">
     <img src="https://thingyverse-public.s3.amazonaws.com/00_home_page_v5.gif" width="600" >
