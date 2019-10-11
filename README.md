@@ -5,16 +5,22 @@
     <img src="https://thingyverse-public.s3.amazonaws.com/homepage.png" width="600" >
   </p>
   
-  * Homepage gif
+  <h3>Overview</h3>
+  <p>  
+    Thingyverse is an homage to the thingiverse website where users can upload and share their 3D printing projects.
+    This app was build using:
+    <ol>
+      <li> Ruby on Rails backend
+      <li> React / Redux frontend.
+    </ol>
+  </p>
+  
   
   <p align="center">
     <img src="https://thingyverse-public.s3.amazonaws.com/00_home_page_v5.gif" width="600" >
   </p>
   
-  <p>
-    Thingyverse is an homage to the thingiverse website.
-    This app was build using a Ruby on Rails backend and React/Redux frontend.
-  </p
+ 
 
   ## Prints
   <img src="https://thingyverse-public.s3.amazonaws.com/00_home_featured_prints_v3.gif" width="600">
