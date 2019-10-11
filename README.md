@@ -1,5 +1,10 @@
 <img src="https://thingyverse-public.s3.amazonaws.com/Logo_v2.png" width="600">
-<a href='https://thingyverse.herokuapp.com/#/'>Hosted Site</a>
+<p>
+  Please feel free to continue reading this readme or visit the hosted site:
+  <span><a href='https://thingyverse.herokuapp.com/#/'>Link to Site</a></span>
+</p>
+
+
   ## HomePage
   <p align="center">
     <img src="https://thingyverse-public.s3.amazonaws.com/homepage.png" width="600" >
