@@ -24,3 +24,11 @@
 # Notes
 
 p.photo.attach(io: File.open("<filepath>"), filename: "<filename>")
+
+
+# ...presentation
+
+* > 1. Auth... sign in, sign up, demo
+* > 2. Prints... create, show, update, destroy
+* > 3. Likes... create/destroy
+* > 4. Collections... update/destroy
