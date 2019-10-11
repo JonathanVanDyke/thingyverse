@@ -38,7 +38,11 @@ class Api::CollectionsController < ApplicationController
         render json: @collection.errors.full_messages, status: 422
       end
     else
-      @collection = Collection.find(params[:id])
+      # debugger
+      # @collection = Collection.find(params[:id])
+      selectedCollection = params[:collection][:selectedCollection]
+      # debugger
+      @collection = Collection.find_by(title: selectedCollection)
       if @collection.prints << Print.find(params[:collection][:print_id].to_i)
         render :show
       else
@@ -54,8 +58,10 @@ class Api::CollectionsController < ApplicationController
     printId = params[:collection][:print_id]
     if @collection.print_collects.find_by(print_id: printId).delete
       @collection.delete if @collection.print_collects.length === 0
+      # debugger
       render :show
     else 
+      # debugger
       render json: @collection.errors.full_messages, status: 422
     end
   end

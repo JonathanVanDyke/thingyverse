@@ -38,6 +38,10 @@ const Feed = styled.section`
   flex-direction: column;
   // justify-content: center;
   margin-bottom: 110px;
+  display: grid;
+  grid-gap: 20px;
+  // grid-template-columns: repeat(2, 1fr);
+  // grid-auto-rows: minmax(100px, auto);
 `
 
 const Featured = styled.section`
@@ -62,7 +66,7 @@ const FeatureTitle = styled.h1`
 const FeedTitle = styled.h1`
   font-size: 20px;
   color: #666666;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   font-family: Helvetica, Arial, sans-serif;
 `
 

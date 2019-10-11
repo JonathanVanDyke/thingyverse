@@ -149,7 +149,12 @@ const FormSub = styled.h3`
   font-size: 16px;
   padding: 10px;
   color: white;
+`
 
+const Label = styled.label`
+  font-size: 16px;
+  padding: 10px;
+  color: white;
 `
 
 const Select = styled.select`
@@ -160,7 +165,7 @@ const Select = styled.select`
   outline: none;
   font-size: 15px;
   font-family: Helvetica, sans-serif;
-  margin: auto;
+  // margin: auto;
 `
 
 const Buttons = styled.div`
@@ -188,6 +193,19 @@ const FormCancel = styled.button`
   text-transform: uppercase;
   font-family: Helvetica, sans-serif;
   font-size: 13px;
+`
+
+const CreateWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`
+
+const CreateInpt = styled.input`
+  width: 180px;
+  height: 20px;
+  /* align-self: center; */
+  margin-left: 10px;
 `
 
 
@@ -265,7 +283,7 @@ class PrintCard extends React.Component {
     e.preventDefault();
 
     //maybe conditional for if title value exists or not
-    debugger
+    // debugger
     // this.props.updateCollection({
     //   id: this.props.userCollectedId,
     //   print_id: this.props.printId,
@@ -274,23 +292,14 @@ class PrintCard extends React.Component {
     this.toggleForm()
   }
 
-  handleSubmit2(e) {
-    e.preventDefault();
-
-    //maybe conditional for if title value exists or not
-    debugger
-    this.props.createCollection({
-      title: this.state.title,
-    })
-    this.toggleForm()
-  }
 
   deletePrintFromCollection() {
     // debugger
-    this.props.deleteCollection({
-      id: this.props.userCollectedId,
-      print_id: this.props.printId,
-    })
+    // this.props.deleteCollection({
+    //   id: this.props.userCollectedId,
+    //   print_id: this.props.printId,
+    // })
+    this.props.deleteCollection(this.state)
 
   }
 
@@ -319,7 +328,7 @@ class PrintCard extends React.Component {
     }
 
     // { this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1> }
-    debugger
+    // debugger
     return (
       <>
       {/* {this.props.collectionParent.length} */}
@@ -423,25 +432,28 @@ class PrintCard extends React.Component {
                   hmm
                 </option>
               </Select> */}
-              <Select name="country" value={'title'}>
-              {this.props.userCollectionTitles.map((e, key) => {
-                return <option onChange={this.update()} key={key} value={e}>{e}</option>;
-              })}
+              <Select 
+                  onChange={this.update()}
+                  name="country" 
+              >
+                {this.props.userCollectionTitles.map((e, key) => {
+                  return <option onChange={this.update()} key={key} value={e}>{e}</option>;
+                })}
               </Select>
               {/* <p>{this.props.userCollectionTitles}</p> */}
               <Buttons>
                   <FormSave type='submit' value='Save'></FormSave>
                   <FormCancel onClick={() => this.toggleForm()}>Cancel</FormCancel>
               </Buttons>
-
-              <label>Create Collection
-                <input
+              <CreateWrap >
+                <Label>Create Collection </Label>
+                <CreateInpt
                   type='text'
                   value={this.state.title}
                   onChange={this.update2()}
                 />
-              </label>
-
+                
+              </CreateWrap>
             </SelectDrop>
           </form>
 

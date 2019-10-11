@@ -10,6 +10,8 @@ const Top = styled.div`
   flex-direction: column;
   height: 262px;
   width: 295px;
+  border-radius: 30px;
+  box-shadow: 8px 14px 18px lightgrey;
 `
 //Head
 const Head = styled.div`
@@ -22,7 +24,7 @@ const TitleWrap = styled.div`
 `
 
 const Title = styled.h1`
-  z-index: 10;
+  z-index: 5;
   position: absolute;
   color: white;
   margin-left: 60px;
@@ -30,7 +32,7 @@ const Title = styled.h1`
 `
 
 const Byline = styled.h4`
-  z-index: 10;
+  z-index: 5;
   position: absolute;
   color: white;
   margin-left: 60px;
@@ -76,6 +78,7 @@ const Fade = styled.div`
   -webkit-mask-size: 100% 102%;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: left top, left bottom;
+  border-radius: 30px;
 `
 
 const Ribbon = styled.section`
@@ -95,6 +98,7 @@ const Back = styled.img`
   height: 262px;
   width: 295px;
   object-fit: cover;
+  border-radius: 30px;
 `
 
 //MINI Styling!!
