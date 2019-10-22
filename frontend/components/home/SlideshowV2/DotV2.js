@@ -6,10 +6,14 @@ const Space = styled.div`
   margin-left: 5px;
 `
 
+const Dot = styled.div`
+
+`
+
 const Dot = ({ slideId, dotId }) => (
   <Space>
     {/* <Spacer w={5} /> */}
-    <div className={"dot " + (slideId === dotId ? "white" : "white50")} />
+    <Dot className={"dot " + (slideId === dotId ? "white" : "white50")} />
     {/* <Spacer w={5} /> */}
   </Space>
 )

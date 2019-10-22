@@ -4,15 +4,24 @@ import styled from 'styled-components';
 const RoundWrap = styled.div`
   display: flex;
   justify-content: space-around;
+  margin-top: 6px;
+  width: 100px;
+  margin: auto;
+  margin-top: 6px;
 `
 
 const Roundie = styled.div`
   height: 16px;
   width: 16px;
   border-radius: 50%;
-  background-color: #bebebebebebe;
   border: 1px solid #999999;
-  margin: 5px;
+  // margin: 5px;
+`
+
+const AltRoundie = styled.div`
+  :focus {
+    background-color: black;
+  }
 `
 
 const IMGWrap = styled.div`
@@ -33,20 +42,29 @@ const IMG = styled.img`
 `
 
 
+
+
 class Dot extends React.Component {
+
   render() {
+    const Test = styled.div`
+      :focus {
+        width: 20px;
+      }
+    `
     const currentSlide = this.props.currentId;
     const chosenfn = this.props.onSlideChosen;
     const slides = this.props.slides;
     const dots = slides.map((slide, index) => {
       const klass = index === currentSlide ? 'active' : '';
+      // debugger
       return (
-        <div
+        <Test
           key={index}
           className={klass}
           onClick={() => chosenfn(index)}>
           <Roundie />{' '}
-        </div>
+        </Test>
       );
     });
     return (
