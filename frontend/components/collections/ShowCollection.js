@@ -85,10 +85,11 @@ class ShowCollection extends React.Component {
 
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
-    let printIds = [];
-    printIds = this.props.collection.print_collects.map((collect) => {
-      return collect.print_id
-    })
+    // let printIds = [];
+    debugger
+    // printIds = this.props.collection.print_collects.map((collect) => {
+    //   return collect.print_id
+    // })
 
     let author_id = this.props.collection.author;
     // debugger
@@ -122,7 +123,7 @@ class ShowCollection extends React.Component {
           <RightPane>
             <DesignGrid>
               {<PrintCards
-                printIds={printIds}
+                printIds={this.props.printIds}
               />}
             </DesignGrid>
           </RightPane>

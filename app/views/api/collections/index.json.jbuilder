@@ -7,7 +7,7 @@
     json.extract! collection, :id, :author_id, :title
     
     #To be refactored this out
-    json.print_collects collection.print_collects
+    # json.print_collects collection.print_collects
     json.collect_follows collection.collect_follows
     #To be refactored this out
 

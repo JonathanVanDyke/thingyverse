@@ -7,10 +7,11 @@ import { fetchPrint } from './../../actions/print_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let collectionId = Number(ownProps.match.params.collectionId);
-  // debugger
+  debugger
   return ({
     current_user_id: state.session.id || null,
-    collection: state.entities.collections[Number(collectionId)] || { title: '', author_id: null, print_collects: [], author: {id: null, username: ''} },
+    collection: state.entities.collections[Number(collectionId)] || { title: '', author_id: null, print_collects: [], author: {id: null, username: ''}, collected_prints: [] },
+    printIds: state.entities.collections[Number(collectionId)] ? state.entities.collections[Number(collectionId)].collected_prints : [],
     prints: state.entities.prints,
     users: state.entities.users,
     user: state.entities.collections[Number(collectionId)] ? state.entities.users[state.entities.collections[Number(collectionId)].author_id] : {id: null, username: '', avatar: ''},
