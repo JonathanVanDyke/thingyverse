@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import ShowAllPrints from './ShowAllPrints';
 import { fetchPrints } from '../../actions/print_actions';
+import { fetchCollection, fetchCollections } from '../../actions/collection_actions';
+
 
 
 const mapStateToProps = (state) => {
@@ -13,6 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return ({
     fetchPrints: () => dispatch(fetchPrints()),
+    fetchCollections: () => dispatch(fetchCollections()),
   });
 }
 

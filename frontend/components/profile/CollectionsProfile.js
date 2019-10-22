@@ -198,18 +198,19 @@ class CollectionsProfile extends React.Component {
     // debugger
     // this.fetchCollection()
     let userId = this.props.match.params.userId
-    this.props.receiveUser(Number(userId))
+    this.props.fetchUser(Number(userId))
+    this.props.fetchCollections();
   }
 
   render() {
     let defaultImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmusEZgxQkwLCxi-jH4OBNL3PyoKqHassq3SXlbsOR1M1Q13Tq'
     this.viewUser = this.props.viewUser || this.viewUser
 
-    let collections = [];
-    collections = this.props.viewUser.collections.map((collection) => {
-      return collection.id
-    })
-    debugger
+    // let collections = [];
+    // collections = this.props.viewUser.collections.map((collection) => {
+    //   return collection.id
+    // })
+    // debugger
     return (
       <ProfilePage>
         {/* top */}
@@ -277,7 +278,7 @@ class CollectionsProfile extends React.Component {
           <DesignGrid>
             {/* {collections} */}
             <CollectionCards 
-              collectionIds={collections}
+              collectionIds={this.props.collections}
               mini={this.state.mini}
             />
           </DesignGrid>

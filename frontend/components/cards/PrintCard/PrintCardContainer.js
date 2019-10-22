@@ -26,7 +26,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 
   //returns all print collection ids
-  debugger
+  // debugger
   let print_collects_collection_ids = print ? print.collections_in : [];
 
   //return all user collections
@@ -35,10 +35,17 @@ const mapStateToProps = (state, ownProps) => {
       collection.id
     )
   }) : []
-
-  let userCollectionTitles = currentUser.collections ? currentUser.collections.map((collection) => {
-    return collection.title
-  }) : []
+  // debugger
+  
+  // let userCollectionTitles = currentUser.collections ? currentUser.collections.map((collection) => {
+  //   return collection.title
+  // }) : []
+  let userCollectionTitles = [];
+  for (let i = 0; i < Object.values(state.entities.collections).length; i++){
+    if (Object.values(state.entities.collections)[i].author_id === state.session.id) {
+      userCollectionTitles.push(Object.values(state.entities.collections)[i].title);
+    }
+  }
 
   let user_collection_id;
   let collected = false;

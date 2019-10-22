@@ -328,7 +328,7 @@ class PrintCard extends React.Component {
     }
 
     // { this.state.collectFormShown ? <h1>shown</h1> : <h1>hidden</h1> }
-    // debugger
+    debugger
     return (
       <>
       {/* {this.props.collectionParent.length} */}

@@ -189,6 +189,7 @@ class Profile extends React.Component {
     // debugger
     let userId = this.props.match.params.userId
     this.props.receiveUser(Number(userId))
+    this.props.fetchCollections()
   }
 
   render() {
