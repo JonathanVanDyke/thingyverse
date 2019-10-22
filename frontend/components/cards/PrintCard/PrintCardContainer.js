@@ -26,11 +26,8 @@ const mapStateToProps = (state, ownProps) => {
   };
 
   //returns all print collection ids
-  let print_collects_collection_ids = print ? print.print_collects.map((print_collect) => {
-    return (
-      print_collect.collection_id
-    )
-  }) : []
+  debugger
+  let print_collects_collection_ids = print ? print.collections_in : [];
 
   //return all user collections
   let user_collection_ids = currentUser.collections ? currentUser.collections.map((collection) => {

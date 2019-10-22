@@ -9,7 +9,7 @@ json.user_like_profs print.user_likes.each do |user_like|
 end
 
 #to be refactored out
-json.print_collects print.print_collects
+# json.print_collects print.print_collects
 #to be refactored out
 
 
