@@ -144,12 +144,22 @@ const Label = styled.label`
   font-family: Helvetica, Arial, sans-serif;
 `
 
+const Preview = styled.div`
+  position: absolute;
+  margin-top: 189px;
+  margin-left: 40px;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+`
+
 class PrintForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.print;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.previewFile = this.previewFile.bind(this);
   }
 
   update(field) {
@@ -158,6 +168,21 @@ class PrintForm extends React.Component {
 
   handleFile(e) {
     this.setState({photoFile: e.currentTarget.files[0]});
+    this.previewFile()
+  }
+
+  previewFile() {
+    var preview = document.getElementById('preview');
+    var file = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+    debugger
+    reader.addEventListener("load", function () {
+      preview.src = reader.result;
+    }, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 
 
@@ -191,10 +216,14 @@ class PrintForm extends React.Component {
   }
 
   render() {
-    // debugger
+    debugger
+
     return (
       <div>
         <Content>
+          <Preview>
+            <img id="preview" src="https://thingyverse-public.s3.amazonaws.com/white.png" height="200" alt="Image preview..."></img>
+          </Preview>
 
           <h1>{this.props.errors ? this.renderErrors() : []}</h1>
 

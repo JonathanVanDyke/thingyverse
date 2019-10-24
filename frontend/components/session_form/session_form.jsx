@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const Login = styled.div`
   display: flex;
@@ -135,6 +135,24 @@ const Body = styled.p`
   line-height: 130%;
 `
 
+const translate = keyframes`
+  0% {
+    transform: translate(0px, 0px);
+    font-size: 0px;
+  }
+  100% {
+    transform: translate(0px, 0px);
+    font-size: 16px;
+  }
+`;
+
+const ErrorPop = styled.li`
+  color: red;
+  font-weight: 900;
+  font-family: Helvetica, Arial, sans-serif;
+  animation: ${translate} .5s linear 1;
+`
+
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
@@ -160,9 +178,9 @@ class SessionForm extends React.Component {
     return (
       <ul>
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
+          <ErrorPop key={`error-${i}`}>
             {error}
-          </li>
+          </ErrorPop>
         ))}
       </ul>
     )
