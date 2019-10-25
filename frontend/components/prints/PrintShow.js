@@ -33,7 +33,7 @@ const Title = styled.li`
 `
 
 const Sub = styled.li`
-  text-transform: lowercase;
+  // text-transform: lowercase;
   color: #666;
   font-family: Helvetica, sans-serif;
   font-size: 16px;
@@ -264,6 +264,7 @@ class PrintShow extends React.Component {
               <Title>{this.props.print.title}</Title> 
               <Sub>By: {' '}
                 <Link
+                  style={{ textDecoration: 'none', cursor: 'pointer', color: 'black' }}
                   to={`/profile/${author.id}`}
                 >
                   {author.username}
